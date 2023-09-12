@@ -1,7 +1,6 @@
 ﻿namespace UserService.Service
 {
-    public class ExpertService
+    public interface IExpertService
     {
-
     }
 }
