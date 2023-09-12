@@ -1,4 +1,17 @@
+using Microsoft.Extensions.Options;
+using UserService.MongoDBSettings;
+using UserService.Repository;
+using UserService.Service;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.Configure<InnovatorDBSettings>(
+             builder.Configuration.GetSection(nameof(InnovatorDBSettings)));
+
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IOptions<InnovatorDBSettings>>().Value);
+
+builder.Services.AddSingleton<IInnovatorRepository,InnovatorRepository>();
+builder.Services.AddSingleton<IInnovatorService, InnovatorService>();
 
 // Add services to the container.
 

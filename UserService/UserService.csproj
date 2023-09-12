@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <PackageReference Include="MongoDB.Bson" Version="2.21.0" />
+>>>>>>> 17a68837f74209dc38161f90a8cf523ffc7d3b2c
     <PackageReference Include="MongoDB.Driver" Version="2.21.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
