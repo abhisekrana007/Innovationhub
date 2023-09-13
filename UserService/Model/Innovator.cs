@@ -8,7 +8,9 @@ namespace UserService.Model
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string InnovatorID { get; set; }
+
+        public string? InnovatorID { get; set; }
+
 
         public string Username { get; set; }
 
