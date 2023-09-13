@@ -25,7 +25,15 @@ namespace ChatService.Controllers
         [HttpPut]
         public IActionResult AddMessage(Message message,string chatId)
         {
-            return Ok(_repo.AddMessageToChat(message, chatId));
+            Chat chat = _repo.AddMessageToChat(message, chatId);
+            if (chat != null)
+            {
+                return Ok(chat);
+            }
+            else
+            {
+                return NotFound("Chat Doesn't Exist");
+            }
         }
     }
 }
