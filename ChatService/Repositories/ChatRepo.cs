@@ -35,7 +35,7 @@ namespace ChatService.Repositories
                 var update = Builders<Chat>.Update
                         .Push<Message>(e => e.Messages, message);
                 _chats.UpdateOne(filter,update);
-                return chat;
+                return _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefault();
             }
             else
             {
