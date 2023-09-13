@@ -13,7 +13,8 @@ builder.Services.AddSingleton<IUserDatabaseSettings>(sp =>
 
 builder.Services.AddSingleton<IInnovatorRepository,InnovatorRepository>();
 builder.Services.AddSingleton<IInnovatorService, InnovatorService>();
-
+builder.Services.AddSingleton<IExpertRepository,ExpertRepository>();
+builder.Services.AddSingleton<IExpertService,ExpertService>();
 // Add services to the container.
 
 builder.Services.AddControllers();
