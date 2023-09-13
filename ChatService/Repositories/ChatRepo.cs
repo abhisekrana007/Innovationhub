@@ -24,9 +24,23 @@ namespace ChatService.Repositories
             _chats = database.GetCollection<Chat>(settings.Value.ChatsCollectionName);
 
         }
-        public Chat AddMessageToChat(Message message)
+        public Chat AddMessageToChat(Message message,string chatId)
         {
-            throw new NotImplementedException();
+            Chat chat = _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefault();
+            if (chat != null)
+            {
+                var filter = Builders<Chat>
+                .Filter.Eq(e => e.ChatId, chatId);
+
+                var update = Builders<Chat>.Update
+                        .Push<Message>(e => e.Messages, message);
+                _chats.UpdateOne(filter,update);
+                return chat;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Chat CreateChat(string innovatorId, string expertId)
@@ -35,7 +49,7 @@ namespace ChatService.Repositories
             {
                 InnovatorId = innovatorId,
                 ExpertId = expertId,
-                Messages = { }
+                Messages = new List<Message>()
             };
             _chats.InsertOne(chat);
             return chat;

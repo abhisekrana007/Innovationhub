@@ -22,5 +22,10 @@ namespace ChatService.Controllers
             Chat chat = _repo.CreateChat(innovatorId, expertId);
             return Created("Created Chat Successfully", chat);
         }
+        [HttpPut]
+        public IActionResult AddMessage(Message message,string chatId)
+        {
+            return Ok(_repo.AddMessageToChat(message, chatId));
+        }
     }
 }

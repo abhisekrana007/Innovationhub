@@ -10,7 +10,7 @@ namespace ChatService.Models
         public string ChatId { get; set; }
         public string InnovatorId { get; set; }
         public string ExpertId { get; set; }
-        public Message Messages { get; set; }
+        public List<Message> Messages { get; set; }
 
     }
 }
