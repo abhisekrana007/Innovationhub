@@ -1,13 +1,20 @@
 ﻿using MongoDB.Driver;
 using UserService.Model;
+using UserService.MongoDBSettings;
 
 namespace UserService.Repository
 {
     public class ExpertRepository : IExpertRepository
         {
             private readonly IMongoCollection<Expert> _collection;
+        public ExpertRepository(IUserDatabaseSettings settings)
+        {
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
+            _collection = database.GetCollection<Expert>(settings.UsersCollectionName);
+        }
 
-            public ExpertRepository(IMongoDatabase database)
+        public ExpertRepository(IMongoDatabase database)
             {
                 _collection = database.GetCollection<Expert>("Experts");
             }
