@@ -17,7 +17,7 @@ namespace ChatService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAChat(Object chat)
+        public async Task<IActionResult> CreateAChat(Chat chat)
         {
             Chat findchat = await _repo.CreateChat(chat.InnovatorId, chat.ExpertId);
             if (findchat != null)
