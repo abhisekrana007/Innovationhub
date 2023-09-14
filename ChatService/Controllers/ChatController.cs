@@ -2,10 +2,11 @@
 using ChatService.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace ChatService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ChatController : ControllerBase
     {
@@ -17,15 +18,24 @@ namespace ChatService.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAChat(string innovatorId,string expertId)
+        public async Task<IActionResult> CreateAChat([FromBody]JObject chat)
         {
-            Chat chat = _repo.CreateChat(innovatorId, expertId);
-            return Created("Created Chat Successfully", chat);
+            string innovatorId = chat["innovatorId"].ToObject<string>();
+            string expertId = chat["expertId"].ToObject<string>();
+            Chat findchat = await _repo.CreateChat(innovatorId,expertId);
+            if (findchat != null)
+            {
+                return Created("Created Chat Successfully", findchat);
+            }
+            else
+            {
+                return Conflict("Chat Already Exists");
+            }
         }
-        [HttpPut]
-        public IActionResult AddMessage(Message message,string chatId)
+        [HttpPut("{chatId}")]
+        public async Task<IActionResult> AddMessage(Message message,string chatId)
         {
-            Chat chat = _repo.AddMessageToChat(message, chatId);
+            Chat chat = await _repo.AddMessageToChat(message, chatId);
             if (chat != null)
             {
                 return Ok(chat);
@@ -35,5 +45,36 @@ namespace ChatService.Controllers
                 return NotFound("Chat Doesn't Exist");
             }
         }
+
+        [HttpGet("{chatId}")]
+        public async Task<IActionResult> GetAChat(string chatId)
+        {
+            Chat chat = await _repo.GetChat(chatId);
+            if (chat != null)
+            {
+                return Ok(chat);
+            }
+            else
+            {
+                return NotFound("Chat Doesn't Exist");
+            }
+        }
+
+        [Route("innovator/{innovatorId}")]        
+        [HttpGet]
+
+        public async Task<IActionResult> GetInnovatorChats(string innovatorId)
+        {
+            return Ok(await _repo.GetInnovatorChats(innovatorId));
+        }
+
+        [Route("expert/{expertId}")]
+        [HttpGet]
+
+        public async Task<IActionResult> GetExpertChats(string expertId)
+        {
+            return Ok(await _repo.GetExpertChats(expertId));
+        }
+
     }
 }
