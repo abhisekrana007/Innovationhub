@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Crypto.Generators;
 using UserService.Model;
 using UserService.Service;
 
@@ -9,7 +10,7 @@ namespace UserService.Controllers
     [ApiController]
     public class InnovatorController : ControllerBase
     {
-   
+
         private readonly IInnovatorService _innovatorService;
 
         public InnovatorController(IInnovatorService innovatorService)
@@ -95,6 +96,4 @@ namespace UserService.Controllers
             }
         }
     }
-
 }
-

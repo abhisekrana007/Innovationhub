@@ -7,11 +7,11 @@ namespace UserService.Repository
     public class ExpertRepository : IExpertRepository
         {
             private readonly IMongoCollection<Expert> _collection;
-        public ExpertRepository(IUserDatabaseSettings settings)
+        public ExpertRepository(IExpertDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-            _collection = database.GetCollection<Expert>(settings.UsersCollectionName);
+            _collection = database.GetCollection<Expert>(settings.ExpertsCollectionName);
         }
 
         public ExpertRepository(IMongoDatabase database)
@@ -34,12 +34,30 @@ namespace UserService.Repository
                 await _collection.InsertOneAsync(expert);
             }
 
-            public async Task UpdateAsync(string expertId, Expert expert)
-            {
-                await _collection.ReplaceOneAsync(e => e.ExpertID == expertId, expert);
-            }
+        public async Task UpdateAsync(string expertId, Expert expert)
+        {
+            
+            var filter = Builders<Expert>.Filter.Eq(e => e.ExpertID, expertId);
+            var update = Builders<Expert>.Update
+                .Set(e => e.Username, expert.Username)
+                .Set(e => e.PasswordHash, expert.PasswordHash)
+                .Set(e => e.Email, expert.Email)
+                .Set(e => e.Firstname, expert.Firstname)
+                .Set(e => e.Lastname, expert.Lastname)
+                .Set(e => e.DOB, expert.DOB)
+                .Set(e => e.Skills, expert.Skills)
+                .Set(e => e.Rating, expert.Rating)
+                .Set(e => e.Budget, expert.Budget)
+                .Set(e => e.RegistrationDate, expert.RegistrationDate);
 
-            public async Task DeleteAsync(string expertId)
+            var updateOptions = new UpdateOptions
+            {
+                IsUpsert = false 
+            };
+
+            await _collection.UpdateOneAsync(filter, update, updateOptions);
+        }
+        public async Task DeleteAsync(string expertId)
             {
                 await _collection.DeleteOneAsync(e => e.ExpertID == expertId);
             }

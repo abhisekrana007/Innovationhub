@@ -9,5 +9,6 @@ namespace UserService.Service
         Task CreateInnovatorAsync(Innovator innovator);
         Task UpdateInnovatorAsync(string id, Innovator innovator);
         Task DeleteInnovatorAsync(string id);
+      
     }
 }

@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace UserService.Model
 {
-    public class Expert
+    public class Expert 
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -11,7 +11,7 @@ namespace UserService.Model
         public string? ExpertID { get; set; }
 
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public string Email { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }

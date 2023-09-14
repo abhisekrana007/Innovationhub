@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace UserService.Model
 {
     public class Innovator
-    
+
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

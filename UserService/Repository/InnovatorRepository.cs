@@ -9,11 +9,11 @@ namespace UserService.Repository
     {
         private readonly IMongoCollection<Innovator> _innovatorCollection;
 
-        public InnovatorRepository(IUserDatabaseSettings settings)
+        public InnovatorRepository(IInnovatorDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-            _innovatorCollection = database.GetCollection<Innovator>(settings.UsersCollectionName);
+            _innovatorCollection = database.GetCollection<Innovator>(settings.InnovatorsCollectionName);
         }
 
         public async Task<IEnumerable<Innovator>> GetAllAsync()
@@ -34,9 +34,23 @@ namespace UserService.Repository
             await _innovatorCollection.InsertOneAsync(innovator);
         }
 
-        public async Task UpdateAsync(string id, Innovator innovator)
+        public async Task UpdateAsync(string id, Innovator innovatorUpdate)
         {
-            await _innovatorCollection.ReplaceOneAsync(i => i.InnovatorID == id, innovator);
+            var filter = Builders<Innovator>.Filter.Eq(i => i.InnovatorID, id);
+
+
+
+            var update = Builders<Innovator>.Update
+                .Set(i => i.Username, innovatorUpdate.Username)
+                .Set(i => i.PasswordHash, innovatorUpdate.PasswordHash)
+                .Set(i => i.Email, innovatorUpdate.Email)
+                .Set(i => i.FirstName, innovatorUpdate.FirstName)
+                .Set(i => i.LastName, innovatorUpdate.LastName)
+                .Set(i => i.DateOfBirth, innovatorUpdate.DateOfBirth);
+
+
+
+            await _innovatorCollection.UpdateOneAsync(filter, update);
         }
 
         public async Task DeleteAsync(string id)
