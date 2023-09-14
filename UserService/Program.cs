@@ -22,6 +22,8 @@ builder.Services.AddSingleton<IExpertDatabaseSettings>(sp =>
 
 builder.Services.AddSingleton<IInnovatorRepository,InnovatorRepository>();
 builder.Services.AddSingleton<IInnovatorService, InnovatorService>();
+builder.Services.AddSingleton<IExpertRepository,ExpertRepository>();
+builder.Services.AddSingleton<IExpertService,ExpertService>();
 
 
 builder.Services.AddSingleton<IExpertRepository, ExpertRepository>();

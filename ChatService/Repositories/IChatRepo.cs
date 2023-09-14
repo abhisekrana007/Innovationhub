@@ -4,11 +4,11 @@ namespace ChatService.Repositories
 {
     public interface IChatRepo
     {
-        public Chat CreateChat(string innovatorId,string expertId);
-        public Chat AddMessageToChat(Message message,string chatId);
-        public Chat GetChat(string chatId);
-        public List<Chat> GetInnovatorChats(string innovatorId);
-        public List<Chat> GetExpertChats(string expertId);
+        public Task<Chat> CreateChat(string innovatorId,string expertId);
+        public Task<Chat> AddMessageToChat(Message message,string chatId);
+        public Task<Chat> GetChat(string chatId);
+        public Task<List<Chat>> GetInnovatorChats(string innovatorId);
+        public Task<List<Chat>> GetExpertChats(string expertId);
 
 
     }
