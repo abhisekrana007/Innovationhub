@@ -24,9 +24,9 @@ namespace ChatService.Repositories
             _chats = database.GetCollection<Chat>(settings.Value.ChatsCollectionName);
 
         }
-        public Chat AddMessageToChat(Message message,string chatId)
+        public async Task<Chat> AddMessageToChat(Message message,string chatId)
         {
-            Chat chat = _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefault();
+            Chat chat = await _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefaultAsync();
             if (chat != null)
             {
                 var filter = Builders<Chat>
@@ -34,8 +34,8 @@ namespace ChatService.Repositories
 
                 var update = Builders<Chat>.Update
                         .Push<Message>(e => e.Messages, message);
-                _chats.UpdateOne(filter,update);
-                return _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefault();
+                _chats.UpdateOneAsync(filter,update);
+                return await _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefaultAsync();
             }
             else
             {
@@ -43,31 +43,40 @@ namespace ChatService.Repositories
             }
         }
 
-        public Chat CreateChat(string innovatorId, string expertId)
+        public async Task<Chat> CreateChat(string innovatorId, string expertId)
         {
-            Chat chat = new Chat()
+            Chat findchat = await _chats.Find(x => x.InnovatorId.Equals(innovatorId) && x.ExpertId.Equals(expertId)).FirstOrDefaultAsync();
+            if (findchat == null)
             {
-                InnovatorId = innovatorId,
-                ExpertId = expertId,
-                Messages = new List<Message>()
-            };
-            _chats.InsertOne(chat);
-            return chat;
+                Chat chat = new Chat()
+                {
+                    InnovatorId = innovatorId,
+                    ExpertId = expertId,
+                    Messages = new List<Message>()
+                };
+                await _chats.InsertOneAsync(chat);
+                return chat;
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
-        public Chat GetChat(string chatId)
+        public async Task<Chat> GetChat(string chatId)
         {
-            return _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefault();
+            return await _chats.Find(x => x.ChatId.Equals(chatId)).FirstOrDefaultAsync();
         }
 
-        public List<Chat> GetExpertChats(string expertId)
+        public async Task<List<Chat>> GetExpertChats(string expertId)
         {
-            return _chats.Find(x => x.ExpertId == expertId).ToList();
+            return await _chats.Find(x => x.ExpertId == expertId).ToListAsync();
         }
 
-        public List<Chat> GetInnovatorChats(string innovatorId)
+        public async Task<List<Chat>> GetInnovatorChats(string innovatorId)
         {
-            return _chats.Find(x=>x.InnovatorId==innovatorId).ToList();
+            return await _chats.Find(x=>x.InnovatorId==innovatorId).ToListAsync();
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ChatService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ChatController : ControllerBase
     {
@@ -17,15 +17,22 @@ namespace ChatService.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAChat(string innovatorId,string expertId)
+        public async Task<IActionResult> CreateAChat(string innovatorId,string expertId)
         {
-            Chat chat = _repo.CreateChat(innovatorId, expertId);
-            return Created("Created Chat Successfully", chat);
+            Chat chat = await _repo.CreateChat(innovatorId, expertId);
+            if (chat != null)
+            {
+                return Created("Created Chat Successfully", chat);
+            }
+            else
+            {
+                return Conflict("Chat Already Exists");
+            }
         }
-        [HttpPut]
-        public IActionResult AddMessage(Message message,string chatId)
+        [HttpPut("{chatId}")]
+        public async Task<IActionResult> AddMessage(Message message,string chatId)
         {
-            Chat chat = _repo.AddMessageToChat(message, chatId);
+            Chat chat = await _repo.AddMessageToChat(message, chatId);
             if (chat != null)
             {
                 return Ok(chat);
@@ -37,9 +44,9 @@ namespace ChatService.Controllers
         }
 
         [HttpGet("{chatId}")]
-        public IActionResult GetAChat(string chatId)
+        public async Task<IActionResult> GetAChat(string chatId)
         {
-            Chat chat = _repo.GetChat(chatId);
+            Chat chat = await _repo.GetChat(chatId);
             if (chat != null)
             {
                 return Ok(chat);
@@ -53,17 +60,17 @@ namespace ChatService.Controllers
         [Route("innovator/{innovatorId}")]        
         [HttpGet]
 
-        public IActionResult GetInnovatorChats(string innovatorId)
+        public async Task<IActionResult> GetInnovatorChats(string innovatorId)
         {
-            return Ok(_repo.GetInnovatorChats(innovatorId));
+            return Ok(await _repo.GetInnovatorChats(innovatorId));
         }
 
         [Route("expert/{expertId}")]
         [HttpGet]
 
-        public IActionResult GetExpertChats(string expertId)
+        public async Task<IActionResult> GetExpertChats(string expertId)
         {
-            return Ok(_repo.GetExpertChats(expertId));
+            return Ok(await _repo.GetExpertChats(expertId));
         }
 
     }
