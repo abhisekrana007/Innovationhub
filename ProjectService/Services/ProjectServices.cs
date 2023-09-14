@@ -38,5 +38,24 @@ namespace ProjectService.Services
         public async Task DeleteAysnc(string id) =>
             await _projectCollection.DeleteOneAsync(a => a.ProjectID == id);
 
+
+        public List<Project> GetByInnoId(string id)
+        {
+           var result= _projectCollection.Find(a => a.InnovatorID == id).ToList();
+            if (result == null)
+            {
+                return null;
+            }
+            return result;
+
+        }
+
+
+
+
+
     }
+
+    
+
 }

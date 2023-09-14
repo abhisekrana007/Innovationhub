@@ -36,6 +36,17 @@ namespace ProjectService.Controllers
             return Ok(project);
         }
 
+        [HttpGet("[action]/{innovatoriD}")]
+        public IActionResult GetbyInnoid(string innovatoriD)
+        {
+            var project =  _projectService.GetByInnoId(innovatoriD);
+            if (project == null)
+            {
+                return NotFound();
+            }
+            return Ok(project);
+        }
+
         // POST api/ProjectController
         [HttpPost]
         public async Task<IActionResult> Post(Project project)

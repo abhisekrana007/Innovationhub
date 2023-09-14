@@ -9,6 +9,7 @@ namespace ProjectService.Services
         Task CreateAsync(Project project);
         Task UpdateAsync(string id, Project project);
         Task DeleteAysnc(string id);
+        List<Project> GetByInnoId(string id);
 
 
 
