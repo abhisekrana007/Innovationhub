@@ -17,12 +17,12 @@ namespace ChatService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAChat(string innovatorId,string expertId)
+        public async Task<IActionResult> CreateAChat(Object chat)
         {
-            Chat chat = await _repo.CreateChat(innovatorId, expertId);
-            if (chat != null)
+            Chat findchat = await _repo.CreateChat(chat.InnovatorId, chat.ExpertId);
+            if (findchat != null)
             {
-                return Created("Created Chat Successfully", chat);
+                return Created("Created Chat Successfully", findchat);
             }
             else
             {
