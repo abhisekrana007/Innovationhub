@@ -2,6 +2,7 @@
 using ChatService.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace ChatService.Controllers
 {
@@ -17,9 +18,11 @@ namespace ChatService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAChat(Chat chat)
+        public async Task<IActionResult> CreateAChat([FromBody]JObject chat)
         {
-            Chat findchat = await _repo.CreateChat(chat.InnovatorId, chat.ExpertId);
+            string innovatorId = chat["innovatorId"].ToObject<string>();
+            string expertId = chat["expertId"].ToObject<string>();
+            Chat findchat = await _repo.CreateChat(innovatorId,expertId);
             if (findchat != null)
             {
                 return Created("Created Chat Successfully", findchat);
