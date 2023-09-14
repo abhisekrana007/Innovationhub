@@ -62,12 +62,12 @@ namespace ChatService.Repositories
 
         public List<Chat> GetExpertChats(string expertId)
         {
-            throw new NotImplementedException();
+            return _chats.Find(x => x.ExpertId == expertId).ToList();
         }
 
         public List<Chat> GetInnovatorChats(string innovatorId)
         {
-            throw new NotImplementedException();
+            return _chats.Find(x=>x.InnovatorId==innovatorId).ToList();
         }
     }
 }

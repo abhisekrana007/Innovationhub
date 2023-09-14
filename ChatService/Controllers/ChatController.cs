@@ -35,5 +35,36 @@ namespace ChatService.Controllers
                 return NotFound("Chat Doesn't Exist");
             }
         }
+
+        [HttpGet("{chatId}")]
+        public IActionResult GetAChat(string chatId)
+        {
+            Chat chat = _repo.GetChat(chatId);
+            if (chat != null)
+            {
+                return Ok(chat);
+            }
+            else
+            {
+                return NotFound("Chat Doesn't Exist");
+            }
+        }
+
+        [Route("innovator/{innovatorId}")]        
+        [HttpGet]
+
+        public IActionResult GetInnovatorChats(string innovatorId)
+        {
+            return Ok(_repo.GetInnovatorChats(innovatorId));
+        }
+
+        [Route("expert/{expertId}")]
+        [HttpGet]
+
+        public IActionResult GetExpertChats(string expertId)
+        {
+            return Ok(_repo.GetExpertChats(expertId));
+        }
+
     }
 }
