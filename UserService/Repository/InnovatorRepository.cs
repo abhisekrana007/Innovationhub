@@ -8,28 +8,25 @@ namespace UserService.Repository
     public class InnovatorRepository : IInnovatorRepository
     {
         private readonly IMongoCollection<Innovator> _innovatorCollection;
-        public InnovatorRepository(IMongoDatabase database, IOptions<InnovatorDBSettings> mongoDBSettings)
+
+        public InnovatorRepository(IUserDatabaseSettings settings)
         {
-            var settings = mongoDBSettings.Value;
             var client = new MongoClient(settings.ConnectionString);
-            var db = client.GetDatabase(settings.DatabaseName);
-
-            _innovatorCollection = db.GetCollection<Innovator>("Innovators");
-        }
-
-        public InnovatorRepository(IMongoDatabase database)
-        {
-            _innovatorCollection = database.GetCollection<Innovator>("Innovators");
+            var database = client.GetDatabase(settings.DatabaseName);
+            _innovatorCollection = database.GetCollection<Innovator>(settings.UsersCollectionName);
         }
 
         public async Task<IEnumerable<Innovator>> GetAllAsync()
         {
-            return await _innovatorCollection.Find(_ => true).ToListAsync();
+            var innovators = await _innovatorCollection.Find(_ => true).ToListAsync();
+            return innovators;
         }
 
         public async Task<Innovator> GetByIdAsync(string id)
         {
-            return await _innovatorCollection.Find(i => i.InnovatorID == id).FirstOrDefaultAsync();
+            var filter = Builders<Innovator>.Filter.Eq(i => i.InnovatorID, id);
+            var innovator = await _innovatorCollection.Find(filter).FirstOrDefaultAsync();
+            return innovator;
         }
 
         public async Task CreateAsync(Innovator innovator)
@@ -44,9 +41,8 @@ namespace UserService.Repository
 
         public async Task DeleteAsync(string id)
         {
-            await _innovatorCollection.DeleteOneAsync(i => i.InnovatorID == id);
+            var filter = Builders<Innovator>.Filter.Eq(i => i.InnovatorID, id);
+            await _innovatorCollection.DeleteOneAsync(filter);
         }
     }
-
 }
-

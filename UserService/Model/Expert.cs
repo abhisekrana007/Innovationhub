@@ -7,7 +7,8 @@ namespace UserService.Model
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string ExpertID { get; set; }
+
+        public string? ExpertID { get; set; }
 
         public string Username { get; set; }
         public string Password { get; set; }

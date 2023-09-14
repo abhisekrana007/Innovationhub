@@ -4,15 +4,21 @@ using UserService.Repository;
 using UserService.Service;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.Configure<InnovatorDBSettings>(
-             builder.Configuration.GetSection(nameof(InnovatorDBSettings)));
+builder.Services.Configure<UserDatabaseSettings>(
+             builder.Configuration.GetSection(nameof(UserDatabaseSettings)));
 
-builder.Services.AddSingleton(sp =>
-    sp.GetRequiredService<IOptions<InnovatorDBSettings>>().Value);
+builder.Services.AddSingleton<IUserDatabaseSettings>(sp =>
+    sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
+
 
 builder.Services.AddSingleton<IInnovatorRepository,InnovatorRepository>();
 builder.Services.AddSingleton<IInnovatorService, InnovatorService>();
+builder.Services.AddSingleton<IExpertRepository,ExpertRepository>();
+builder.Services.AddSingleton<IExpertService,ExpertService>();
 
+
+builder.Services.AddSingleton<IExpertRepository, ExpertRepository>();
+builder.Services.AddSingleton<IExpertService, ExpertService>();
 // Add services to the container.
 
 builder.Services.AddControllers();
