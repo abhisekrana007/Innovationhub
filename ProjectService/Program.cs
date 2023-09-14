@@ -1,9 +1,13 @@
 using ProjectService.Models;
+using ProjectService.Repository;
+using ProjectService.services;
 using ProjectService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IProposalRepo, ProposalRepo>();
+builder.Services.AddScoped<IProposalService, ProposalService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
