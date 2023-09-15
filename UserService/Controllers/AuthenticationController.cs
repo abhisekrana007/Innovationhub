@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
 using UserService.Model;
 using UserService.Repository;
 
@@ -30,12 +31,12 @@ namespace UserService.Controllers
 
         [HttpPost("innovator/login")]
        
-        public IActionResult InnovatorLogin([FromBody] string email, [FromBody] string password)
+        public IActionResult InnovatorLogin([FromBody]JObject innovator)
         {
-            var user = CheckInnovator(email, password);
-            if (user != null)
+            Innovator findInnovator = CheckInnovator(innovator["email"].ToObject<string>(), innovator["password"].ToObject<string>());
+            if (findInnovator != null)
             {
-                var tokenString = GenerateToken(user);
+                var tokenString = GenerateToken(findInnovator.Username);
                 return Ok(new { token = tokenString });
             }
 
@@ -43,7 +44,18 @@ namespace UserService.Controllers
         }
 
         [HttpPost("expert/login")]
-        public IActionResult ExpertLogin([FromBody] User userM)
+        public IActionResult ExpertLogin([FromBody] JObject expert)
+        {
+            Expert findExpert = CheckExpert(expert["email"].ToObject<string>(), expert["password"].ToObject<string>());
+            if (findExpert != null)
+            {
+                var tokenString = GenerateToken(findExpert.Username);
+                return Ok(new { token = tokenString });
+            }
+
+            return Unauthorized();
+        }
+        /*public IActionResult ExpertLogin([FromBody] User userM)
         {
             var user = CheckExpert(userM);
             if (user != null)
@@ -53,15 +65,15 @@ namespace UserService.Controllers
             }
 
             return Unauthorized();
-        }
+        }*/
 
-        private string GenerateToken(User user)
+        private string GenerateToken(string username)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Name, username),
                 // Add more claims if needed
             };
 
@@ -76,14 +88,14 @@ namespace UserService.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private User CheckInnovator(User userLoginModel)
+        private Innovator CheckInnovator(string innovatorEmail,string innovatorPassword)
         {
-            return _innovatorsCollection.Find(u => u.Username == userLoginModel.Username && u.Password == userLoginModel.Password).SingleOrDefault();
+            return _innovatorsCollection.Find(u => u.Email == innovatorEmail && u.PasswordHash == innovatorPassword).SingleOrDefault();
         }
 
-        private User CheckExpert(User userLoginModel)
+        private Expert CheckExpert(string expertEmail, string expertPassword)
         {
-            return _expertsCollection.Find(u => u.Username == userLoginModel.Username && u.Password == userLoginModel.Password).SingleOrDefault();
+            return _expertsCollection.Find(u => u.Email == expertEmail && u.PasswordHash == expertPassword).SingleOrDefault();
         }
     }
 }
