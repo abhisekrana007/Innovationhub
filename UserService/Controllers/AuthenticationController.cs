@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
 using UserService.Model;
+using UserService.MongoDBSettings;
 using UserService.Repository;
 
 namespace UserService.Controllers
@@ -20,20 +21,29 @@ namespace UserService.Controllers
         {
             private readonly IConfiguration _config;
             private readonly IMongoCollection<Innovator> _innovatorsCollection;
-            private readonly IMongoCollection<Expert> _expertsCollection;
+        private readonly IMongoCollection<Expert> _expertsCollection;
+        public AuthenticationController(IUserDatabaseSettings settings, IConfiguration config)
+        {
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
+            _innovatorsCollection = database.GetCollection<Innovator>(settings.InnovatorsCollectionName);
+            _expertsCollection = database.GetCollection<Expert>(settings.ExpertsCollectionName);
+            _config = config;
+        }
 
-            public AuthenticationController(IConfiguration config, IMongoDatabase database)
-            {
-                _config = config;
-                _innovatorsCollection = database.GetCollection<Innovator>("innovators");
-                _expertsCollection = database.GetCollection<Expert>("experts");
-            }
+        
+        //public AuthenticationController(IConfiguration config, IMongoDatabase database)
+        //    {
+        //        _config = config;
+        //        _innovatorsCollection = database.GetCollection<Innovator>("innovators");
+        //        _expertsCollection = database.GetCollection<Expert>("experts");
+        //    }
 
         [HttpPost("innovator/login")]
        
         public IActionResult InnovatorLogin([FromBody]JObject innovator)
         {
-            Innovator findInnovator = CheckInnovator(innovator["email"].ToObject<string>(), innovator["password"].ToObject<string>());
+            Innovator findInnovator = CheckInnovator(innovator["innovatorEmail"].ToObject<string>(), innovator["innovatorPassword"].ToObject<string>());
             if (findInnovator != null)
             {
                 var tokenString = GenerateToken(findInnovator.Username);
@@ -46,7 +56,7 @@ namespace UserService.Controllers
         [HttpPost("expert/login")]
         public IActionResult ExpertLogin([FromBody] JObject expert)
         {
-            Expert findExpert = CheckExpert(expert["email"].ToObject<string>(), expert["password"].ToObject<string>());
+            Expert findExpert = CheckExpert(expert["expertEmail"].ToObject<string>(), expert["expertPassword"].ToObject<string>());
             if (findExpert != null)
             {
                 var tokenString = GenerateToken(findExpert.Username);
