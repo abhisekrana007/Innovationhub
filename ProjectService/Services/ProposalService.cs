@@ -65,6 +65,21 @@ namespace ProjectService.services
             return result;
         }
 
+        public bool StatusUpdate(Proposal proposal)
+        {
+
+            var result = _repo.StatusUpdate(proposal);
+            if (!result)
+            {
+                throw new ProposalNotFoundException("No accepted propsal came from innvoator side");
+
+
+            }
+            return result;
+
+        }
+
+
 
 
 

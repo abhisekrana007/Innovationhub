@@ -97,6 +97,27 @@ namespace ProjectService.Controllers
             }
         }
 
+        [HttpPost]
+
+        public ActionResult StatusUpdate(Proposal proposal)
+        {
+
+            try
+            {
+                var result = _proposalservice.StatusUpdate(proposal);
+                return Created("Status Updated", result);
+            }
+            catch (ProposalNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
 
 
     }

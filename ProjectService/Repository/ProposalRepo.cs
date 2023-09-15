@@ -67,6 +67,22 @@ namespace ProjectService.Repository
             return true;
         }
 
+        public bool StatusUpdate(Proposal proposal)
+        {
+            if (proposal != null)
+            {
+                var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
+                var filter = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
+                _proposals.ReplaceOne(filter, proposal);
+                var result = _proposals.Find(x => x.ProposalId != proposal.ProposalId).ToList();
+                var filters = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
+                _proposals.ReplaceOne(filters, proposal);
+                return true;
+            }
+
+            return false;
+        }
+
 
     }
 }
