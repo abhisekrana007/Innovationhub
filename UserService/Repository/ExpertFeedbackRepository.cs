@@ -1,11 +1,19 @@
 ﻿using MongoDB.Driver;
 using UserService.Model;
+using UserService.MongoDBSettings;
 
 namespace UserService.Repository
 {
     public class ExpertFeedbackRepository : IExpertFeedbackRepository
     {
         private readonly IMongoCollection<ExpertFeedback> _collection;
+        public ExpertFeedbackRepository(IUserDatabaseSettings settings)
+        {
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
+            _collection = database.GetCollection<ExpertFeedback>(settings.ExpertFeedbacksCollectionName);
+        }
+
 
         public ExpertFeedbackRepository(IMongoDatabase database)
         {

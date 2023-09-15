@@ -7,7 +7,7 @@ namespace UserService.Repository
     public class ExpertRepository : IExpertRepository
         {
             private readonly IMongoCollection<Expert> _collection;
-        public ExpertRepository(IExpertDatabaseSettings settings)
+        public ExpertRepository(IUserDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);

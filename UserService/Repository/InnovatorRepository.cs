@@ -9,7 +9,7 @@ namespace UserService.Repository
     {
         private readonly IMongoCollection<Innovator> _innovatorCollection;
 
-        public InnovatorRepository(IInnovatorDatabaseSettings settings)
+        public InnovatorRepository(IUserDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
