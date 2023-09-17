@@ -20,5 +20,6 @@ namespace UserService.Model
         public double Rating { get; set; }
         public decimal Budget { get; set; }
         public DateTime RegistrationDate { get; set; }
+     
     }
 }
