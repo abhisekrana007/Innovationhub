@@ -10,8 +10,8 @@ namespace ProjectService.Controllers
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private readonly IProjectService _projectService;
-        public ProjectController(IProjectService projectService)
+        private readonly IProjectServices _projectService;
+        public ProjectController(IProjectServices projectService)
         {
             _projectService = projectService;
 
@@ -76,6 +76,27 @@ namespace ProjectService.Controllers
                 return NotFound();
             await _projectService.DeleteAysnc(id);
             return Ok("deleted Successfully");
+        }
+
+        [HttpGet("[action]/{proposalid}")]
+
+        public IActionResult GetAccepetedProposal(List<Proposal> proposals,string proposalid)
+        {
+            var obj = _projectService.GetAcceptedProposal(proposals, proposalid);
+            return Ok(obj);
+
+        }
+
+        [HttpGet("[action]/{expertid}")]
+
+        public IActionResult GetProjectByExpertid(string expertid)
+        {
+            var obj=_projectService.GetByExpertID(expertid);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return Ok(obj);
         }
     }
 }

@@ -42,9 +42,9 @@ namespace ProjectService.services
 
         }
 
-        public bool UpdateProposal(Proposal proposal)
+        public bool UpdateProposal(string id, Proposal proposal)
         {
-            var result = _repo.UpdateProposal(proposal);
+            var result = _repo.UpdateProposal(id,proposal);
             if (!result)
             {
                 throw new ProposalNotFoundException("Proposal Not Found");
