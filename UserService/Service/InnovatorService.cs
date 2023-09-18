@@ -1,5 +1,8 @@
-﻿using UserService.Model;
+﻿using System.Security.Cryptography;
+using System.Text;
+using UserService.Model;
 using UserService.Repository;
+using BCrypt.Net;
 
 namespace UserService.Service
 {
@@ -23,14 +26,19 @@ public class InnovatorService : IInnovatorService
         return await _repository.GetByIdAsync(id);
     }
 
-    public async Task CreateInnovatorAsync(Innovator innovator)
-    {
-        innovator.RegistrationDate = DateTime.UtcNow;
-        // You can also add hashing logic for the password here
-        await _repository.CreateAsync(innovator);
-    }
+       public async Task CreateInnovatorAsync(Innovator innovator)
+        {
+            innovator.RegistrationDate = DateTime.UtcNow;
 
-    public async Task UpdateInnovatorAsync(string id, Innovator innovator)
+            // Hash the password before storing it
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(innovator.PasswordHash);
+
+            // Replace the plain text password with the hashed password
+            innovator.PasswordHash = hashedPassword;
+
+            await _repository.CreateAsync(innovator);
+        }
+        public async Task UpdateInnovatorAsync(string id, Innovator innovator)
     {
         await _repository.UpdateAsync(id, innovator);
     }
@@ -40,6 +48,7 @@ public class InnovatorService : IInnovatorService
         await _repository.DeleteAsync(id);
     }
 
+       
     }
 
 

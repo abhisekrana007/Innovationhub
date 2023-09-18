@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Crypto.Generators;
 using UserService.Model;
 using UserService.Service;
@@ -50,7 +51,6 @@ namespace UserService.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateInnovator(Innovator innovator)
         {
@@ -65,7 +65,6 @@ namespace UserService.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateInnovator(string id, Innovator innovator)
         {
