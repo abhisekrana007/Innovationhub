@@ -22,11 +22,16 @@ namespace UserService.Service
                 return await _repository.GetAllAsync();
             }
 
-            public async Task CreateExpertAsync(Expert expert)
-            {
-                await _repository.CreateAsync(expert);
-            }
+           public async Task CreateExpertAsync(Expert expert)
+{
+            // Hash the password before storing it
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(expert.PasswordHash);
 
+            // Replace the plain text password with the hashed password
+            expert.PasswordHash = hashedPassword;
+
+            await _repository.CreateAsync(expert);
+        }
             public async Task UpdateExpertAsync(string expertId, Expert expert)
             {
                 await _repository.UpdateAsync(expertId, expert);

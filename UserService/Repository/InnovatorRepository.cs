@@ -38,6 +38,7 @@ namespace UserService.Repository
         {
             var filter = Builders<Innovator>.Filter.Eq(i => i.InnovatorID, id);
 
+            string password = innovatorUpdate.PasswordHash;
 
 
             var update = Builders<Innovator>.Update

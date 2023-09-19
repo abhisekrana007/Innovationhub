@@ -2,6 +2,7 @@
 using ProjectService.Models;
 using MongoDB.Driver;
 using ProjectService.services;
+using Microsoft.Extensions.Options;
 
 namespace ProjectService.Repository
 {
@@ -9,15 +10,24 @@ namespace ProjectService.Repository
     public class ProposalRepo:IProposalRepo
     {
         private readonly IMongoCollection<Proposal> _proposals;
-        public ProposalRepo()
+        private readonly IOptions<DatabaseSettings> _dbSettings;
+        public ProposalRepo(IOptions<DatabaseSettings> dbSettings)
         {
-            var dbHost = "localhost";
-            var dbName = "Proposal_DB";
-            var connectionString = $"mongodb://{dbHost}:27017/{dbName}";
-            var mongoUrl = MongoUrl.Create(connectionString);
-            var mongoClient = new MongoClient(mongoUrl);
-            var databaseName = mongoClient.GetDatabase(mongoUrl.DatabaseName);
-            _proposals = databaseName.GetCollection<Proposal>("Proposal");
+            //var dbHost = "localhost";
+            //var dbName = "Proposal_DB";
+            //var connectionString = $"mongodb://{dbHost}:27017/{dbName}";
+            //var mongoUrl = MongoUrl.Create(connectionString);
+            //var mongoClient = new MongoClient(mongoUrl);
+            //var databaseName = mongoClient.GetDatabase(mongoUrl.DatabaseName);
+            //_proposals = databaseName.GetCollection<Proposal>("Proposal");
+
+            _dbSettings = dbSettings;
+            var client = new MongoClient(dbSettings.Value.ConnectionString);
+            var database = client.GetDatabase(dbSettings.Value.DatabaseName);
+            _proposals = database.GetCollection<Proposal>
+                (dbSettings.Value.ProposalsCollectionName);
+
+
         }
 
         public bool CreateProposal(Proposal proposal)
@@ -55,9 +65,9 @@ namespace ProjectService.Repository
 
         }
 
-       public bool UpdateProposal(Proposal proposal)
+       public bool UpdateProposal(string id, Proposal proposal)
         {
-            var bookings = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
+            var bookings = _proposals.Find(x => x.ProposalId == id);
             if (bookings == null)
             {
                 return false;
@@ -71,12 +81,12 @@ namespace ProjectService.Repository
         {
             if (proposal != null)
             {
-                var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
-                var filter = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
+               // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
+                var filter = Builders<Proposal>.Filter.Eq(x => x.ProposalId, proposal.ProposalId);
                 _proposals.ReplaceOne(filter, proposal);
-                var result = _proposals.Find(x => x.ProposalId != proposal.ProposalId).ToList();
-                var filters = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
-                _proposals.ReplaceOne(filters, proposal);
+                //var result = _proposals.Find(x => x.ProposalId != proposal.ProposalId).ToList();
+                //var filters = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
+                //_proposals.ReplaceOne(filters, proposal);
                 return true;
             }
 

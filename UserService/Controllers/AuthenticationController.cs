@@ -1,15 +1,13 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
+using BCrypt.Net;
 using UserService.Model;
 using UserService.MongoDBSettings;
-using UserService.Repository;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Security.Claims;
 
 namespace UserService.Controllers
 {
@@ -18,9 +16,9 @@ namespace UserService.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
-        {
-            private readonly IConfiguration _config;
-            private readonly IMongoCollection<Innovator> _innovatorsCollection;
+    {
+        private readonly IConfiguration _config;
+        private readonly IMongoCollection<Innovator> _innovatorsCollection;
         private readonly IMongoCollection<Expert> _expertsCollection;
         public AuthenticationController(IUserDatabaseSettings settings, IConfiguration config)
         {
@@ -31,19 +29,15 @@ namespace UserService.Controllers
             _config = config;
         }
 
-        
-        //public AuthenticationController(IConfiguration config, IMongoDatabase database)
-        //    {
-        //        _config = config;
-        //        _innovatorsCollection = database.GetCollection<Innovator>("innovators");
-        //        _expertsCollection = database.GetCollection<Expert>("experts");
-        //    }
+
 
         [HttpPost("innovator/login")]
-       
-        public IActionResult InnovatorLogin([FromBody]JObject innovator)
+        public IActionResult InnovatorLogin([FromBody] JObject innovator)
         {
-            Innovator findInnovator = CheckInnovator(innovator["innovatorEmail"].ToObject<string>(), innovator["innovatorPassword"].ToObject<string>());
+            string innovatorEmail = innovator["innovatorEmail"].ToObject<string>();
+            string innovatorPassword = innovator["innovatorPassword"].ToObject<string>();
+
+            Innovator findInnovator = CheckInnovator(innovatorEmail, innovatorPassword);
             if (findInnovator != null)
             {
                 var tokenString = GenerateToken(findInnovator.Username);
@@ -56,7 +50,10 @@ namespace UserService.Controllers
         [HttpPost("expert/login")]
         public IActionResult ExpertLogin([FromBody] JObject expert)
         {
-            Expert findExpert = CheckExpert(expert["expertEmail"].ToObject<string>(), expert["expertPassword"].ToObject<string>());
+            string expertEmail = expert["expertEmail"].ToObject<string>();
+            string expertPassword = expert["expertPassword"].ToObject<string>();
+
+            Expert findExpert = CheckExpert(expertEmail, expertPassword);
             if (findExpert != null)
             {
                 var tokenString = GenerateToken(findExpert.Username);
@@ -65,27 +62,15 @@ namespace UserService.Controllers
 
             return Unauthorized();
         }
-        /*public IActionResult ExpertLogin([FromBody] User userM)
-        {
-            var user = CheckExpert(userM);
-            if (user != null)
-            {
-                var tokenString = GenerateToken(user);
-                return Ok(new { token = tokenString });
-            }
-
-            return Unauthorized();
-        }*/
-
         private string GenerateToken(string username)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, username),
-                // Add more claims if needed
-            };
+                    new Claim(ClaimTypes.Name, username),
+                    // Add more claims if needed
+                };
 
             var token = new JwtSecurityToken(
                 _config["Jwt:Issuer"],
@@ -97,15 +82,33 @@ namespace UserService.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-        private Innovator CheckInnovator(string innovatorEmail,string innovatorPassword)
+        private Innovator CheckInnovator(string innovatorEmail, string innovatorPassword)
         {
-            return _innovatorsCollection.Find(u => u.Email == innovatorEmail && u.PasswordHash == innovatorPassword).SingleOrDefault();
+            Innovator innovator = _innovatorsCollection.Find(u => u.Email == innovatorEmail).SingleOrDefault();
+
+            if (innovator != null && BCrypt.Net.BCrypt.Verify(innovatorPassword, innovator.PasswordHash))
+            {
+                return innovator;
+            }
+
+            return null;
         }
 
         private Expert CheckExpert(string expertEmail, string expertPassword)
         {
-            return _expertsCollection.Find(u => u.Email == expertEmail && u.PasswordHash == expertPassword).SingleOrDefault();
+            Expert expert = _expertsCollection.Find(u => u.Email == expertEmail).SingleOrDefault();
+
+            if (expert != null && BCrypt.Net.BCrypt.Verify(expertPassword, expert.PasswordHash))
+            {
+                return expert;
+            }
+
+            return null;
         }
     }
 }
+
+
+
+
+

@@ -2,16 +2,14 @@
 using MongoDB.Driver;
 using ProjectService.Models;
 
-namespace ProjectService.Services
+namespace ProjectService.Repository
 {
-    public class ProjectServices : IProjectService
-
+    public class ProjectRepo:IProjectRepo
     {
-
         private readonly IMongoCollection<Project> _projectCollection;
         private readonly IOptions<DatabaseSettings> _dbSettings;
 
-        public ProjectServices(IOptions<DatabaseSettings> dbSettings)
+        public ProjectRepo(IOptions<DatabaseSettings> dbSettings)
         {
             _dbSettings = dbSettings;
             var client = new MongoClient(dbSettings.Value.ConnectionString);
@@ -41,7 +39,7 @@ namespace ProjectService.Services
 
         public List<Project> GetByInnoId(string id)
         {
-           var result= _projectCollection.Find(a => a.InnovatorID == id).ToList();
+            var result = _projectCollection.Find(a => a.InnovatorID == id).ToList();
             if (result == null)
             {
                 return null;
@@ -50,12 +48,38 @@ namespace ProjectService.Services
 
         }
 
+        public Proposal GetAcceptedProposal(List<Proposal> proposals, string proposalId)
+        {
+            var obj=proposals.Find(x=>x.ProposalId == proposalId);
+            obj.Status = "running";
+
+            var result = _projectCollection.Find(x => x.ProjectID == obj.ProjectId).FirstOrDefault();
+            result.ExpertId=obj.ExpertId;
+            var filter = Builders<Project>.Filter.Eq(x => x.ProjectID, result.ProjectID);
+            _projectCollection.ReplaceOne(filter, result);
+            return obj;
+           
+        }
+
+        public List<Project> GetByExpertID(string id)
+        {
+            var obj=_projectCollection.Find(x=>x.ExpertId == id).ToList();
+            if(obj == null)
+            {
+                return null;
+            }
+            return obj;
+
+
+
+        }
+
+
+
+
 
 
 
 
     }
-
-    
-
 }

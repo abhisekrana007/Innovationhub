@@ -7,22 +7,24 @@ namespace ProjectService.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public String ProjectID { get; set; }
+        public String? ProjectID { get; set; }
 
-        public string ProjectTitle { get; set; }
+        public string? ProjectTitle { get; set; }
 
         public string? ProjectImage { get; set; }
-        public string ProjectDoc { get; set; }
+        public string? ProjectDoc { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public List<string> RequiredSkills { get; set; }
 
-        public string InnovatorID { get; set; }
+        public string? InnovatorID { get; set; }
 
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime CreationDate { get; set; }
 
-        public string Status { get; set; }
+        public string? Status { get; set; }
+
+        public string? ExpertId { get; set; }
     }
 }

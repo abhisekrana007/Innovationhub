@@ -7,7 +7,7 @@ namespace ProjectService.services
 
         bool CreateProposal(Proposal proposal);
         bool DeleteProposal(string proposalId);
-        bool UpdateProposal(Proposal proposal);
+        bool UpdateProposal(string id,Proposal proposal);
         List<Proposal> GetAllProposalByProjectId(string projectid);
         bool StatusUpdate(Proposal proposal);
     }

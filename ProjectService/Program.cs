@@ -5,7 +5,16 @@ using ProjectService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
+
+builder.Services.Configure<DatabaseSettings>(
+    builder.Configuration.GetSection("projectDB")
+    );
+builder.Services.AddScoped<IProjectServices, ProjectServicess>();
+builder.Services.AddScoped<IProjectRepo, ProjectRepo>();
+
 builder.Services.AddScoped<IProposalRepo, ProposalRepo>();
 builder.Services.AddScoped<IProposalService, ProposalService>();
 
@@ -14,10 +23,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<DatabaseSettings>(
-    builder.Configuration.GetSection("projectDB")
-    );
-builder.Services.AddTransient<IProjectService, ProjectServices>();
+
 
 var app = builder.Build();
 

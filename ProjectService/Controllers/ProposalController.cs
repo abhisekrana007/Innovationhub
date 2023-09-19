@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson.Serialization.Conventions;
 using ProjectService.Exceptions;
 using ProjectService.Models;
 using ProjectService.services;
@@ -58,13 +59,13 @@ namespace ProjectService.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
 
-        public ActionResult Edit([FromBody] Proposal proposal)
+        public ActionResult Edit(string id,[FromBody] Proposal proposal)
         {
             try
             {
-                var result = _proposalservice.UpdateProposal(proposal);
+                var result = _proposalservice.UpdateProposal(id, proposal);
                 return Ok(result);
             }
             catch (ProposalNotFoundException ex)
@@ -97,7 +98,7 @@ namespace ProjectService.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("updatestatus")]
 
         public ActionResult StatusUpdate(Proposal proposal)
         {
