@@ -1,11 +1,11 @@
 ﻿using UserService.Model;
 using UserService.Repository;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace UserService.Service
 {
-
-
-
     public class ExpertFeedbackService : IExpertFeedbackService
     {
         private readonly IExpertFeedbackRepository _repository;
@@ -40,6 +40,9 @@ namespace UserService.Service
             await _repository.DeleteAsync(id);
         }
 
-
+        public async Task UpdateRatingAsync(string feedbackID, int newRating)
+        {
+            await _repository.UpdateRatingAsync(feedbackID, newRating);
+        }
     }
 }

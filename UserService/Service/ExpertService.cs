@@ -36,7 +36,12 @@ namespace UserService.Service
             {
                 await _repository.DeleteAsync(expertId);
             }
+        public async Task UpdateExpertRatingAsync(string expertId, double newRating)
+        {
+            // Assuming your repository has a method for updating the expert's rating
+            await _repository.UpdateExpertRatingAsync(expertId, newRating);
         }
+    }
 
     }
 

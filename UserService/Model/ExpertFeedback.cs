@@ -14,6 +14,7 @@ namespace UserService.Model
         public string InnovatorID { get; set; }
 
         public string FeedbackContent { get; set; }
+        public int Rating { get; set; }
 
         public DateTime Timestamp { get; set; }
     }

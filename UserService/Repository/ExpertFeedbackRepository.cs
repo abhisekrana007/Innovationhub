@@ -7,17 +7,12 @@ namespace UserService.Repository
     public class ExpertFeedbackRepository : IExpertFeedbackRepository
     {
         private readonly IMongoCollection<ExpertFeedback> _collection;
+
         public ExpertFeedbackRepository(IUserDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
             _collection = database.GetCollection<ExpertFeedback>(settings.ExpertFeedbacksCollectionName);
-        }
-
-
-        public ExpertFeedbackRepository(IMongoDatabase database)
-        {
-            _collection = database.GetCollection<ExpertFeedback>("ExpertFeedback");
         }
 
         public async Task<IEnumerable<ExpertFeedback>> GetAllAsync()
@@ -27,7 +22,8 @@ namespace UserService.Repository
 
         public async Task<ExpertFeedback> GetByIdAsync(string id)
         {
-            return await _collection.Find(f => f.FeedbackID == id).FirstOrDefaultAsync();
+            var filter = Builders<ExpertFeedback>.Filter.Eq(f => f.FeedbackID, id);
+            return await _collection.Find(filter).FirstOrDefaultAsync();
         }
 
         public async Task AddAsync(ExpertFeedback feedback)
@@ -37,12 +33,24 @@ namespace UserService.Repository
 
         public async Task UpdateAsync(string id, ExpertFeedback feedback)
         {
-            await _collection.ReplaceOneAsync(f => f.FeedbackID == id, feedback);
+            var filter = Builders<ExpertFeedback>.Filter.Eq(f => f.FeedbackID, id);
+            await _collection.ReplaceOneAsync(filter, feedback);
         }
 
         public async Task DeleteAsync(string id)
         {
-            await _collection.DeleteOneAsync(f => f.FeedbackID == id);
+            var filter = Builders<ExpertFeedback>.Filter.Eq(f => f.FeedbackID, id);
+            await _collection.DeleteOneAsync(filter);
+        }
+
+        public async Task GetRating(string expertId)
+        {
+            //Store rating for the given expertid in list then find sum of all the ratings and size of list
+            var sum = Builders<ExpertFeedback>.Filter.Eq(f => f.FeedbackID, feedbackId);
+            var count = Builders<ExpertFeedback>.Update.Set(f => f.Rating, newRating);
+
+            var avgRating = sum / count;
+            return avgRating;
         }
     }
 }

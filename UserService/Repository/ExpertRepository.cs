@@ -61,7 +61,13 @@ namespace UserService.Repository
             {
                 await _collection.DeleteOneAsync(e => e.ExpertID == expertId);
             }
+        public async Task UpdateExpertRatingAsync(string expertId, double newRating)
+        {
+            var filter = Builders<Expert>.Filter.Eq(e => e.ExpertID, expertId);
+            var update = Builders<Expert>.Update.Set(e => e.Rating, newRating);
+            await _collection.UpdateOneAsync(filter, update);
         }
+    }
     }
 
 

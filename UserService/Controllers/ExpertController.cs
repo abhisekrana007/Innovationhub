@@ -89,6 +89,12 @@ namespace UserService.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpPut("{expertId}/rating")]
+        public async Task<IActionResult> UpdateExpertRating(string expertId, [FromBody] double newRating)
+        {
+            await _expertService.UpdateExpertRatingAsync(expertId, newRating);
+            return NoContent();
+        }
     }
 }
 

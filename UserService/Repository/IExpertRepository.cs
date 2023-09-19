@@ -9,6 +9,8 @@ namespace UserService.Repository
         Task CreateAsync(Expert expert);
         Task UpdateAsync(string expertId, Expert expert);
         Task DeleteAsync(string expertId);
+        Task UpdateExpertRatingAsync(string expertId, double newRating);
+
     }
 }
 

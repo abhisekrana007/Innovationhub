@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using UserService.Model;
 using UserService.Service;
+using System;
+using System.Threading.Tasks;
 
 namespace UserService.Controllers
 {
@@ -26,7 +28,7 @@ namespace UserService.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -43,7 +45,7 @@ namespace UserService.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -52,12 +54,22 @@ namespace UserService.Controllers
         {
             try
             {
+                if (feedback == null)
+                {
+                    return BadRequest("Invalid input. The feedback object is null.");
+                }
+
+                // You can add validation logic here if needed.
+
                 await _service.CreateFeedbackAsync(feedback);
+
+                // Return a 201 Created response with the location of the newly created resource.
                 return CreatedAtAction(nameof(GetFeedbackByIdAsync), new { id = feedback.FeedbackID }, feedback);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                // Log the exception or handle it in a way that's appropriate for your application.
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while creating the feedback: {ex.Message}");
             }
         }
 
@@ -71,7 +83,7 @@ namespace UserService.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -85,7 +97,21 @@ namespace UserService.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPut("{feedbackId}/rating")]
+        public async Task<IActionResult> UpdateRating(string feedbackId, int newRating)
+        {
+            try
+            {
+                await _service.UpdateRatingAsync(new string(feedbackId), newRating);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
     }
