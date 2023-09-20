@@ -26,19 +26,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorCatchingInterceptor } from './interceptor/error-catching.interceptor';
 
 import { RegistrationService } from './services/registration.service';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-<<<<<<< HEAD
-
-   
-
-=======
+    RegistrationComponent,
     components
->>>>>>> dab1542965d02f6f8cda7029bae4a639344f359a
+
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,

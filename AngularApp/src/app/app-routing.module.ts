@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NoPreloading, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
-  {path:'login', component:LoginComponent}
+  {path:'login', component:LoginComponent},
+  {path:'registration', component:RegistrationComponent}
 ];
 
 @NgModule({
@@ -14,5 +16,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 
-export const components = [LoginComponent]
+export const components = [LoginComponent,RegistrationComponent]
 
