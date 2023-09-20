@@ -12,6 +12,6 @@ namespace UserService.Service
         Task CreateFeedbackAsync(ExpertFeedback feedback);
         Task UpdateFeedbackAsync(string id, ExpertFeedback feedback);
         Task DeleteFeedbackAsync(string id);
-        Task UpdateRatingAsync(string feedbackId, int newRating);
+        Task GetRating(string expertId);
     }
 }

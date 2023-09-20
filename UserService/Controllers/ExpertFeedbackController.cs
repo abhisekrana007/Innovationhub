@@ -73,6 +73,8 @@ namespace UserService.Controllers
             }
         }
 
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateFeedbackAsync(string id, [FromBody] ExpertFeedback feedback)
         {
@@ -101,12 +103,12 @@ namespace UserService.Controllers
             }
         }
 
-        [HttpPut("{feedbackId}/rating")]
-        public async Task<IActionResult> UpdateRating(string feedbackId, int newRating)
+        [HttpGet("rating/{expertId}")]
+        public async Task<IActionResult> GetRatingforExpert(string expertId)
         {
             try
             {
-                await _service.UpdateRatingAsync(new string(feedbackId), newRating);
+                await _service.GetRating(expertId);
                 return Ok();
             }
             catch (Exception ex)

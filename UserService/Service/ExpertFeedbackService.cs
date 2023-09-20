@@ -40,9 +40,9 @@ namespace UserService.Service
             await _repository.DeleteAsync(id);
         }
 
-        public async Task UpdateRatingAsync(string feedbackID, int newRating)
+        public async Task GetRating(string feedbackId )
         {
-            await _repository.UpdateRatingAsync(feedbackID, newRating);
+            await _repository.GetRating(feedbackId);
         }
     }
 }

@@ -11,6 +11,6 @@ namespace UserService.Repository
         Task AddAsync(ExpertFeedback feedback);
         Task UpdateAsync(string id, ExpertFeedback feedback);
         Task DeleteAsync(string id);
-        Task UpdateRatingAsync(string feedbackId, int newRating);
+        Task<double> GetRating(string expertId);
     }
 }

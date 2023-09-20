@@ -43,14 +43,31 @@ namespace UserService.Repository
             await _collection.DeleteOneAsync(filter);
         }
 
-        public async Task GetRating(string expertId)
-        {
-            //Store rating for the given expertid in list then find sum of all the ratings and size of list
-            var sum = Builders<ExpertFeedback>.Filter.Eq(f => f.FeedbackID, feedbackId);
-            var count = Builders<ExpertFeedback>.Update.Set(f => f.Rating, newRating);
+        //public async Task GetRating(string expertId)
+        //{
+        //    //Store rating for the given expertid in list then find sum of all the ratings and size of list
+        //    var sum = Builders<ExpertFeedback>.Filter.Eq(f => f.FeedbackID, feedbackId);
+        //    var count = Builders<ExpertFeedback>.Update.Set(f => f.Rating, newRating);
 
-            var avgRating = sum / count;
-            return avgRating;
+        //    var avgRating = sum / count;
+        //    return avgRating;
+        //}
+        public async Task<double> GetRating(string expertId)
+        {
+            var filter = Builders<ExpertFeedback>.Filter.Eq(f => f.ExpertID, expertId);
+            var projection = Builders<ExpertFeedback>.Projection.Expression(feedback => feedback.Rating);
+
+            var ratings = await _collection.Find(filter).Project(projection).ToListAsync();
+
+            if (ratings.Count == 0)
+            {
+                // Handle the case when there are no ratings for the expert
+                return 0.0; // You can choose to return a default value or handle this case differently.
+            }
+
+            var averageRating = ratings.Average();
+            return averageRating;
         }
+
     }
 }
