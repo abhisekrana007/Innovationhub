@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, components } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 
@@ -24,7 +24,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ErrorCatchingInterceptor } from './interceptor/error-catching.interceptor';
-import { RegistrationComponent } from './components/registration/registration.component';
+
 import { RegistrationService } from './services/registration.service';
 
 
@@ -32,7 +32,9 @@ import { RegistrationService } from './services/registration.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+
+   
+
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,
