@@ -32,9 +32,13 @@ import { RegistrationService } from './services/registration.service';
   declarations: [
     AppComponent,
     LoginComponent,
+<<<<<<< HEAD
 
    
 
+=======
+    components
+>>>>>>> dab1542965d02f6f8cda7029bae4a639344f359a
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,
