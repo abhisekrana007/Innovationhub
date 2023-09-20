@@ -20,24 +20,28 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card'; 
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ErrorCatchingInterceptor } from './interceptor/error-catching.interceptor';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { RegistrationService } from './services/registration.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,
     MatToolbarModule,FormsModule,HttpClientModule,MatSlideToggleModule,
     MatButtonModule,MatIconModule,MatDividerModule,MatCardModule,MatFormFieldModule,
-    ReactiveFormsModule,AppRoutingModule
+    ReactiveFormsModule,AppRoutingModule,MatTabsModule
 
   ],
-  providers: [LoginService],
+  providers: [LoginService,RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
