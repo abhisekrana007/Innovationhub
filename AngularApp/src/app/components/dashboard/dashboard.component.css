@@ -1,0 +1,57 @@
+/* dashboard.component.css */
+:host {
+    display: block;
+  }
+  
+  /* Dashboard container */
+  .dashboard-container {
+    padding: 20px;
+  }
+  
+  /* Header styles */
+  .dashboard-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Navigation menu styles */
+  .nav-menu {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Menu item styles */
+  .menu-item {
+    margin-bottom: 5px;
+  }
+  
+  /* Content area styles */
+  .dashboard-content {
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  /* Optional: Styling for specific components or widgets on your dashboard */
+  .widget {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Optional: Styling for buttons or action elements in your dashboard */
+  .dashboard-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .dashboard-button:hover {
+    background-color: #0056b3;
+  }
+  

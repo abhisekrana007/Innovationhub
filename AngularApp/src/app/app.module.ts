@@ -27,6 +27,8 @@ import { ErrorCatchingInterceptor } from './interceptor/error-catching.intercept
 
 import { RegistrationService } from './services/registration.service';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -34,14 +36,15 @@ import { RegistrationComponent } from './components/registration/registration.co
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    components
+    components,
+    DashboardComponent
 
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,
     MatToolbarModule,FormsModule,HttpClientModule,MatSlideToggleModule,
     MatButtonModule,MatIconModule,MatDividerModule,MatCardModule,MatFormFieldModule,
-    ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule
+    ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule
 
   ],
   providers: [LoginService,RegistrationService],

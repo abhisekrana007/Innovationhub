@@ -59,12 +59,21 @@ namespace UserService.Controllers
                     return BadRequest("Invalid input. The feedback object is null.");
                 }
 
-                // You can add validation logic here if needed.
+                // Validate the feedback object here (e.g., using data annotations or custom validation).
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                // Assuming you have a route named "GetFeedbackByIdAsync" with a parameter "id".
+                // Use the route name and route values to generate the location header.
+                var routeValues = new { id = feedback.FeedbackID };
+                var url = Url.RouteUrl("GetFeedbackByIdAsync", routeValues, Request.Scheme);
 
                 await _service.CreateFeedbackAsync(feedback);
 
                 // Return a 201 Created response with the location of the newly created resource.
-                return CreatedAtAction(nameof(GetFeedbackByIdAsync), new { id = feedback.FeedbackID }, feedback);
+                return Created(url, feedback);
             }
             catch (Exception ex)
             {
@@ -117,4 +126,5 @@ namespace UserService.Controllers
             }
         }
     }
+
 }
