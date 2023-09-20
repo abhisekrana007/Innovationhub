@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { lastValueFrom, throwError } from 'rxjs';
+import { LoginService } from 'src/app/services/login.service';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +10,75 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  loginInnovatorForm :  FormGroup;
+  loginExpertForm :  FormGroup;
+  innovator: any = {};
+  expert: any = {};
+  token : string = "";
+
+  constructor(private fb : FormBuilder,private _loginservice: LoginService) {
+    this.loginInnovatorForm= fb.group({
+      Email : new FormControl("", [Validators.required,Validators.email]),
+      Password: new FormControl("",[Validators.required,Validators.minLength(3)])
+    })
+    this.loginExpertForm= fb.group({
+      Email : new FormControl("", [Validators.required,Validators.email]),
+      Password: new FormControl("",[Validators.required,Validators.minLength(3)])
+    })
+  }
+
+  async loginInnovator(regForm: any)
+  {
+    console.log(regForm.controls.Email.value);
+    if(this.loginInnovatorForm.invalid) return;
+    else{
+      var user = new User();
+      user.Email =regForm.controls.Email.value;
+      user.Password = regForm.controls.Password.value      
+      this._loginservice.authenticateInnovator(user).subscribe(
+        ((res) =>this.token = (res).toString()),
+        (err:any)=>{        
+          this.handleError(err);
+        }) 
+        try {
+          this.token = await lastValueFrom(this._loginservice.authenticateInnovator(user));
+        } catch (err) {
+          throwError;
+        }             
+      
+      this._loginservice.setBearerToken(this.token);
+      //this._routerservice.routeToDashboard();
+                 
+    }      
+  }
+
+  async loginExpert(regForm: any)
+  {
+    if(this.loginExpertForm.invalid) return;
+    else{
+      var user = new User();
+      user.Email =regForm.controls.Username.value;
+      user.Password = regForm.controls.Password.value      
+      this._loginservice.authenticateExpert(user).subscribe(
+        ((res) =>this.token = (res).toString()),
+        (err:any)=>{        
+          this.handleError(err);
+        }) 
+        try {
+          this.token = await lastValueFrom(this._loginservice.authenticateExpert(user));
+        } catch (err) {
+          throwError;
+        }             
+      
+      this._loginservice.setBearerToken(this.token);
+      //this._routerservice.routeToDashboard();
+                 
+    }      
+  }
+
+  handleError(err: any)
+  {
+    alert(err);
+  };
 
 }
