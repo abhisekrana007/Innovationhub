@@ -1,57 +1,57 @@
-/* dashboard.component.css */
-:host {
-    display: block;
-  }
-  
-  /* Dashboard container */
-  .dashboard-container {
-    padding: 20px;
-  }
-  
-  /* Header styles */
-  .dashboard-header {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  /* Navigation menu styles */
-  .nav-menu {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-  }
-  
-  /* Menu item styles */
-  .menu-item {
-    margin-bottom: 5px;
-  }
-  
-  /* Content area styles */
-  .dashboard-content {
-    padding: 20px;
-    background-color: #f0f0f0;
-  }
-  
-  /* Optional: Styling for specific components or widgets on your dashboard */
-  .widget {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  /* Optional: Styling for buttons or action elements in your dashboard */
-  .dashboard-button {
-    background-color: #007bff;
-    color: white;
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0e82e0;
     padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .dashboard-button:hover {
-    background-color: #0056b3;
-  }
-  
+    position: fixed;
+    top: 0; /* Place the navbar at the top */
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(10, 10, 10, 0.5); /* Add shadow to the bottom */
+}
+
+/* Logo styles */
+.navbar-logo img {
+    height: 40px;
+    width: auto;
+}
+
+/* Navbar navigation list */
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Vertically center-align the items */
+}
+
+/* Individual navigation item */
+.nav-item {
+    margin: 0 10px;
+    flex-grow: 1; /* Allow items to grow and share available space */
+    text-align: center; /* Center-align the text within the items */
+}
+
+
+/* Navigation link styles */
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* Navigation link hover styles */
+.nav-link:hover {
+    color: #ddd;
+}
+
+/* Additional elements in the navbar (e.g., buttons, user authentication) */
+/* Additional elements in the navbar (e.g., buttons, user authentication) */
+.navbar-auth {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Push the content to the right */
+    margin-right: 35px;
+}
