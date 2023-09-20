@@ -19,10 +19,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card'; 
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatInputModule } from '@angular/material/input';
 import { ErrorCatchingInterceptor } from './interceptor/error-catching.interceptor';
 
 import { RegistrationService } from './services/registration.service';
@@ -41,7 +41,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,
     MatToolbarModule,FormsModule,HttpClientModule,MatSlideToggleModule,
     MatButtonModule,MatIconModule,MatDividerModule,MatCardModule,MatFormFieldModule,
-    ReactiveFormsModule,AppRoutingModule,MatTabsModule
+    ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule
 
   ],
   providers: [LoginService,RegistrationService],
