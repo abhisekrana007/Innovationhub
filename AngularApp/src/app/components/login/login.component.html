@@ -3,7 +3,8 @@
       <form [formGroup]="loginInnovatorForm" (ngSubmit)="loginInnovator(loginInnovatorForm)">
         <div class="form-group">
           <mat-form-field appearance="outline">
-            <input matInput type="email" placeholder="Email" formControlName="Email" name="Email" required>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Enter Email" formControlName="Email" name="Email" required>
             <mat-error *ngIf="loginInnovatorForm.controls['Email'].hasError('required')">
               Please provide an Email
             </mat-error>
@@ -14,7 +15,8 @@
         </div>
         <div class="form-group">
           <mat-form-field appearance="outline">
-            <input matInput type="password" placeholder="Password" formControlName="Password" name="Password" required>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Password" formControlName="Enter Password" name="Password" required>
             <mat-error *ngIf="loginInnovatorForm.controls['Password'].hasError('required')">
               Please provide a Password
             </mat-error>
@@ -33,7 +35,8 @@
         <form [formGroup]="loginExpertForm" (ngSubmit)="loginExpert(loginExpertForm)">
           <div class="form-group">
             <mat-form-field appearance="outline">
-              <input matInput type="email" placeholder="Email" formControlName="Email" name="Email" required>            
+              <mat-label>Email</mat-label>
+              <input matInput type="email" placeholder="Enter Email" formControlName="Email" name="Email" required>            
               <mat-error *ngIf="loginExpertForm.controls['Email'].hasError('required')">
                 Please provide an Email
               </mat-error>
@@ -44,7 +47,8 @@
           </div>
           <div class="form-group">
             <mat-form-field appearance="outline">
-              <input matInput type="password" placeholder="Password" formControlName="Password" name="Password" required>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="Enter Password" formControlName="Password" name="Password" required>
               <mat-error *ngIf="loginExpertForm.controls['Password'].hasError('required')">
                 Please provide a Password
               </mat-error>
