@@ -7,14 +7,14 @@ import { User } from 'src/models/user';
   providedIn: 'root'
 })
 export class LoginService {
-  private innovatorUrl = 'https://localhost:7285/api/innovator/login';
+  private innovatorUrl = 'https://localhost:7285/api/Authentication/innovator/login';
   private expertUrl = 'url';
   
   constructor(private _http: HttpClient) { }
   
-  authenticateInnovator(user : User) : Observable<string>{
-      return this._http.post<string>(this.innovatorUrl,
-      JSON.stringify(user),
+  authenticateInnovator(user : any) : Observable<string>{
+    console.log(user);
+      return this._http.post<string>(this.innovatorUrl, user,
       {
         headers: new HttpHeaders({
           'Content-Type':'application/json',

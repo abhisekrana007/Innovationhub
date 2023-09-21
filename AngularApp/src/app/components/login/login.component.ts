@@ -14,7 +14,7 @@ export class LoginComponent {
   loginExpertForm :  FormGroup;
   innovator: any = {};
   expert: any = {};
-  token : string = "";
+  token : any = {};
 
   constructor(private fb : FormBuilder,private _loginservice: LoginService) {
     this.loginInnovatorForm= fb.group({
@@ -29,24 +29,27 @@ export class LoginComponent {
 
   async loginInnovator(regForm: any)
   {
-    console.log(regForm.controls.Email.value);
+    
     if(this.loginInnovatorForm.invalid) return;
     else{
-      var user = new User();
-      user.Email =regForm.controls.Email.value;
-      user.Password = regForm.controls.Password.value      
+      var user = {
+        "Email" : regForm.controls.Email.value,
+        "Password" : regForm.controls.Password.value  
+      }; 
+      console.log(user);      
       this._loginservice.authenticateInnovator(user).subscribe(
-        ((res) =>this.token = (res).toString()),
+        ((res) =>this.token = (res)),
         (err:any)=>{        
           this.handleError(err);
         }) 
         try {
           this.token = await lastValueFrom(this._loginservice.authenticateInnovator(user));
+          console.log(this.token.token);
         } catch (err) {
           throwError;
         }             
       
-      this._loginservice.setBearerToken(this.token);
+      this._loginservice.setBearerToken(this.token.token);
       //this._routerservice.routeToDashboard();
                  
     }      
@@ -56,7 +59,7 @@ export class LoginComponent {
   {
     if(this.loginExpertForm.invalid) return;
     else{
-      var user = new User();
+      var user = new User();    
       user.Email =regForm.controls.Username.value;
       user.Password = regForm.controls.Password.value      
       this._loginservice.authenticateExpert(user).subscribe(
@@ -78,7 +81,7 @@ export class LoginComponent {
 
   handleError(err: any)
   {
-    alert(err);
+    alert(err.message);
   };
 
 }
