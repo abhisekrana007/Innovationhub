@@ -13,7 +13,7 @@ export class RegistrationComponent {
   constructor(private registrationService: RegistrationService) {}
 
   registerInnovator() {
-    // Assuming you have a RegistrationService to handle HTTP requests
+    //  RegistrationService to handle HTTP requests
     this.registrationService.registerInnovator(this.innovator).subscribe(
       (response) => {
         console.log('Innovator registered:', response);
@@ -27,7 +27,7 @@ export class RegistrationComponent {
   }
 
   registerExpert() {
-    // Assuming you have a RegistrationService to handle HTTP requests
+    //  RegistrationService to handle HTTP requests
     this.registrationService.registerExpert(this.expert).subscribe(
       (response) => {
         console.log('Expert registered:', response);

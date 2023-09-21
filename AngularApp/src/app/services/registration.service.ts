@@ -8,8 +8,7 @@ export class RegistrationService {
   
 
 
-    private apiUrl = 'YOUR_API_URL'; // Replace with your MongoDB API URL
-  
+    private apiUrl = 'YOUR_API_URL';   
     constructor(private http: HttpClient) { }
   
     registerInnovator(innovatorData: any) {
