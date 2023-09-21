@@ -47,7 +47,14 @@ import { MatMenuModule } from '@angular/material/menu';
     ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule
 
   ],
-  providers: [LoginService,RegistrationService],
+  providers: [LoginService,RegistrationService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorCatchingInterceptor,
+    multi: true
+}
+],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

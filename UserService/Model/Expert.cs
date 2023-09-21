@@ -16,10 +16,10 @@ namespace UserService.Model
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public List<string> Skills { get; set; }
+        public string Skills { get; set; }
         public double Rating { get; set; }
         public decimal Budget { get; set; }
-        public DateTime RegistrationDate { get; set; }
-     
+        public DateTime? RegistrationDate { get; set; } = DateTime.Now;
+
     }
 }
