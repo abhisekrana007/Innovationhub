@@ -8,14 +8,14 @@ export class RegistrationService {
   
 
 
-    private apiUrl = 'YOUR_API_URL';   
-    constructor(private http: HttpClient) { }
+    private apiUrl = 'https://localhost:7285/api';   
+        constructor(private http: HttpClient) { }
   
     registerInnovator(innovatorData: any) {
-      return this.http.post(`${this.apiUrl}/innovators`, innovatorData);
+      return this.http.post(`${this.apiUrl}/Innovator`, innovatorData);
     }
   
     registerExpert(expertData: any) {
-      return this.http.post(`${this.apiUrl}/experts`, expertData);
+      return this.http.post(`${this.apiUrl}/Expert`, expertData);
     }
   }

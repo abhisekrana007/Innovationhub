@@ -5,7 +5,7 @@ export class Expert {
       public email: string,
       public firstName: string,
       public lastName: string,
-      public dob: string,
+      public dateOfBirth: string,
       public skills: string,
       public rating: number,
       public budget: number
