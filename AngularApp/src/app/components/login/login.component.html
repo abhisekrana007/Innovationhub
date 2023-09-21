@@ -6,10 +6,11 @@
   <title>Document</title>
 </head>
 <body>
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-    <mat-tab label="Innovator" mat-a>
+  <div class="table">
+  <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
+    <mat-tab label="Innovator">
       <form [formGroup]="loginInnovatorForm" (ngSubmit)="loginInnovator(loginInnovatorForm)">
-        <p>
+        
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput type="email" placeholder="Enter Email" formControlName="Email" name="Email" required>
@@ -20,8 +21,7 @@
               Invalid Email
             </mat-error>
           </mat-form-field>
-        </p>
-        <div class="form-group">
+
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput type="password" placeholder="Enter Password" formControlName="Password" name="Password" required>
@@ -32,10 +32,7 @@
               Minimum 3 Characters
             </mat-error>
           </mat-form-field>
-        </div>
-        <div class="form-group">
-          <button mat-raised-button type="submit" [disabled]="loginInnovatorForm.invalid">Login</button>
-        </div>
+          <button mat-raised-button type="submit" [disabled]="loginInnovatorForm.invalid">Login</button>        
       </form>
     </mat-tab>
 
@@ -71,5 +68,6 @@
       </form>
     </mat-tab>
   </mat-tab-group>
+  </div>
 </body>
 </html>

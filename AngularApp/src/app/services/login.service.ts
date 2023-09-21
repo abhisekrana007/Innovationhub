@@ -8,7 +8,7 @@ import { User } from 'src/models/user';
 })
 export class LoginService {
   private innovatorUrl = 'https://localhost:7285/api/Authentication/innovator/login';
-  private expertUrl = 'url';
+  private expertUrl = 'https://localhost:7285/api/Authentication/expert/login';
   
   constructor(private _http: HttpClient) { }
   
@@ -23,9 +23,8 @@ export class LoginService {
       });
   }
 
-  authenticateExpert(user : User) : Observable<string>{
-    return this._http.post<string>(this.expertUrl,
-    JSON.stringify(user),
+  authenticateExpert(user : any) : Observable<string>{
+    return this._http.post<string>(this.expertUrl, user,
     {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
