@@ -40,11 +40,11 @@ namespace UserService.Repository
             var filter = Builders<Expert>.Filter.Eq(e => e.ExpertID, expertId);
             var update = Builders<Expert>.Update
                 .Set(e => e.Username, expert.Username)
-                .Set(e => e.PasswordHash, expert.PasswordHash)
+                .Set(e => e.Password, expert.Password)
                 .Set(e => e.Email, expert.Email)
                 .Set(e => e.Firstname, expert.Firstname)
                 .Set(e => e.Lastname, expert.Lastname)
-                .Set(e => e.DOB, expert.DOB)
+                .Set(e => e.DateOfBirth, expert.DateOfBirth)
                 .Set(e => e.Skills, expert.Skills)
                 .Set(e => e.Rating, expert.Rating)
                 .Set(e => e.Budget, expert.Budget)

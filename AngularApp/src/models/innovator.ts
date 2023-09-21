@@ -5,7 +5,7 @@ export class Innovator {
       public email: string,
       public firstName: string,
       public lastName: string,
-      public dob: string
+      public dateOfBirth: string
     ) {}
   }
  

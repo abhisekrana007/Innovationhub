@@ -31,10 +31,10 @@ public class InnovatorService : IInnovatorService
             innovator.RegistrationDate = DateTime.UtcNow;
 
             // Hash the password before storing it
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(innovator.PasswordHash);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(innovator.Password);
 
             // Replace the plain text password with the hashed password
-            innovator.PasswordHash = hashedPassword;
+            innovator.Password = hashedPassword;
 
             await _repository.CreateAsync(innovator);
         }

@@ -25,10 +25,10 @@ namespace UserService.Service
            public async Task CreateExpertAsync(Expert expert)
 {
             // Hash the password before storing it
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(expert.PasswordHash);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(expert.Password);
 
             // Replace the plain text password with the hashed password
-            expert.PasswordHash = hashedPassword;
+            expert.Password = hashedPassword;
 
             await _repository.CreateAsync(expert);
         }

@@ -6,6 +6,7 @@ import { RegistrationService } from 'src/app/services/registration.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
+
 export class RegistrationComponent {
   innovator: any = {};
   expert: any = {};
@@ -13,6 +14,7 @@ export class RegistrationComponent {
   constructor(private registrationService: RegistrationService) {}
 
   registerInnovator() {
+    console.log  ("In Com " + JSON.stringify(this.innovator));
     // Assuming you have a RegistrationService to handle HTTP requests
     this.registrationService.registerInnovator(this.innovator).subscribe(
       (response) => {

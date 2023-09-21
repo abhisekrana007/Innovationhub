@@ -86,7 +86,7 @@ namespace UserService.Controllers
         {
             Innovator innovator = _innovatorsCollection.Find(u => u.Email == innovatorEmail).SingleOrDefault();
 
-            if (innovator != null && BCrypt.Net.BCrypt.Verify(innovatorPassword, innovator.PasswordHash))
+            if (innovator != null && BCrypt.Net.BCrypt.Verify(innovatorPassword, innovator.Password))
             {
                 return innovator;
             }
@@ -98,7 +98,7 @@ namespace UserService.Controllers
         {
             Expert expert = _expertsCollection.Find(u => u.Email == expertEmail).SingleOrDefault();
 
-            if (expert != null && BCrypt.Net.BCrypt.Verify(expertPassword, expert.PasswordHash))
+            if (expert != null && BCrypt.Net.BCrypt.Verify(expertPassword, expert.Password))
             {
                 return expert;
             }

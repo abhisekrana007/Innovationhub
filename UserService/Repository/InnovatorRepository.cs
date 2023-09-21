@@ -38,12 +38,12 @@ namespace UserService.Repository
         {
             var filter = Builders<Innovator>.Filter.Eq(i => i.InnovatorID, id);
 
-            string password = innovatorUpdate.PasswordHash;
+            string password = innovatorUpdate.Password;
 
 
             var update = Builders<Innovator>.Update
                 .Set(i => i.Username, innovatorUpdate.Username)
-                .Set(i => i.PasswordHash, innovatorUpdate.PasswordHash)
+                .Set(i => i.Password, innovatorUpdate.Password)
                 .Set(i => i.Email, innovatorUpdate.Email)
                 .Set(i => i.FirstName, innovatorUpdate.FirstName)
                 .Set(i => i.LastName, innovatorUpdate.LastName)
