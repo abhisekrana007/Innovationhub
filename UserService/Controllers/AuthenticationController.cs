@@ -34,8 +34,8 @@ namespace UserService.Controllers
         [HttpPost("innovator/login")]
         public IActionResult InnovatorLogin([FromBody] JObject innovator)
         {
-            string innovatorEmail = innovator["innovatorEmail"].ToObject<string>();
-            string innovatorPassword = innovator["innovatorPassword"].ToObject<string>();
+            string innovatorEmail = innovator["Email"].ToObject<string>();
+            string innovatorPassword = innovator["Password"].ToObject<string>();
 
             Innovator findInnovator = CheckInnovator(innovatorEmail, innovatorPassword);
             if (findInnovator != null)
@@ -50,8 +50,8 @@ namespace UserService.Controllers
         [HttpPost("expert/login")]
         public IActionResult ExpertLogin([FromBody] JObject expert)
         {
-            string expertEmail = expert["expertEmail"].ToObject<string>();
-            string expertPassword = expert["expertPassword"].ToObject<string>();
+            string expertEmail = expert["Email"].ToObject<string>();
+            string expertPassword = expert["Password"].ToObject<string>();
 
             Expert findExpert = CheckExpert(expertEmail, expertPassword);
             if (findExpert != null)

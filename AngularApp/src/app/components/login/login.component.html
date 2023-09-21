@@ -1,7 +1,16 @@
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-    <mat-tab label="Innovator" mat-a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="table">
+  <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
+    <mat-tab label="Innovator">
       <form [formGroup]="loginInnovatorForm" (ngSubmit)="loginInnovator(loginInnovatorForm)">
-        <div class="form-group">
+        
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput type="email" placeholder="Enter Email" formControlName="Email" name="Email" required>
@@ -12,11 +21,10 @@
               Invalid Email
             </mat-error>
           </mat-form-field>
-        </div>
-        <div class="form-group">
+
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput type="password" placeholder="Password" formControlName="Enter Password" name="Password" required>
+            <input matInput type="password" placeholder="Enter Password" formControlName="Password" name="Password" required>
             <mat-error *ngIf="loginInnovatorForm.controls['Password'].hasError('required')">
               Please provide a Password
             </mat-error>
@@ -24,10 +32,7 @@
               Minimum 3 Characters
             </mat-error>
           </mat-form-field>
-        </div>
-        <div class="form-group">
-          <button mat-raised-button type="submit" [disabled]="loginInnovatorForm.invalid">Login</button>
-        </div>
+          <button mat-raised-button type="submit" [disabled]="loginInnovatorForm.invalid">Login</button>        
       </form>
     </mat-tab>
 
@@ -63,4 +68,6 @@
       </form>
     </mat-tab>
   </mat-tab-group>
-  
+  </div>
+</body>
+</html>

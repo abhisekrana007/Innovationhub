@@ -7,7 +7,7 @@ namespace ChatService.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string ChatId { get; set; }
+        public string? ChatId { get; set; }
         public string InnovatorId { get; set; }
         public string ExpertId { get; set; }
         public List<Message> Messages { get; set; }
