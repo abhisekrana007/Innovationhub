@@ -29,6 +29,7 @@ export class RegistrationComponent {
   }
 
   registerExpert() {
+    console.log  ("In Com " + JSON.stringify(this.expert));
     // Assuming you have a RegistrationService to handle HTTP requests
     this.registrationService.registerExpert(this.expert).subscribe(
       (response) => {

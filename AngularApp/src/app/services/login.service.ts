@@ -7,14 +7,14 @@ import { User } from 'src/models/user';
   providedIn: 'root'
 })
 export class LoginService {
-  private innovatorUrl = 'https://localhost:7285/api/innovator/login';
-  private expertUrl = 'url';
+  private innovatorUrl = 'https://localhost:7285/api/Authentication/innovator/login';
+  private expertUrl = 'https://localhost:7285/api/Authentication/expert/login';
   
   constructor(private _http: HttpClient) { }
   
-  authenticateInnovator(user : User) : Observable<string>{
-      return this._http.post<string>(this.innovatorUrl,
-      JSON.stringify(user),
+  authenticateInnovator(user : any) : Observable<string>{
+    console.log(user);
+      return this._http.post<string>(this.innovatorUrl, user,
       {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
@@ -23,16 +23,18 @@ export class LoginService {
       });
   }
 
-  authenticateExpert(user : User) : Observable<string>{
-    return this._http.post<string>(this.expertUrl,
-    JSON.stringify(user),
+  authenticateExpert(user : any) : Observable<string>{
+    return this._http.post<string>(this.expertUrl, user,
     {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
         'Accept':'application/json'
       })
     });
-}
+  }
+  getBearerToken(){    
+    return localStorage.getItem("bearerToken");
+  }
 
   setBearerToken (token : string){
     localStorage.clear();

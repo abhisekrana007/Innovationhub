@@ -30,6 +30,25 @@ form {
   mat-tab-body {
     padding: 20px;
     border: 1px solid #e0e0e0;
-    border-radius: 5px;
+    border-radius: 5px;    
   }
   
+  .table{
+    width : 40%;
+    margin: 5% 30% 25%;
+    border: 1px solid;
+    border-radius: 25px;
+  }
+
+  form{
+    margin-top : 30px;
+  }
+
+  #elements{
+    padding:10px;
+  }
+
+  #login_button{
+    text-align: center;
+    
+  }

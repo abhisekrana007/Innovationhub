@@ -6,70 +6,76 @@
   <title>Document</title>
 </head>
 <body>
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-    <mat-tab label="Innovator" mat-a>
+  <div class="table">
+  <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
+    <mat-tab label="Innovator">
       <form [formGroup]="loginInnovatorForm" (ngSubmit)="loginInnovator(loginInnovatorForm)">
-        <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
+        <div class="form-group" id="elements">
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label> -->
             <input matInput type="email" placeholder="Enter Email" formControlName="Email" name="Email" required>
-            <mat-error *ngIf="loginInnovatorForm.controls['Email'].hasError('required')">
-              Please provide an Email
-            </mat-error>
-            <mat-error *ngIf="loginInnovatorForm.controls['Email'].hasError('email')">
-              Invalid Email
-            </mat-error>
-          </mat-form-field>
-        </p>
-        <div class="form-group">
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" placeholder="Enter Password" formControlName="Password" name="Password" required>
-            <mat-error *ngIf="loginInnovatorForm.controls['Password'].hasError('required')">
-              Please provide a Password
-            </mat-error>
-            <mat-error *ngIf="loginInnovatorForm.controls['Password'].hasError('minlength')">
-              Minimum 3 Characters
-            </mat-error>
-          </mat-form-field>
+            <p>
+              <mat-error *ngIf="loginInnovatorForm.controls['Email'].hasError('required')">
+                Please provide an Email
+              </mat-error>
+              <mat-error *ngIf="loginInnovatorForm.controls['Email'].hasError('email')">
+                Invalid Email
+              </mat-error>
+            </p>
+          <!-- </mat-form-field> -->
         </div>
-        <div class="form-group">
-          <button mat-raised-button type="submit" [disabled]="loginInnovatorForm.invalid">Login</button>
+        <div class="form-group" id="elements">
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label> -->
+            <input matInput type="password" placeholder="Password" formControlName="Password" name="Password" required>
+            <p>
+              <mat-error *ngIf="loginInnovatorForm.controls['Password'].hasError('required')">
+                Please provide a Password
+              </mat-error>
+              <mat-error *ngIf="loginInnovatorForm.controls['Password'].hasError('minlength')">
+                Minimum 3 Characters
+              </mat-error>
+            </p>
+          <!-- </mat-form-field> -->
+        </div>
+        <div class="form-group" id="login_button">
+          <button mat-raised-button type="submit" [disabled]="loginInnovatorForm.invalid">Login</button>        
         </div>
       </form>
     </mat-tab>
 
     <mat-tab label="Expert">
         <form [formGroup]="loginExpertForm" (ngSubmit)="loginExpert(loginExpertForm)">
-          <div class="form-group">
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput type="email" placeholder="Enter Email" formControlName="Email" name="Email" required>            
+          <div class="form-group" id="elements">
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label> -->
+              <input matInput type="email" placeholder="Email" formControlName="Email" name="Email" required>            
               <mat-error *ngIf="loginExpertForm.controls['Email'].hasError('required')">
                 Please provide an Email
               </mat-error>
               <mat-error *ngIf="loginExpertForm.controls['Email'].hasError('email')">
                 Invalid Email
               </mat-error>
-            </mat-form-field>
+            <!-- </mat-form-field> -->
           </div>
-          <div class="form-group">
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput type="password" placeholder="Enter Password" formControlName="Password" name="Password" required>
+          <div class="form-group" id="elements">
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label> -->
+              <input matInput type="password" placeholder="Password" formControlName="Password" name="Password" required>
               <mat-error *ngIf="loginExpertForm.controls['Password'].hasError('required')">
                 Please provide a Password
               </mat-error>
               <mat-error *ngIf="loginExpertForm.controls['Password'].hasError('minlength')">
                 Minimum 3 Characters required for the password
               </mat-error>
-            </mat-form-field>
+            <!-- </mat-form-field> -->
           </div>
-          <div class="form-group">
+          <div class="form-group" id="login_button">
             <button mat-raised-button type="submit" [disabled]="loginExpertForm.invalid">Login</button>
           </div>
       </form>
     </mat-tab>
   </mat-tab-group>
+  </div>
 </body>
 </html>
