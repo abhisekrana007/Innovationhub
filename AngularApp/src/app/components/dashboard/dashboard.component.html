@@ -1,14 +1,22 @@
-<!-- dashboard.component.html -->
-<mat-toolbar color="primary">
-    <span>INNOVATION-HUB</span>
-    <div class="spacer"></div>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/home">Home</button>
-      <button mat-menu-item routerLink="/profile">Profile</button>
-      <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
-  </mat-toolbar>
-  
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand" href="#">INNOVATION_HUB</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto"> <!-- Add ml-auto class here -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="userDropdown">
+          <a class="dropdown-item" routerLink="/login">Login</a>
+          <a class="dropdown-item" routerLink="/registration">Registration</a>
+          <a class="dropdown-item" routerLink="/my profile">MY Profile</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
