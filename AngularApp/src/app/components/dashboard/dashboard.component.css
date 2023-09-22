@@ -1,53 +1,127 @@
-/* dashboard.component.css */
-mat-toolbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: #1976D2;
-    color: white;
-    padding: 0 16px;
+/* Reset some default browser styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+ 
+
+/* Global styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+ 
+
+/* Navbar styles */
+.navbar {
+  background-color: #007BFF;
+}
+
+ 
+
+.navbar-brand {
+  color: #fff;
+  font-size: 24px;
+}
+
+ 
+
+.navbar-toggler-icon {
+  background-color: #fff;
+}
+
+ 
+
+.navbar-nav .nav-link {
+  color: #111111;
+}
+
+ 
+
+.navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+ 
+
+/* Page content styles */
+.page-content {
+  padding: 20px;
+}
+
+ 
+
+/* Dropdown menu styles */
+.dropdown-menu {
+  background-color: #00c3ff; 
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ 
+ 
+}
+
+ 
+
+.dropdown-item {
+  color: #0c0c0c;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+ 
+
+.dropdown-item:hover {
+  background-color: #e7dede;
+}
+
+.navbar-nav {
+  margin-right: right ;
+  display: flex;
+}
+ 
+
+/* Button styles */
+.btn-primary {
+  background-color: #007BFF;
+  color: #0c0c0c;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+ 
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+ 
+
+/* Form styles (customize as needed) */
+.form-group {
+  margin-bottom: 20px;
+}
+
+ 
+
+/* Footer styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+ 
+
+/* Media queries for responsiveness (customize as needed) */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
   }
-  
-  /* Move the menu button to the right */
-  button[mat-icon-button] {
-    order: 2; /* Adjust the order property to control the button's position */
-    color: #f5efed; /* Change the button's color to your desired tone */
-    margin-left: -20px; /* Push the button to the right */
-  }
-  
-  span {
-    font-size: 24px;
-  }
-  
-  /* Style the dropdown menu */
-  .mat-menu-content {
-    background-color: #1976D2;
-    color: white;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Style the menu items */
-  button.mat-menu-item {
-    min-width: 150px;
-    text-align: left;
-  }
-  
-  /* Style the menu item hover effect */
-  button.mat-menu-item:hover {
-    background-color: #1565C0;
-  }
-  
-  /* Optional: Add padding to menu items for better spacing */
-  button.mat-menu-item {
-    padding: 8px 16px;
-  }
-  
-  /* Optional: Style the logout button differently */
-  button.mat-menu-item:last-child {
-    color: #FF5722;
-  }
-  
-  /* Optional: Style the logout button hover effect */
-  button.mat-menu-item:last-child:hover {
-    background-color: #E64A19;
-  }
-  
+}
