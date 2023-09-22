@@ -1,63 +1,89 @@
 <!-- registration.component.html -->
-<mat-tab-group>
-  <!-- Tab for Innovators -->
+<div class="table">
+<mat-tab-group *ngIf="innovatorForm && expertForm">
+ 
   <mat-tab label="Innovator">
-    <form (ngSubmit)="registerInnovator()">
+    <form [formGroup]="innovatorForm" (ngSubmit)="registerInnovator()">
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Username" [(ngModel)]="innovator.username" name="username" required>
+        <input matInput formControlName="username" placeholder="Username" required minlength="3" maxlength="20">
+        <mat-error *ngIf="innovatorForm.controls['username'].hasError('required')">Username is required</mat-error>
+        <mat-error *ngIf="innovatorForm.controls['username'].hasError('minlength')">Username must be at least 3 characters long</mat-error>
+        <mat-error *ngIf="innovatorForm.controls['username'].hasError('maxlength')">Username cannot exceed 20 characters</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="innovator.password" name="password" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="password" type="password" placeholder="Password" required minlength="6">
+        <mat-error *ngIf="innovatorForm.controls['password'].hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="innovatorForm.controls['password'].hasError('minlength')">Password must be at least 6 characters long</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="email" placeholder="Email" [(ngModel)]="innovator.email" name="email" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="email" type="email" placeholder="Email" required>
+        <mat-error *ngIf="innovatorForm.controls['email'].hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="innovatorForm.controls['email'].hasError('email')">Invalid email format</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="First Name" [(ngModel)]="innovator.firstName" name="firstName" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="firstName" placeholder="First Name" required>
+        <mat-error *ngIf="innovatorForm.controls['firstName'].hasError('required')">First Name is required</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Last Name" [(ngModel)]="innovator.lastName" name="lastName" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="lastName" placeholder="Last Name" required>
+        <mat-error *ngIf="innovatorForm.controls['lastName'].hasError('required')">Last Name is required</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="date" placeholder="Date of Birth" [(ngModel)]="innovator.dateOfBirth" name="dateOfBirth" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="dateOfBirth" type="date" placeholder="Date of Birth" required>
+        <mat-error *ngIf="innovatorForm.controls['dateOfBirth'].hasError('required')">Date of Birth is required</mat-error>
       </mat-form-field>
 
       <button mat-raised-button type="submit">Register as Innovator</button>
     </form>
   </mat-tab>
 
-  <!-- Tab for Experts -->
+  Tab for Experts
   <mat-tab label="Expert">
-    <form (ngSubmit)="registerExpert()">
-      <mat-form-field>
-        <input matInput placeholder="Username" [(ngModel)]="expert.username" name="username" required>
+    <form [formGroup]="expertForm" (ngSubmit)="registerExpert()">
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="username" placeholder="Username" required minlength="3" maxlength="20">
+        <mat-error *ngIf="expertForm.controls['username'].hasError('required')">Username is required</mat-error>
+        <mat-error *ngIf="expertForm.controls['username'].hasError('minlength')">Username must be at least 3 characters long</mat-error>
+        <mat-error *ngIf="expertForm.controls['username'].hasError('maxlength')">Username cannot exceed 20 characters</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="expert.password" name="password" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="password" type="password" placeholder="Password" required minlength="6">
+        <mat-error *ngIf="expertForm.controls['password'].hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="expertForm.controls['password'].hasError('minlength')">Password must be at least 6 characters long</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="email" placeholder="Email" [(ngModel)]="expert.email" name="email" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="email" type="email" placeholder="Email" required>
+        <mat-error *ngIf="expertForm.controls['email'].hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="expertForm.controls['email'].hasError('email')">Invalid email format</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="First Name" [(ngModel)]="expert.firstName" name="firstName" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="firstName" placeholder="First Name" required>
+        <mat-error *ngIf="expertForm.controls['firstName'].hasError('required')">First Name is required</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Last Name" [(ngModel)]="expert.lastName" name="lastName" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="lastName" placeholder="Last Name" required>
+        <mat-error *ngIf="expertForm.controls['lastName'].hasError('required')">Last Name is required</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="date" placeholder="Date of Birth" [(ngModel)]="expert.dateOfBirth" name="dateOfBirth" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="dateOfBirth" type="date" placeholder="Date of Birth" required>
+        <mat-error *ngIf="expertForm.controls['dateOfBirth'].hasError('required')">Date of Birth is required</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Skills" [(ngModel)]="expert.skills" name="skills" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="skills" placeholder="Skills" required>
+        <mat-error *ngIf="expertForm.controls['skills'].hasError('required')">Skills are required</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Rating" [(ngModel)]="expert.rating" name="rating" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="rating" placeholder="Rating" required>
+        <mat-error *ngIf="expertForm.controls['rating'].hasError('required')">Rating is required</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Budget" [(ngModel)]="expert.budget" name="budget" required>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="budget" placeholder="Budget" required>
+        <mat-error *ngIf="expertForm.controls['budget'].hasError('required')">Budget is required</mat-error>
       </mat-form-field>
 
       <button mat-raised-button type="submit">Register as Expert</button>
     </form>
   </mat-tab>
-</mat-tab-group>
+</mat-tab-group> 
+
+</div>
