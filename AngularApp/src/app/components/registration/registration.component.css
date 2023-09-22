@@ -1,11 +1,9 @@
-/* Apply general styles to the form */
 form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
   }
   
-  /* Style the form fields and buttons */
   mat-form-field {
     width: 100%;
     margin-bottom: 15px;
@@ -16,35 +14,54 @@ form {
     margin-top: 10px;
   }
   
-  /* Style the tabs */
   mat-tab-group {
     margin-top: 20px;
   }
-  
-  /* Optional: Style the tab labels */
+
   .mat-tab-label {
     background-color: #007bff;
     color: white;
   }
-  
-  /* Optional: Style the active tab label */
+
   .mat-tab-label.mat-tab-label-active {
     background-color: #0056b3;
   }
   
-  /* Optional: Style the tab content */
   mat-tab-body {
     padding: 20px;
     border: 1px solid #e0e0e0;
-    border-radius: 5px;
+    border-radius: 5px;    
   }
+  
   .table{
-    width : 50%;
-    margin: 5% 25% 25%;
+    width : 40%;
+    margin: 5% 30% 25%;
     border: 1px solid;
+    border-radius: 10px;
   }
 
   form{
     margin-top : 30px;
   }
-  
+
+  #elements{
+    padding:10px;
+    text-align: center;
+  }
+
+  #elements p{
+    margin : 10px;
+  }
+
+  #login_button{
+    text-align: center;
+  }
+
+  .input-container{
+    width:100%;
+  }
+
+  .middle{
+    margin-top:15px;
+    color:red;
+  }
