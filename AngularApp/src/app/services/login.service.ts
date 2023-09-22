@@ -31,7 +31,10 @@ export class LoginService {
         'Accept':'application/json'
       })
     });
-}
+  }
+  getBearerToken(){    
+    return localStorage.getItem("bearerToken");
+  }
 
   setBearerToken (token : string){
     localStorage.clear();

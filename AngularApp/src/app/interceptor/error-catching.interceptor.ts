@@ -7,23 +7,32 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
+import { LoginService } from '../services/login.service';
 
 @Injectable()
 export class ErrorCatchingInterceptor 
 implements HttpInterceptor {
  
   errorMsg : string="";
-  constructor() {}
+  constructor(private _loginservice : LoginService) {}
 
   intercept(request: HttpRequest<unknown>,
      next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log("Passed through the interceptor in request");
-    return next.handle(request)
-    .pipe(
-      map(res => {
-         console.log("Passed through the interceptor in response");
-         return res
-      }),
+      const token = this._loginservice.getBearerToken();
+
+      if (token) {
+        // If we have a token, we set it to the header
+        request = request.clone({
+            setHeaders: {Authorization: `Bearer ${token}`}
+        });
+      } 
+      console.log("Passed through the interceptor in request");
+      return next.handle(request)
+      .pipe(
+        map(res => {
+          console.log("Passed through the interceptor in response");
+          return res
+        }),
 
       catchError(err => {
       // client side errors
