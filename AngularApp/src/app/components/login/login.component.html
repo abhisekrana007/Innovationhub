@@ -6,9 +6,12 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="table">
-  <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
-    <mat-tab label="Innovator">
+  <div class="logo-container">
+    <h3 class="logo"><b>INNOVATION HUB</b></h3>
+  </div>
+  <div class="table-container">
+  <mat-tab-group class="shadow p-3 mb-5 bg-white rounded" id="table" mat-stretch-tabs="true" mat-align-tabs="center">
+    <mat-tab label="INNOVATOR" class="innovator">
       <form [formGroup]="loginInnovatorForm" (ngSubmit)="loginInnovator(loginInnovatorForm)">
         <div class="form-group" id="elements">
           <!-- <mat-form-field appearance="fill">
@@ -16,7 +19,7 @@
             <div>
               <input class="input-container" type="email" placeholder="Email" formControlName="Email" name="Email" required>
             </div>
-            <div class="middle" *ngIf="loginInnovatorForm.controls['Email'].errors && loginInnovatorForm.controls['Email'].touched">
+            <div class="validation-text" *ngIf="loginInnovatorForm.controls['Email'].errors && loginInnovatorForm.controls['Email'].touched">
               <mat-error *ngIf="loginInnovatorForm.controls['Email'].hasError('required')">
                 Please provide an Email
               </mat-error>
@@ -32,7 +35,7 @@
             <div>
               <input class="input-container" type="password" placeholder="Password" formControlName="Password" name="Password" required>
             </div>
-            <div class="middle" *ngIf="loginInnovatorForm.controls['Password'].errors && loginInnovatorForm.controls['Password'].touched">
+            <div class="validation-text" *ngIf="loginInnovatorForm.controls['Password'].errors && loginInnovatorForm.controls['Password'].touched">
               <mat-error *ngIf="loginInnovatorForm.controls['Password'].hasError('required')">
                 Please provide a Password
               </mat-error>
@@ -42,13 +45,13 @@
             </div>
           <!-- </mat-form-field> -->
         </div>
-        <div class="form-group" id="login-button">
-          <button mat-raised-button type="submit" [disabled]="loginInnovatorForm.invalid">Login</button>        
+        <div class="form-group" id="login-button-container">
+          <button mat-raised-button id="login-button" type="submit" [disabled]="loginInnovatorForm.invalid"><b>Log In</b></button>        
         </div>
       </form>
     </mat-tab>
 
-    <mat-tab label="Expert">
+    <mat-tab label="EXPERT" class="expert">
         <form [formGroup]="loginExpertForm" (ngSubmit)="loginExpert(loginExpertForm)">
           <div class="form-group" id="elements">
             <!-- <mat-form-field appearance="fill">
@@ -56,7 +59,7 @@
               <div>
                 <input class="input-container" type="email" placeholder="Email" formControlName="Email" name="Email" required>            
               </div>
-              <div class="middle" *ngIf="loginExpertForm.controls['Email'].errors && loginExpertForm.controls['Email'].touched">
+              <div class="validation-text" *ngIf="loginExpertForm.controls['Email'].errors && loginExpertForm.controls['Email'].touched">
                 <mat-error *ngIf="loginExpertForm.controls['Email'].hasError('required')">
                   Please provide an Email
                 </mat-error>
@@ -72,7 +75,7 @@
               <div>
                 <input class="input-container" type="password" placeholder="Password" formControlName="Password" name="Password" required>
               </div>
-              <div class="middle" *ngIf="loginExpertForm.controls['Password'].errors && loginExpertForm.controls['Password'].touched">
+              <div class="validation-text" *ngIf="loginExpertForm.controls['Password'].errors && loginExpertForm.controls['Password'].touched">
                 <mat-error *ngIf="loginExpertForm.controls['Password'].hasError('required')">
                   Please provide a Password
                 </mat-error>
@@ -82,12 +85,18 @@
               </div>
             <!-- </mat-form-field> -->
           </div>
-          <div class="form-group" id="login-button">
-            <button mat-raised-button type="submit" [disabled]="loginExpertForm.invalid">Login</button>
+          <div class="form-group" id="login-button-container">
+            <button mat-raised-button id="login-button" type="submit" [disabled]="loginExpertForm.invalid"><b>Log In</b></button>
           </div>
       </form>
     </mat-tab>
   </mat-tab-group>
-  </div>
+</div>
+<div class="redirect-container">
+  <span class="redirect">
+    <a>Don't have an Account ? </a>
+    <a href="http://localhost:4200/registration">Register</a>
+  </span>
+</div>
 </body>
 </html>

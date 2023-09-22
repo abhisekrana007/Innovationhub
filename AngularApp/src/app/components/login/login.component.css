@@ -1,8 +1,8 @@
-form {
+ form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-  }
+  } 
   
   mat-form-field {
     width: 100%;
@@ -32,36 +32,75 @@ form {
     border: 1px solid #e0e0e0;
     border-radius: 5px;    
   }
-  
-  .table{
-    width : 40%;
-    margin: 5% 30% 25%;
-    border: 1px solid;
-    border-radius: 10px;
+  .table-container{
+    display: flex;
+    justify-content: center;
+    /* margin-top: 50px; */
   }
 
-  form{
-    margin-top : 30px;
+  #table{      
+    width:26%;
+    height: auto;
+    max-height: 40rem;
+    padding: 0px;
+    /* border: 1px solid;
+    border-radius: 5px; */
+    
   }
+
+   form{
+    margin-top : 20px;
+  } 
 
   #elements{
-    padding:10px;
     text-align: center;
   }
 
-  #elements p{
-    margin : 10px;
+
+  #login-button-container{
+    text-align: center;   
+    margin-top: 20px; 
   }
 
-  #login_button{
-    text-align: center;
+  #login-button{
+    width: 100%;
+    background-color: #007bff;
+    color:white;
   }
 
   .input-container{
     width:100%;
+    height: 45px;
+    padding-left: 10px;
   }
 
-  .middle{
-    margin-top:15px;
+  .validation-text{
+    margin-top:10px;
     color:red;
   }
+
+  .logo-container{
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .logo{
+    color:#007bff
+  }
+  .logo:hover{
+    color:red;
+  }
+
+  .mat-tab-label.innovator {
+    border-bottom: 1px solid #007bff;
+  }
+  .mat-tab-label.expert {
+    border-bottom: 1px solid red;
+  }
+
+  .redirect-container{
+    text-align: center;
+  }
+  /* .redirect{
+    color:#007bff;
+  } */
