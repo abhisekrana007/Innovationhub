@@ -4,13 +4,12 @@ import { NoPreloading, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'registration', component:RegistrationComponent},
-  // {path:'', component:DashboardComponent},
-  {path:'', component:HomeComponent},
+  {path:'', component:DashboardComponent},
+  
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
@@ -21,5 +20,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 
-export const components = [LoginComponent,RegistrationComponent,DashboardComponent,HomeComponent]
+export const components = [LoginComponent,RegistrationComponent,DashboardComponent]
 

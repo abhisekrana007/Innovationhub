@@ -1,67 +1,114 @@
 form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+} 
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-raised-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+mat-tab-group {
+  margin-top: 20px;
+}
+
+.mat-tab-label {
+  background-color: #007bff;
+  color: white;
+}
+
+.mat-tab-label.mat-tab-label-active {
+  background-color: #0056b3;
+}
+
+mat-tab-body {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;    
+}
+.table-container{
+  display: flex;
+  justify-content: center;
+  /* margin-top: 50px; */
+}
+
+#table{      
+  width:40%;
+  height: auto;
+  max-height: 40rem;
+  padding: 0px;
+  /* border: 1px solid;
+  border-radius: 5px; */
   
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  mat-raised-button {
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  mat-tab-group {
-    margin-top: 20px;
-  }
+}
 
-  .mat-tab-label {
-    background-color: #007bff;
-    color: white;
-  }
+ form{
+  margin-top : 20px;
+} 
 
-  .mat-tab-label.mat-tab-label-active {
-    background-color: #0056b3;
-  }
-  
-  mat-tab-body {
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;    
-  }
-  
-  .table{
-    width : 40%;
-    margin: 5% 30% 25%;
-    border: 1px solid;
-    border-radius: 10px;
-  }
+#elements{
+  text-align: center;
+}
 
-  form{
-    margin-top : 30px;
-  }
 
-  #elements{
-    padding:10px;
-    text-align: center;
-  }
+#register-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  #elements p{
-    margin : 10px;
-  }
+/* .input-container{
+  width:100%;
+  height: 45px;
+  padding-left: 10px;
+} */
+/* Form input fields */
+.input-container {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid #007bff;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
 
-  #login_button{
-    text-align: center;
-  }
+.validation-text{
+  margin-top:10px;
+  color:red;
+}
 
-  .input-container{
-    width:100%;
-  }
+.logo-container{
+  text-align: center;
+  margin-top: 10px;
+}
 
-  .middle{
-    margin-top:15px;
-    color:red;
-  }
+.logo{
+  color:#007bff
+}
+.logo:hover{
+  color:red;
+}
+
+.mat-tab-label.innovator {
+  border-bottom: 1px solid #007bff;
+}
+.mat-tab-label.expert {
+  border-bottom: 1px solid red;
+}
+
+.redirect-container{
+  text-align: center;
+}

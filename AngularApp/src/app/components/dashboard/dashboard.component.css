@@ -125,3 +125,167 @@ body, html {
     padding: 10px;
   }
 }
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ 
+
+/* Style the container */
+.container-fluid {
+  padding: 0;
+}
+
+ 
+
+/* Style the navigation bar */
+.navbar {
+  background-color: #007BFF; /* Change the background color as needed */
+  color: #fff; /* Change the text color as needed */
+}
+
+ 
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+ 
+
+.navbar-toggler-icon {
+  background-color: #fff; /* Change the color of the toggler icon */
+}
+
+ 
+
+.nav-link {
+  color: #fff; /* Change the text color for the links */
+}
+
+ 
+
+/* Style the hero unit */
+.hero-unit {
+  background-color: #f8f9fa; /* Change the background color as needed */
+  padding: 40px 0;
+  text-align: center;
+}
+
+ 
+
+.hero-unit h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+ 
+
+.hero-unit p {
+  font-size: 18px;
+}
+
+ 
+
+.btn-primary {
+  background-color: #007BFF; /* Change the button color as needed */
+  color: #fff;
+  border: none;
+}
+
+ 
+
+/* Style the website features section */
+.website-features {
+  padding: 40px 0;
+  background-color: #fff; /* Change the background color as needed */
+  text-align: center;
+}
+
+ 
+
+.website-features h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+ 
+
+.col-md-4 {
+  margin-bottom: 30px;
+}
+
+ 
+
+.feature-icon {
+  font-size: 36px;
+  color: #007BFF; /* Change the icon color as needed */
+}
+
+ 
+
+.feature-icon i {
+  margin-bottom: 10px;
+}
+
+ 
+
+/* Style the feature headings and text */
+.website-features h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ 
+
+.website-features p {
+  font-size: 16px;
+}
+/* Portfolio Section Styles */
+.portfolio {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+}
+
+.portfolio h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.portfolio .row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.portfolio .col-md-4 {
+  margin-bottom: 30px;
+}
+
+.portfolio-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.portfolio-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.portfolio-item h3 {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.portfolio-item p {
+  font-size: 14px;
+  color: #777;
+}
