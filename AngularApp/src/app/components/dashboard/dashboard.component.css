@@ -12,32 +12,35 @@ body, html {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  
 }
 
  
 
 /* Navbar styles */
 .navbar {
-  background-color: #007BFF;
+  background-color: #181515;
+  margin-top: -20px;
 }
+
 
  
 
 .navbar-brand {
-  color: #fff;
+  color: #ffffff;
   font-size: 24px;
 }
 
  
 
 .navbar-toggler-icon {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
  
 
 .navbar-nav .nav-link {
-  color: #111111;
+  color: #ffffff;
 }
 
  
@@ -57,9 +60,9 @@ body, html {
 
 /* Dropdown menu styles */
 .dropdown-menu {
-  background-color: #00c3ff; 
+  background-color: #000000; 
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(245, 245, 245, 0.1);
  
  
 }
@@ -67,7 +70,7 @@ body, html {
  
 
 .dropdown-item {
-  color: #0c0c0c;
+  color: #ffffff;
   padding: 10px 20px;
   transition: background-color 0.3s;
 }
@@ -75,7 +78,7 @@ body, html {
  
 
 .dropdown-item:hover {
-  background-color: #e7dede;
+  background-color: #ffffff;
 }
 
 .navbar-nav {
@@ -86,7 +89,7 @@ body, html {
 
 /* Button styles */
 .btn-primary {
-  background-color: #007BFF;
+  background-color: #000000;
   color: #0c0c0c;
   border: none;
   padding: 10px 20px;
@@ -97,7 +100,7 @@ body, html {
  
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #000000;
 }
 
  
@@ -143,7 +146,7 @@ body, html {
 
 /* Style the navigation bar */
 .navbar {
-  background-color: #007BFF; /* Change the background color as needed */
+  background-color: #000000; /* Change the background color as needed */
   color: #fff; /* Change the text color as needed */
 }
 
@@ -151,6 +154,7 @@ body, html {
 
 .navbar-brand {
   font-weight: bold;
+  color: #f8f9fa;
 }
 
  
@@ -171,8 +175,13 @@ body, html {
 .hero-unit {
   background-color: #f8f9fa; /* Change the background color as needed */
   padding: 40px 0;
+  background-image: url(../../images/lightbg.jpg);
   text-align: center;
+  color: #0c0c0c;
+  /* opacity: 0.5; */
 }
+
+
 
  
 
@@ -272,11 +281,13 @@ body, html {
   border: 1px solid #ddd;
   padding: 20px;
   text-align: center;
+  background-image: url(../../images/product4.jpg);
 }
 
 .portfolio-item img {
   max-width: 100%;
   height: auto;
+  
 }
 
 .portfolio-item h3 {
