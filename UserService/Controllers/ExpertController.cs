@@ -5,7 +5,7 @@ using UserService.Service;
 
 namespace UserService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ExpertController : ControllerBase
     {
@@ -89,7 +89,7 @@ namespace UserService.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        [HttpPut("{expertId}/rating")]
+        [HttpPut("rating/{expertId}")]
         public async Task<IActionResult> UpdateExpertRating(string expertId, [FromBody] double newRating)
         {
             await _expertService.UpdateExpertRatingAsync(expertId, newRating);
