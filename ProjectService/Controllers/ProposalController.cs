@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson.Serialization.Conventions;
 using ProjectService.Exceptions;
@@ -9,6 +10,7 @@ namespace ProjectService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProposalController : ControllerBase
     {
         private readonly IProposalService _proposalservice;

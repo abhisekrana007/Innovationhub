@@ -29,6 +29,8 @@ import { RegistrationService } from './services/registration.service';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { InnovatorprofileComponent } from './components/innovatorprofile/innovatorprofile.component';
+import { ExpertprofileComponent } from './components/expertprofile/expertprofile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
@@ -53,6 +55,8 @@ import { CardexpertproposalComponent } from './components/cardexpertproposal/car
     RegistrationComponent,
     components,
     DashboardComponent,
+    InnovatorprofileComponent,
+    ExpertprofileComponent,
   
     NavbarComponent,
     FooterComponent,
@@ -76,7 +80,6 @@ import { CardexpertproposalComponent } from './components/cardexpertproposal/car
     MatButtonModule,MatIconModule,MatDividerModule,MatCardModule,MatFormFieldModule,
     ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule,NgbModule
     
-
   ],
   providers: [LoginService,RegistrationService,
     {
