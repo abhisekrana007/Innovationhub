@@ -21,9 +21,9 @@ namespace ProjectService.Models
         public string? InnovatorID { get; set; }
 
         [BsonRepresentation(BsonType.DateTime)]
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }=DateTime.Now;
 
-        public string? Status { get; set; }
+        public string? Status { get; set; } = "can apply";
 
         public string? ExpertId { get; set; }
     }
