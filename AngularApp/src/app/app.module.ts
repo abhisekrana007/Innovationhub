@@ -45,6 +45,7 @@ import { ModalinovhomeComponent } from './components/modalinovhome/modalinovhome
 import { ModalexpertproposalComponent } from './components/modalexpertproposal/modalexpertproposal.component';
 import { CardinovhomeComponent } from './components/cardinovhome/cardinovhome.component';
 import { CardexpertproposalComponent } from './components/cardexpertproposal/cardexpertproposal.component';
+import { DecodeJWTService } from './services/decode-jwt.service';
 
 
 
@@ -57,7 +58,6 @@ import { CardexpertproposalComponent } from './components/cardexpertproposal/car
     DashboardComponent,
     InnovatorprofileComponent,
     ExpertprofileComponent,
-  
     NavbarComponent,
     FooterComponent,
     ModalComponent,
@@ -81,7 +81,7 @@ import { CardexpertproposalComponent } from './components/cardexpertproposal/car
     ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule,NgbModule
     
   ],
-  providers: [LoginService,RegistrationService,
+  providers: [LoginService,RegistrationService,DecodeJWTService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorCatchingInterceptor,
