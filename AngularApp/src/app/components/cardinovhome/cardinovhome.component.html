@@ -1,0 +1,15 @@
+<div *ngFor="let project of projects" class="card shadow-lg mt-5 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div class="card-body">
+    <h5 class="card-title">{{project.projectTitle}}</h5>
+    <p class="card-text">{{project.description}}</p>
+    <div class="d-flex flex-row justify-content-between">
+    <h6>{{project.creationDate}}</h6>
+    <h6 class="card-subtitle mb-2 text-success">{{project.status}}</h6>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <app-modalinovhome></app-modalinovhome>

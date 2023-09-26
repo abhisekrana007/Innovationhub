@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using ProjectService.Exceptions;
 using ProjectService.Models;
 using ProjectService.Repository;
 
@@ -69,6 +70,19 @@ namespace ProjectService.Services
             return result;
         }
 
+        public bool StatusUpdate(string id)
+        {
+
+            var result = _repo.StatusUpdate(id);
+            if (!result)
+            {
+                return false;
+
+
+            }
+            return true;
+
+        }
 
     }
 }

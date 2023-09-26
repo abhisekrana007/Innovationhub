@@ -24,11 +24,25 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ErrorCatchingInterceptor } from './interceptor/error-catching.interceptor';
-
+ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationService } from './services/registration.service';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { CardComponent } from './components/card/card.component';
+import { InnovatorprojectComponent } from './components/innovatorproject/innovatorproject.component';
+import { ProposalhomeComponent } from './components/proposalhome/proposalhome.component';
+import { CardhomeComponent } from './components/cardhome/cardhome.component';
+import { ModalhomeComponent } from './components/modalhome/modalhome.component';
+import { InnovatorprojecthomeComponent } from './components/innovatorprojecthome/innovatorprojecthome.component';
+import { ExpertproposalComponent } from './components/expertproposal/expertproposal.component';
+import { ModalinovhomeComponent } from './components/modalinovhome/modalinovhome.component';
+import { ModalexpertproposalComponent } from './components/modalexpertproposal/modalexpertproposal.component';
+import { CardinovhomeComponent } from './components/cardinovhome/cardinovhome.component';
+import { CardexpertproposalComponent } from './components/cardexpertproposal/cardexpertproposal.component';
 
 
 
@@ -39,14 +53,29 @@ import { MatMenuModule } from '@angular/material/menu';
     RegistrationComponent,
     components,
     DashboardComponent,
-  
+  ,
+    NavbarComponent,
+    FooterComponent,
+    ModalComponent,
+    CardComponent,
+    InnovatorprojectComponent,
+    ProposalhomeComponent,
+    CardhomeComponent,
+    ModalhomeComponent,
+    InnovatorprojecthomeComponent,
+    ExpertproposalComponent,
+    ModalinovhomeComponent,
+    ModalexpertproposalComponent,
+    CardinovhomeComponent,
+    CardexpertproposalComponent
 
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,
     MatToolbarModule,FormsModule,HttpClientModule,MatSlideToggleModule,
     MatButtonModule,MatIconModule,MatDividerModule,MatCardModule,MatFormFieldModule,
-    ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule
+    ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule,NgbModule
+    
 
   ],
   providers: [LoginService,RegistrationService,

@@ -16,7 +16,7 @@ namespace ProjectService.Models
 
         //[BsonElement("status")]
         [BsonRepresentation(BsonType.String)]
-        public string Status { get; set; }
+        public string? Status { get; set; } = "applied";
         
         //[BsonElement("submission_date")]
         [BsonRepresentation(BsonType.DateTime)]

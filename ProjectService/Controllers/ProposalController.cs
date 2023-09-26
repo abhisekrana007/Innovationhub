@@ -39,6 +39,23 @@ namespace ProjectService.Controllers
 
 
         }
+        [HttpGet]
+        public ActionResult GetAllProposal()
+        {
+            try
+            {
+                var result = _proposalservice.GetAllProposal();
+                return Ok(result);
+            }
+            catch (ProposalNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost]
 
@@ -61,7 +78,7 @@ namespace ProjectService.Controllers
 
         [HttpPut("{proposalId}")]
 
-        public ActionResult Edit(string proposalId, [FromBody] Proposal proposal)
+        public ActionResult Edit(string id, [FromBody] Proposal proposal)
         {
             try
             {
@@ -98,14 +115,14 @@ namespace ProjectService.Controllers
             }
         }
 
-        [HttpPost("updatestatus")]
+        [HttpPut("update/{proposalid}")]
 
-        public ActionResult StatusUpdate(Proposal proposal)
+        public ActionResult StatusUpdate(string proposalid)
         {
 
             try
             {
-                var result = _proposalservice.StatusUpdate(proposal);
+                var result = _proposalservice.StatusUpdate(proposalid);
                 return Created("Status Updated", result);
             }
             catch (ProposalNotFoundException ex)

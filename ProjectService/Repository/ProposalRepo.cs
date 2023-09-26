@@ -3,6 +3,7 @@ using ProjectService.Models;
 using MongoDB.Driver;
 using ProjectService.services;
 using Microsoft.Extensions.Options;
+using ProjectService.Services;
 
 namespace ProjectService.Repository
 {
@@ -11,7 +12,8 @@ namespace ProjectService.Repository
     {
         private readonly IMongoCollection<Proposal> _proposals;
         private readonly IOptions<DatabaseSettings> _dbSettings;
-        public ProposalRepo(IOptions<DatabaseSettings> dbSettings)
+        private readonly IProjectServices _projectserv;
+        public ProposalRepo(IOptions<DatabaseSettings> dbSettings, IProjectServices projectService)
         {
             //var dbHost = "localhost";
             //var dbName = "Proposal_DB";
@@ -26,6 +28,7 @@ namespace ProjectService.Repository
             var database = client.GetDatabase(dbSettings.Value.DatabaseName);
             _proposals = database.GetCollection<Proposal>
                 (dbSettings.Value.ProposalsCollectionName);
+            _projectserv = projectService;
 
 
         }
@@ -77,22 +80,39 @@ namespace ProjectService.Repository
             return true;
         }
 
-        public bool StatusUpdate(Proposal proposal)
+        public bool StatusUpdate(string proposalid)
         {
-            if (proposal != null)
+            if (proposalid != null)
             {
-               // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
-                var filter = Builders<Proposal>.Filter.Eq(x => x.ProposalId, proposal.ProposalId);
-                _proposals.ReplaceOne(filter, proposal);
+                var obj = _proposals.Find(x => x.ProposalId == proposalid).FirstOrDefault();
+                obj.Status = "running";
+
+                // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
+                var filter = Builders<Proposal>.Filter.Eq(x => x.ProposalId, proposalid);
+                _proposals.ReplaceOne(filter, obj);
+                
                 //var result = _proposals.Find(x => x.ProposalId != proposal.ProposalId).ToList();
                 //var filters = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
                 //_proposals.ReplaceOne(filters, proposal);
-                return true;
+                var obj1 = _projectserv.StatusUpdate(obj.ProjectId);
+                if (obj1)
+                {
+                    return true;
+                }
+                
             }
-
             return false;
         }
 
+        public List<Proposal> GetAllProposal()
+        {
+            var obj = _proposals.Find(x => true).ToList();
+            if (obj == null)
+            {
+                return null;
+            }
+            return obj;
 
+        }
     }
 }
