@@ -78,7 +78,7 @@ namespace ProjectService.Controllers
 
         [HttpPut("{proposalId}")]
 
-        public ActionResult Edit(string id, [FromBody] Proposal proposal)
+        public ActionResult Edit(string proposalId, [FromBody] Proposal proposal)
         {
             try
             {

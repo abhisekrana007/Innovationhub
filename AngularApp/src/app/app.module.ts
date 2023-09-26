@@ -53,7 +53,7 @@ import { CardexpertproposalComponent } from './components/cardexpertproposal/car
     RegistrationComponent,
     components,
     DashboardComponent,
-  ,
+  
     NavbarComponent,
     FooterComponent,
     ModalComponent,
