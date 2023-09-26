@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectService.Exceptions;
 using ProjectService.Models;
 using ProjectService.Services;
 
@@ -98,5 +99,28 @@ namespace ProjectService.Controllers
             }
             return Ok(obj);
         }
+
+        //[HttpPut("update/{proposalid}")]
+
+        //public ActionResult StatusUpdate(string proposalid)
+        //{
+
+        //    try
+        //    {
+        //        var result = _projectService.StatusUpdate(proposalid);
+        //        return Created("Status Updated", result);
+        //    }
+        //    catch (ProposalNotFoundException ex)
+        //    {
+        //        return NotFound(ex.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+
+        //}
+
+
     }
 }

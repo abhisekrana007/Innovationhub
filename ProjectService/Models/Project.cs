@@ -11,12 +11,12 @@ namespace ProjectService.Models
 
         public string? ProjectTitle { get; set; }
 
-        public string? ProjectImage { get; set; }
+        
         public string? ProjectDoc { get; set; }
 
         public string? Description { get; set; }
 
-        public List<string> RequiredSkills { get; set; }
+        public string? RequiredSkills { get; set; }
 
         public string? InnovatorID { get; set; }
 

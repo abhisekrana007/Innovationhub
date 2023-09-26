@@ -15,6 +15,8 @@ namespace ProjectService.Repository
         Proposal GetAcceptedProposal(List<Proposal> proposals, string proposalId);
 
         List<Project> GetByExpertID(string id);
-    
+
+        bool StatusUpdate(string id);
+
     }
 }

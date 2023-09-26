@@ -9,6 +9,9 @@ namespace ProjectService.services
         bool DeleteProposal(string proposalId);
         bool UpdateProposal(string id,Proposal proposal);
         List<Proposal> GetAllProposalByProjectId(string projectid);
-        bool StatusUpdate(Proposal proposal);
+        bool StatusUpdate(string proposalid);
+
+        List<Proposal> GetAllProposal();
+
     }
 }
