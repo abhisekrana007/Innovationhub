@@ -29,6 +29,8 @@ import { RegistrationService } from './services/registration.service';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { InnovatorprofileComponent } from './components/innovatorprofile/innovatorprofile.component';
+import { ExpertprofileComponent } from './components/expertprofile/expertprofile.component';
 
 
 
@@ -39,6 +41,8 @@ import { MatMenuModule } from '@angular/material/menu';
     RegistrationComponent,
     components,
     DashboardComponent,
+    InnovatorprofileComponent,
+    ExpertprofileComponent,
   
 
   ],
