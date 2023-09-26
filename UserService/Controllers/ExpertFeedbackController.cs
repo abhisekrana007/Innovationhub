@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UserService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ExpertFeedbackController : ControllerBase
     {
@@ -32,12 +32,12 @@ namespace UserService.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetFeedbackByIdAsync(string id)
+        [HttpGet("{FeedbackId}")]
+        public async Task<IActionResult> GetFeedbackByIdAsync(string FeedbackId)
         {
             try
             {
-                var feedback = await _service.GetFeedbackByIdAsync(id);
+                var feedback = await _service.GetFeedbackByIdAsync(FeedbackId);
                 if (feedback == null)
                     return NotFound();
 
@@ -84,12 +84,12 @@ namespace UserService.Controllers
 
 
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateFeedbackAsync(string id, [FromBody] ExpertFeedback feedback)
+        [HttpPut("{FeedbackId}")]
+        public async Task<IActionResult> UpdateFeedbackAsync(string FeedbackId, [FromBody] ExpertFeedback feedback)
         {
             try
             {
-                await _service.UpdateFeedbackAsync(id, feedback);
+                await _service.UpdateFeedbackAsync(FeedbackId, feedback);
                 return NoContent();
             }
             catch (Exception ex)
@@ -98,12 +98,12 @@ namespace UserService.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFeedbackAsync(string id)
+        [HttpDelete("{FeedbackId}")]
+        public async Task<IActionResult> DeleteFeedbackAsync(string FeedbackId)
         {
             try
             {
-                await _service.DeleteFeedbackAsync(id);
+                await _service.DeleteFeedbackAsync(FeedbackId);
                 return NoContent();
             }
             catch (Exception ex)

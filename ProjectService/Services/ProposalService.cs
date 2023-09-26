@@ -65,10 +65,10 @@ namespace ProjectService.services
             return result;
         }
 
-        public bool StatusUpdate(Proposal proposal)
+        public bool StatusUpdate(string proposalid)
         {
 
-            var result = _repo.StatusUpdate(proposal);
+            var result = _repo.StatusUpdate(proposalid);
             if (!result)
             {
                 throw new ProposalNotFoundException("No accepted propsal came from innvoator side");
@@ -77,6 +77,16 @@ namespace ProjectService.services
             }
             return result;
 
+        }
+
+        public List<Proposal> GetAllProposal()
+        {
+            var result = _repo.GetAllProposal();
+            if (result == null)
+            {
+                throw new ProposalNotFoundException("No proposals found in database");
+            }
+            return result;
         }
 
 

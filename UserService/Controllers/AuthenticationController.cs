@@ -13,7 +13,7 @@ namespace UserService.Controllers
 {
 
 
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
@@ -40,7 +40,7 @@ namespace UserService.Controllers
             Innovator findInnovator = CheckInnovator(innovatorEmail, innovatorPassword);
             if (findInnovator != null)
             {
-                var tokenString = GenerateToken(findInnovator.Username);
+                var tokenString = GenerateToken(findInnovator.InnovatorID,"Innovator");
                 return Ok(new { token = tokenString });
             }
 
@@ -56,19 +56,20 @@ namespace UserService.Controllers
             Expert findExpert = CheckExpert(expertEmail, expertPassword);
             if (findExpert != null)
             {
-                var tokenString = GenerateToken(findExpert.Username);
+                var tokenString = GenerateToken(findExpert.ExpertID,"Expert");
                 return Ok(new { token = tokenString });
             }
 
             return Unauthorized();
         }
-        private string GenerateToken(string username)
+        private string GenerateToken(string id,string role)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
             var claims = new[]
             {
-                    new Claim(ClaimTypes.Name, username),
+                    new Claim(ClaimTypes.Name, id),
+                    new Claim(ClaimTypes.Role, role)
                     // Add more claims if needed
                 };
 

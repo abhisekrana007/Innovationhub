@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson.Serialization.Conventions;
 using ProjectService.Exceptions;
@@ -9,6 +10,7 @@ namespace ProjectService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProposalController : ControllerBase
     {
         private readonly IProposalService _proposalservice;
@@ -39,6 +41,23 @@ namespace ProjectService.Controllers
 
 
         }
+        [HttpGet]
+        public ActionResult GetAllProposal()
+        {
+            try
+            {
+                var result = _proposalservice.GetAllProposal();
+                return Ok(result);
+            }
+            catch (ProposalNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost]
 
@@ -59,13 +78,13 @@ namespace ProjectService.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{proposalId}")]
 
-        public ActionResult Edit(string id,[FromBody] Proposal proposal)
+        public ActionResult Edit(string proposalId, [FromBody] Proposal proposal)
         {
             try
             {
-                var result = _proposalservice.UpdateProposal(id, proposal);
+                var result = _proposalservice.UpdateProposal(proposalId, proposal);
                 return Ok(result);
             }
             catch (ProposalNotFoundException ex)
@@ -98,14 +117,14 @@ namespace ProjectService.Controllers
             }
         }
 
-        [HttpPost("updatestatus")]
+        [HttpPut("update/{proposalid}")]
 
-        public ActionResult StatusUpdate(Proposal proposal)
+        public ActionResult StatusUpdate(string proposalid)
         {
 
             try
             {
-                var result = _proposalservice.StatusUpdate(proposal);
+                var result = _proposalservice.StatusUpdate(proposalid);
                 return Created("Status Updated", result);
             }
             catch (ProposalNotFoundException ex)

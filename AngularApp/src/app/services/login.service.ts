@@ -7,8 +7,8 @@ import { User } from 'src/models/user';
   providedIn: 'root'
 })
 export class LoginService {
-  private innovatorUrl = 'https://localhost:7285/api/Authentication/innovator/login';
-  private expertUrl = 'https://localhost:7285/api/Authentication/expert/login';
+  private innovatorUrl = 'https://localhost:7285/api/v1/Authentication/innovator/login';
+  private expertUrl = 'https://localhost:7285/api/v1/Authentication/expert/login';
   
   constructor(private _http: HttpClient) { }
   

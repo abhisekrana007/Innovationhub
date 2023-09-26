@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using ProjectService.Exceptions;
 using ProjectService.Models;
 using ProjectService.Services;
 
@@ -8,6 +10,7 @@ namespace ProjectService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProjectController : ControllerBase
     {
         private readonly IProjectServices _projectService;
@@ -25,10 +28,10 @@ namespace ProjectService.Controllers
         }
 
         // GET api/ProjectController/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        [HttpGet("{projectId}")]
+        public async Task<IActionResult> Get(string projectId)
         {
-            var project = await _projectService.GetById(id);
+            var project = await _projectService.GetById(projectId);
             if (project == null)
             {
                 return NotFound();
@@ -36,10 +39,10 @@ namespace ProjectService.Controllers
             return Ok(project);
         }
 
-        [HttpGet("[action]/{innovatoriD}")]
-        public IActionResult GetbyInnoid(string innovatoriD)
+        [HttpGet("[action]/{innovatorId}")]
+        public IActionResult GetByInnovatorId(string innovatorId)
         {
-            var project =  _projectService.GetByInnoId(innovatoriD);
+            var project =  _projectService.GetByInnoId(innovatorId);
             if (project == null)
             {
                 return NotFound();
@@ -56,25 +59,25 @@ namespace ProjectService.Controllers
         }
 
         // PUT api/ProjectController/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(string id, [FromBody] Project newproject)
+        [HttpPut("{projectId}")]
+        public async Task<IActionResult> Put(string projectId, [FromBody] Project newproject)
         {
-            var project = await _projectService.GetById(id);
+            var project = await _projectService.GetById(projectId);
             if (project == null)
                 return NotFound();
 
-            await _projectService.UpdateAsync(id, newproject);
+            await _projectService.UpdateAsync(projectId, newproject);
             return Ok("Updated successfully");
         }
 
         // DELETE api/ProjectController/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        [HttpDelete("{projectId}")]
+        public async Task<IActionResult> Delete(string projectId)
         {
-            var project = await _projectService.GetById(id);
+            var project = await _projectService.GetById(projectId);
             if (project == null)
                 return NotFound();
-            await _projectService.DeleteAysnc(id);
+            await _projectService.DeleteAysnc(projectId);
             return Ok("deleted Successfully");
         }
 
@@ -89,7 +92,7 @@ namespace ProjectService.Controllers
 
         [HttpGet("[action]/{expertid}")]
 
-        public IActionResult GetProjectByExpertid(string expertid)
+        public IActionResult GetByExpertId(string expertid)
         {
             var obj=_projectService.GetByExpertID(expertid);
             if (obj == null)
@@ -98,5 +101,28 @@ namespace ProjectService.Controllers
             }
             return Ok(obj);
         }
+
+        //[HttpPut("update/{proposalid}")]
+
+        //public ActionResult StatusUpdate(string proposalid)
+        //{
+
+        //    try
+        //    {
+        //        var result = _projectService.StatusUpdate(proposalid);
+        //        return Created("Status Updated", result);
+        //    }
+        //    catch (ProposalNotFoundException ex)
+        //    {
+        //        return NotFound(ex.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+
+        //}
+
+
     }
 }

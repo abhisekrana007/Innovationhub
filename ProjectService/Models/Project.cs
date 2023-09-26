@@ -11,19 +11,19 @@ namespace ProjectService.Models
 
         public string? ProjectTitle { get; set; }
 
-        public string? ProjectImage { get; set; }
+        
         public string? ProjectDoc { get; set; }
 
         public string? Description { get; set; }
 
-        public List<string> RequiredSkills { get; set; }
+        public string? RequiredSkills { get; set; }
 
         public string? InnovatorID { get; set; }
 
         [BsonRepresentation(BsonType.DateTime)]
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }=DateTime.Now;
 
-        public string? Status { get; set; }
+        public string? Status { get; set; } = "can apply";
 
         public string? ExpertId { get; set; }
     }

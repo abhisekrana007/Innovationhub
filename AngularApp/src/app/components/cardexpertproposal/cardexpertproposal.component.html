@@ -1,0 +1,43 @@
+<div *ngFor="let proposal of proposals" class="card shadow-lg mt-5 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+ 
+
+    <div class="card-body">
+
+ 
+
+      <!-- <h5 class="card-title">Project Name</h5> -->
+
+ 
+
+      <p class="card-text">{{proposal.proposalComment}}</p>
+
+ 
+
+      <div class="d-flex flex-row justify-content-between">
+
+ 
+
+          <h6>{{proposal.submissionDate}}</h6>
+
+ 
+
+          <h6 class="card-subtitle mb-2 text-success">{{proposal.status}}</h6>
+
+ 
+
+        </div>
+
+ 
+
+    </div>
+
+ 
+
+</div>
+
+ 
+
+ 
+
+<app-modalexpertproposal></app-modalexpertproposal>

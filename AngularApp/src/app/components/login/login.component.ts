@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { lastValueFrom, throwError } from 'rxjs';
+import { DecodeJWTService } from 'src/app/services/decode-jwt.service';
 import { LoginService } from 'src/app/services/login.service';
 import { User } from 'src/models/user';
 
@@ -16,7 +17,7 @@ export class LoginComponent {
   expert: any = {};
   token : any = {};
 
-  constructor(private fb : FormBuilder,private _loginservice: LoginService) {
+  constructor(private fb : FormBuilder,private _loginservice: LoginService,private _decodejwtservice: DecodeJWTService) {
     this.loginInnovatorForm= fb.group({
       Email : new FormControl("", [Validators.required,Validators.email]),
       Password: new FormControl("",[Validators.required,Validators.minLength(3)])
@@ -49,6 +50,8 @@ export class LoginComponent {
         }             
       
       this._loginservice.setBearerToken(this.token.token);
+      // var userid = this._decodejwtservice.getUserId();
+      // console.log(userid);
       //this._routerservice.routeToDashboard();
                  
     }      
@@ -62,6 +65,7 @@ export class LoginComponent {
         "Email" : regForm.controls.Email.value,
         "Password" : regForm.controls.Password.value  
       };    
+      console.log("hello");
       this._loginservice.authenticateExpert(user).subscribe(
         ((res) =>this.token = (res)),
         (err:any)=>{        
@@ -74,6 +78,7 @@ export class LoginComponent {
         }             
       
       this._loginservice.setBearerToken(this.token.token);
+      // console.log("userid is :" + this._decodejwtservice.getUserId);
       //this._routerservice.routeToDashboard();
                  
     }      
