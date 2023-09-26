@@ -176,6 +176,9 @@ body, html {
   background-color: #f8f9fa; /* Change the background color as needed */
   padding: 40px 0;
   background-image: url(../../images/lightbg.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center center;
   text-align: center;
   color: #0c0c0c;
   /* opacity: 0.5; */
