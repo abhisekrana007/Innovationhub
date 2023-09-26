@@ -62,6 +62,7 @@ export class LoginComponent {
         "Email" : regForm.controls.Email.value,
         "Password" : regForm.controls.Password.value  
       };    
+      console.log(user);
       this._loginservice.authenticateExpert(user).subscribe(
         ((res) =>this.token = (res)),
         (err:any)=>{        
