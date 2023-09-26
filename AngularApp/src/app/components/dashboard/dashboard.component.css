@@ -12,32 +12,35 @@ body, html {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  
 }
 
  
 
 /* Navbar styles */
 .navbar {
-  background-color: #007BFF;
+  background-color: #181515;
+  margin-top: -20px;
 }
+
 
  
 
 .navbar-brand {
-  color: #fff;
+  color: #ffffff;
   font-size: 24px;
 }
 
  
 
 .navbar-toggler-icon {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
  
 
 .navbar-nav .nav-link {
-  color: #111111;
+  color: #ffffff;
 }
 
  
@@ -57,9 +60,9 @@ body, html {
 
 /* Dropdown menu styles */
 .dropdown-menu {
-  background-color: #00c3ff; 
+  background-color: #000000; 
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(245, 245, 245, 0.1);
  
  
 }
@@ -67,7 +70,7 @@ body, html {
  
 
 .dropdown-item {
-  color: #0c0c0c;
+  color: #ffffff;
   padding: 10px 20px;
   transition: background-color 0.3s;
 }
@@ -75,7 +78,7 @@ body, html {
  
 
 .dropdown-item:hover {
-  background-color: #e7dede;
+  background-color: #ffffff;
 }
 
 .navbar-nav {
@@ -86,7 +89,7 @@ body, html {
 
 /* Button styles */
 .btn-primary {
-  background-color: #007BFF;
+  background-color: #000000;
   color: #0c0c0c;
   border: none;
   padding: 10px 20px;
@@ -97,7 +100,7 @@ body, html {
  
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #000000;
 }
 
  
@@ -124,4 +127,176 @@ body, html {
   .container {
     padding: 10px;
   }
+}
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ 
+
+/* Style the container */
+.container-fluid {
+  padding: 0;
+}
+
+ 
+
+/* Style the navigation bar */
+.navbar {
+  background-color: #000000; /* Change the background color as needed */
+  color: #fff; /* Change the text color as needed */
+}
+
+ 
+
+.navbar-brand {
+  font-weight: bold;
+  color: #f8f9fa;
+}
+
+ 
+
+.navbar-toggler-icon {
+  background-color: #fff; /* Change the color of the toggler icon */
+}
+
+ 
+
+.nav-link {
+  color: #fff; /* Change the text color for the links */
+}
+
+ 
+
+/* Style the hero unit */
+.hero-unit {
+  background-color: #f8f9fa; /* Change the background color as needed */
+  padding: 40px 0;
+  background-image: url(../../images/lightbg.jpg);
+  text-align: center;
+  color: #0c0c0c;
+  /* opacity: 0.5; */
+}
+
+
+
+ 
+
+.hero-unit h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+ 
+
+.hero-unit p {
+  font-size: 18px;
+}
+
+ 
+
+.btn-primary {
+  background-color: #007BFF; /* Change the button color as needed */
+  color: #fff;
+  border: none;
+}
+
+ 
+
+/* Style the website features section */
+.website-features {
+  padding: 40px 0;
+  background-color: #fff; /* Change the background color as needed */
+  text-align: center;
+}
+
+ 
+
+.website-features h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+ 
+
+.col-md-4 {
+  margin-bottom: 30px;
+}
+
+ 
+
+.feature-icon {
+  font-size: 36px;
+  color: #007BFF; /* Change the icon color as needed */
+}
+
+ 
+
+.feature-icon i {
+  margin-bottom: 10px;
+}
+
+ 
+
+/* Style the feature headings and text */
+.website-features h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ 
+
+.website-features p {
+  font-size: 16px;
+}
+/* Portfolio Section Styles */
+.portfolio {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+}
+
+.portfolio h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.portfolio .row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.portfolio .col-md-4 {
+  margin-bottom: 30px;
+}
+
+.portfolio-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  background-image: url(../../images/product4.jpg);
+}
+
+.portfolio-item img {
+  max-width: 100%;
+  height: auto;
+  
+}
+
+.portfolio-item h3 {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.portfolio-item p {
+  font-size: 14px;
+  color: #777;
 }

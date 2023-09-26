@@ -1,22 +1,160 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <a class="navbar-brand" href="#">INNOVATION_HUB</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto"> <!-- Add ml-auto class here -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          User
-        </a>
-        <div class="dropdown-menu" aria-labelledby="userDropdown">
-          <a class="dropdown-item" routerLink="/login">Login</a>
-          <a class="dropdown-item" routerLink="/registration">Registration</a>
-          <a class="dropdown-item" routerLink="/my profile">MY Profile</a>
+<div class="container-fluid p-0">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand" href="#">INNOVATION_HUB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#portfolio">Portfolio</a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            User
+          </a>
+          <div class="dropdown-menu" aria-labelledby="userDropdown">
+            <a class="dropdown-item" routerLink="/login">Login</a>
+            <a class="dropdown-item" routerLink="/registration">Registration</a>
+            <!-- <a class="dropdown-item" routerLink="/my-profile">My Profile</a> -->
+            <a class="dropdown-item" routerLink="/logout">Logout</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Unit -->
+  <!-- <div style="background-image: url(../../images/background\ image.jpg);"> -->
+  <section class="hero-unit">
+    <div class="container">
+      <div class="bgimg">
+      <h1>Welcome to INNOVATION_HUB</h1>
+      <p>Your one-stop hub for innovation and creativity.</p>
+      <a class="btn btn-primary" routerLink="/learn-more">Learn More</a>
+    </div>
+    </div>
+  </section>
+  <!-- </div> -->
+
+  <!-- Website Features -->
+  <section class="website-features">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="row">
+        <!-- Feature 1 -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <div class="centered-text">
+                <a href="#" class="invisible-button">
+                  <h3>Expert</h3>
+                </a>
+                <p>Bridging Excellence with Expertise.</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </li>
-    </ul>
+        <!-- Feature 2 -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="centered-text">
+                <a href="#" class="invisible-button">
+                  <h3>Innovator</h3>
+                </a>
+                <p>Shaping Tomorrow with Innovation Today.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 3 (Collaboration) -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="centered-text">
+                <a href="#" class="invisible-button">
+                  <h3>Collaboration</h3>
+                </a>
+                <p>Collaborate to Elevate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+<!-- Portfolio Section -->
+<!-- <section class="portfolio">
+  <div class="container">
+    <h2>Portfolio</h2>
+    <div class="row"> -->
+      <!-- Portfolio Item 1 -->
+      <!-- <div class="col-md-4">
+        <div class="portfolio-item"> -->
+          <!-- <img src="../../images/product4.jpg" alt="Portfolio Item 1"> -->
+          <!-- <h3>Portfolio Item 1</h3>
+          <p>Description for Portfolio Item 1.</p>
+        </div>
+      </div> -->
+      <!-- Portfolio Item 2 -->
+      <!-- <div class="col-md-4">
+        <div class="portfolio-item"> -->
+          <!-- <img src="portfolio-image-2.jpg" alt="Portfolio Item 2"> -->
+          <!-- <h3>Portfolio Item 2</h3>
+          <p>Description for Portfolio Item 2.</p>
+        </div>
+      </div> -->
+      <!-- Portfolio Item 3 -->
+      <!-- <div class="col-md-4">
+        <div class="portfolio-item"> -->
+          <!-- <img src="portfolio-image-3.jpg" alt="Portfolio Item 3"> -->
+          <!-- <h3>Portfolio Item 3</h3>
+          <p>Description for Portfolio Item 3.</p>
+        </div>
+      </div>
+    </div>
   </div>
-</nav>
+</section> -->
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>INNOVATION_HUB</h4>
+        <p>Divyasree Technopolis, 124, 125, Yemalur | BANGALORE | INDIA</p>
+        <p>Email: example@example.com</p>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline text-right">
+          <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+

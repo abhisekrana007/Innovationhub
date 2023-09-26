@@ -1,0 +1,224 @@
+{
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:5150"
+    },
+    "Routes": [
+        {
+            "UpstreamPathTemplate": "/login/innovator",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamPathTemplate": "/api/v1/Authentication/innovator/login",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/login/expert",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamPathTemplate": "/api/v1/Authentication/expert/login",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/expert/{expertId}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamPathTemplate": "/api/v1/Expert/{expertId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/expert",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamPathTemplate": "/api/v1/Expert",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/expert/rating/{expertId}",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamPathTemplate": "/api/v1/Expert/rating/{expertId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/innovator/{innovatorId}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamPathTemplate": "/api/v1/Innovator/{innovatorId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/innovator",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamPathTemplate": "/api/v1/innovator",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/feedback",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamPathTemplate": "/api/v1/ExpertFeedback",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/feedback/{FeedbackId}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamPathTemplate": "/api/v1/ExpertFeedback/{FeedbackId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/rating/{expertId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/v1/ExpertFeedback/rating/{expertId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5080
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/project",
+            "UpstreamHttpMethod": [ "Post", "Get" ],
+            "DownstreamPathTemplate": "/api/Project",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/project/innovator/{innovatorId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/GetByInnovatorId/{innovatorId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/project/innovator/{innovatorId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/GetByInnovatorId/{innovatorId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/project/{proposalId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/GetAcceptedProposal/{proposalId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/project/expert/{expertId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/GetByExpertId/{expertId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/proposal/{projectId}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamPathTemplate": "/api/Proposal/{projectId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/proposal",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamPathTemplate": "/api/Proposal",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/proposal/status",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamPathTemplate": "/api/Proposal/updatestatus",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5119
+                }
+            ]
+        }
+    ]
+
+}

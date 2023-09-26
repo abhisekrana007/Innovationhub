@@ -76,13 +76,13 @@ namespace ProjectService.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{proposalId}")]
 
         public ActionResult Edit(string id, [FromBody] Proposal proposal)
         {
             try
             {
-                var result = _proposalservice.UpdateProposal(id, proposal);
+                var result = _proposalservice.UpdateProposal(proposalId, proposal);
                 return Ok(result);
             }
             catch (ProposalNotFoundException ex)

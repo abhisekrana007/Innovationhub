@@ -45,6 +45,7 @@ import { CardinovhomeComponent } from './components/cardinovhome/cardinovhome.co
 import { CardexpertproposalComponent } from './components/cardexpertproposal/cardexpertproposal.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { CardexpertproposalComponent } from './components/cardexpertproposal/car
     RegistrationComponent,
     components,
     DashboardComponent,
+  ,
     NavbarComponent,
     FooterComponent,
     ModalComponent,

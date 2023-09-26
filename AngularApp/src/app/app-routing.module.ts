@@ -10,6 +10,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'registration', component:RegistrationComponent},
   {path:'', component:DashboardComponent},
+  
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
