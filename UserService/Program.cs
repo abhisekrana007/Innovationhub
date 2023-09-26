@@ -59,14 +59,15 @@ app.UseCors(x =>
            .AllowAnyOrigin());
 if (app.Environment.IsDevelopment())
 {
-    app.UseAuthentication();
-    app.UseAuthorization();
+    //app.UseAuthentication();
+    //app.UseAuthorization();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
