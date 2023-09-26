@@ -1,16 +1,15 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthenticateService } from '../services/authenticate.service';
+import { LoginService } from '../services/login.service';
 import { inject } from '@angular/core';
 import { RoutingService } from '../services/routing.service';
 export const authenticateGuard: CanActivateFn = (route, state) => {
-  const auth = inject(AuthenticateService)
+  const auth = inject(LoginService)
   const route1 = inject (RoutingService)
-if(auth.GetValueFromLocalStorage() == true)
-  return true;
-  else 
+  if(auth.getBearerToken() != null)
+    return true;
+  else
   {
-   route1.toLogin();
-   return false;
+    route1.toRegister();
+    return false;
   }
-  // return false;
-  };
+};
