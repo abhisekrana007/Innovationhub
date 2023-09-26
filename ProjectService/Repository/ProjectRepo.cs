@@ -74,6 +74,24 @@ namespace ProjectService.Repository
 
         }
 
+        public bool StatusUpdate(string id)
+        {
+            if (id != null)
+            {
+                var obj = _projectCollection.Find(x => x.ProjectID == id).FirstOrDefault();
+                obj.Status = "running";
+                // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
+                var filter = Builders<Project>.Filter.Eq(x => x.ProjectID,id);
+                _projectCollection.ReplaceOne(filter, obj);
+                //var result = _proposals.Find(x => x.ProposalId != proposal.ProposalId).ToList();
+                //var filters = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
+                //_proposals.ReplaceOne(filters, proposal);
+                return true;
+
+            }
+            return false;
+        }
+
 
 
 
