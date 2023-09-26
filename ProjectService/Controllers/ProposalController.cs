@@ -82,7 +82,7 @@ namespace ProjectService.Controllers
         {
             try
             {
-                var result = _proposalservice.UpdateProposal(id, proposal);
+                var result = _proposalservice.UpdateProposal(proposalId, proposal);
                 return Ok(result);
             }
             catch (ProposalNotFoundException ex)
