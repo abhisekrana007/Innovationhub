@@ -18,7 +18,7 @@ export class CardComponent {
   }
 
   getProjects() {
-    this._projectService.get("33").subscribe((data: Project[]) => {
+    this._projectService.get("string").subscribe((data: Project[]) => {
       this.projects = data;
       console.log(this.projects);
     });

@@ -11,9 +11,9 @@ export class InnovatorprojecthomeComponent {
 
   ProjectForm :  FormGroup;
   projectTitle:string=""
-  ProjectDoc:string=""
+  //ProjectDoc:string=""
   description:string=""
-  RequiredSkills:string=""
+  requiredSkills:string=""
 
  
 
@@ -25,9 +25,9 @@ export class InnovatorprojecthomeComponent {
   {
 this.ProjectForm= fb.group({
    projectTitle: new FormControl("", [Validators.required]),
-   ProjectDoc: new FormControl("", [Validators.required]),
+  // ProjectDoc: new FormControl("", [Validators.required]),
    description:new FormControl("", [Validators.required]),
-   RequiredSkills:new FormControl("",[Validators.required])
+   requiredSkills:new FormControl("",[Validators.required])
 })     
 }
 

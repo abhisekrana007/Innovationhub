@@ -33,5 +33,21 @@ getAllProposals(): Observable<Proposal[]> {
   return this._http.get<Proposal[]>(this.url);
 }
 
+
+//---------------------------------------------------------------------------------
+//UPDATE PROPOSAL API CALL
+//updatePropsal(propsal:Proposal,string proposalid):: Observable<Proposal>{
+
+
+   // return this.http.put(url+"/UpdateProposal"+proposalid, newData);
+
+//}
+//------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------
+//Delete Proposal
+//deleteProposal(string: proposalid):Observable<Proposal>{
+ // return this.http.delete(url+"/DeleteProposal"+proposalid);
+//}
  
 }

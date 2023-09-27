@@ -1,15 +1,82 @@
-<div *ngFor="let project of projects" class="card shadow-lg mt-5 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<div *ngFor="let project of projects" class="card shadow-lg mt-5 pointer" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
     <div class="card-body">
-    <h5 class="card-title">{{project.projectTitle}}</h5>
-    <p class="card-text">{{project.description}}</p>
-    <div class="d-flex flex-row justify-content-between">
-    <h6>{{project.creationDate}}</h6>
-    <h6 class="card-subtitle mb-2 text-success">{{project.status}}</h6>
+        <h5 class="card-title">{{project.projectTitle}}</h5>
+        <p class="card-text">{{project.projectID}}</p>
+        <div class="d-flex flex-row justify-content-between">
+            <h6>{{project.creationDate}}</h6>
+            <h6 class="card-subtitle mb-2 text-success">{{project.status}}</h6>
+        </div>
     </div>
+
+
+
+
+
+    <!-- <app-modalhome></app-modalhome> -->
+
+    <!-- Main Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{project.projectTitle}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="card-text">{{project.description}}</p>
+                    <p class="card-text">{{project.requiredSkills}}</p>
+                </div>
+                <div class="modal-footer d-flex flex-row justify-content-between">
+                    <h6>11 May, 2023</h6>
+                    <h6 class="card-subtitle mb-2 text-success">Project Status</h6>
+                    <!-- Button to trigger another modal -->
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#myModal" (click)="onClick(project.projectID)">
+                        Add Proposal
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
+
+
+    <!-- Another Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Popup Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form content goes here -->
+                    <form [formGroup]="ProposalForm" (ngSubmit)="proposalSubmitted(ProposalForm)">
+                        <!-- Form fields and controls -->
+                        <div class="mb-3">
+                            <label for=" proposalComment" class="form-label">Proposal Description</label>
+                            <input type="text" class="form-control" id="proposalComment"
+                                formControlName="proposalComment">
+                            <div class="form-text text-danger" *ngIf="proposalcomment.errors?.['required']&&
+        (proposalcomment.touched || proposalcomment.dirty)">
+                                Proposal Comment is Required
+                            </div>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="projectID" class="form-label">Project Id</label>
+                            <input type="text" class="form-control" id="projectID" formControlName="projectID">
+                        </div> -->
+
+
+
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button> -->
+                </div>
+            </div>
+        </div>
     </div>
-    
-     
-    
-        <app-modalhome></app-modalhome>
+</div>

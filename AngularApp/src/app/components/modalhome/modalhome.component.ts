@@ -9,55 +9,55 @@ import { ProposalserviceService } from 'src/app/services/proposalservice.service
 })
 export class ModalhomeComponent {
        
-  ProposalForm :  FormGroup;
-  ProposalComment:string=""
+ // ProposalForm :  FormGroup;
+  //ProposalComment:string=""
   //ProposalDocument:string=""
 
 
  
 
-  submitted : boolean = false;
+  //submitted : boolean = false;
 
  
 
-  constructor(private fb : FormBuilder, private _proposalService : ProposalserviceService)
-  {
-this.ProposalForm= fb.group({
-   ProposalComment: new FormControl("comment", [Validators.required])
+  //constructor(private fb : FormBuilder, private _proposalService : ProposalserviceService)
+  //{
+//this.ProposalForm= fb.group({
+  // ProposalComment: new FormControl("comment", [Validators.required])
     // ProjectId: new FormControl("", [Validators.required]),
     // ExpertId:new FormControl("",[Validators.required])
-})     
-}
+//})     
+//}
 
  
 
-proposalSubmitted(regForm : any)
-  {
-    this.submitted = true;
-    if(this.ProposalForm.invalid) return;
-    else{
-      var user=regForm.value;
+// proposalSubmitted(regForm : any)
+//   {
+//     this.submitted = true;
+//     if(this.ProposalForm.invalid) return;
+//     else{
+//       var user=regForm.value;
 
-      console.log("VAlid" + JSON.stringify(user))
-      this._proposalService.AddProposal(user).subscribe(res=>
-        {
-        console.log(res)
-        })
-
- 
-
-    }
-    console.log(this.ProposalForm.value);
+//       console.log("VAlid" + JSON.stringify(user))
+//       this._proposalService.AddProposal(user).subscribe(res=>
+//         {
+//         console.log(res)
+//         })
 
  
 
-  }
+//     }
+//     console.log(this.ProposalForm.value);
 
  
 
-get proposalcomment():FormControl{
-  return this.ProposalForm.get("ProposalComment") as FormControl;
-}  
+//   }
+
+ 
+
+// get proposalcomment():FormControl{
+//   return this.ProposalForm.get("ProposalComment") as FormControl;
+// }  
 
 
 

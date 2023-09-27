@@ -1,13 +1,13 @@
 export class Proposal{
 
-    ProposalId?:string
+    proposalId?:string
     proposalComment:string
     status:string
     submissionDate:Date
     ProposalImage:string
     ProposalDocument:string
-    ProjectId:string
-    ExpertId:string
+    projectId:string
+    expertId:string
 
 
  
@@ -16,14 +16,14 @@ export class Proposal{
 
  
 
-        this.ProposalId=""    
+        this.proposalId=""    
         this.proposalComment=""
         this.status=""
         this.submissionDate=new Date()
         this.ProposalImage=""
         this.ProposalDocument=""
-        this.ProjectId=""
-        this.ExpertId=""
+        this.projectId=""
+        this.expertId=""
 
  
 

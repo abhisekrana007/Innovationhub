@@ -13,6 +13,7 @@ export class ProjectserviceService {
 constructor(private _http:  HttpClient) { }
 
   url:string="https://localhost:7117/api/project"
+  
 
  
 
@@ -23,7 +24,14 @@ constructor(private _http:  HttpClient) { }
     return this._http.get<Project[]>(this.url);
 
   }
-
+  
+  //-----------------------------------------------------------------------------------------
+  //GET PROJECT BY PROJECT ID 
+  //
+  //getPropojectByProjectid(id):Observable<Project>{
+  //    return this._http.get<Project>(this.url+"/GetById"+id);   
+  //}
+//------------------------------------------------------------------------------------------
  
 
  
@@ -53,5 +61,8 @@ constructor(private _http:  HttpClient) { }
   )
 
 }
+
+
+
 
 }
