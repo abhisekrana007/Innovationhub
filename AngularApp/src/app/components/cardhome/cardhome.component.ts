@@ -62,7 +62,7 @@ getProjects() {
 
 proposalSubmitted(regForm : any)
   {
-    alert(regForm.value)
+   // alert(regForm.value)
     this.submitted = true;
     if(this.ProposalForm.invalid) return;
     else{

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Project } from 'src/models/project';
 import { CardService } from './card.service';
+import { ProjectserviceService } from 'src/app/services/projectservice.service';
 
 @Component({
   selector: 'app-card',
@@ -11,17 +12,19 @@ export class CardComponent {
 
   projects:Project[]=[]
 
-  constructor(private _projectService: CardService) {}
+  constructor(private _projectService: ProjectserviceService) {}
 
   ngOnInit() {
-    this.getProjects();
+    this.getProjectsByInnovatorId();
   }
 
-  getProjects() {
-    this._projectService.get("string").subscribe((data: Project[]) => {
+  getProjectsByInnovatorId() {
+  
+    this._projectService.getInnovatorProjects().subscribe((data: Project[]) => {
       this.projects = data;
       console.log(this.projects);
     });
+  
   }
 
 

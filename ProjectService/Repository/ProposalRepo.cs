@@ -114,5 +114,15 @@ namespace ProjectService.Repository
             return obj;
 
         }
+        public List<Proposal> GetAllProposalByExpertId(string expertid)
+        {
+            var obj = _proposals.Find(x => x.ExpertId == expertid).ToList();
+            if (obj == null)
+            {
+                return null;
+            }
+            return obj;
+        }
+
     }
 }

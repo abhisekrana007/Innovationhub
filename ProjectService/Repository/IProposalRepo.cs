@@ -11,6 +11,7 @@ namespace ProjectService.Repository
         List<Proposal> GetAllProposalByProjectId(string projectid );
         bool StatusUpdate(string proposalid);
         List<Proposal> GetAllProposal();
+        List<Proposal> GetAllProposalByExpertId(string expertid);
 
 
 

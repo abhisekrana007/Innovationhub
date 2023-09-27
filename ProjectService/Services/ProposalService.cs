@@ -88,6 +88,15 @@ namespace ProjectService.services
             }
             return result;
         }
+        public List<Proposal> GetAllProposalByExpertId(string expertid)
+        {
+            var result = _repo.GetAllProposalByExpertId(expertid);
+            if (result == null)
+            {
+                throw new ProposalNotFoundException("No proposal with this expertid");
+            }
+            return result;
+        }
 
 
 

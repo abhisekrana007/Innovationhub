@@ -12,6 +12,7 @@ namespace ProjectService.services
         bool StatusUpdate(string proposalid);
 
         List<Proposal> GetAllProposal();
+         List<Proposal> GetAllProposalByExpertId(string expertid);
 
     }
 }

@@ -32,13 +32,12 @@ export class CardexpertproposalComponent {
    
   
   ngOnInit() {
-    this.getAllProposals();
+    this.getExpertProposals();
   }
   
    
-  
-  getAllProposals() {
-    this._proposalService.getAllProposals().subscribe((data: Proposal[]) => {
+  getExpertProposals() {
+    this._proposalService.getExpertProposals().subscribe((data: Proposal[]) => {
       this.proposals = data;
       console.log(this.proposals);
     });
