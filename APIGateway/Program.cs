@@ -2,6 +2,7 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
 
+
 namespace ApiGateway
 {
     public class Program
@@ -12,10 +13,28 @@ namespace ApiGateway
             builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
             builder.Services.AddOcelot(builder.Configuration);
 
-            var app = builder.Build();
-            app.MapGet("/", () => "Hello World!");
-            app.UseOcelot();
 
+
+
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
+
+
+
+
+
+            var app = builder.Build();
+            //app.MapGet("/", () => "Hello World!");
+            app.UseCors("AllowSpecificOrigin");
+            app.UseOcelot();
             app.Run();
         }
     }

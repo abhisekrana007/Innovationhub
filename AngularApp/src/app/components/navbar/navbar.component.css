@@ -1,6 +1,77 @@
-.dropdown{
+/* .dropdown{
     margin-left: 20px;
 }
 .d-flex{
     margin-right: 100px;
-}
+} */
+
+
+
+/* NEW NAVBAR */
+
+/* Navbar styles */
+.navbar {
+    background-color: #181515;
+    margin-top: -20px;
+  }
+  
+  
+   
+  
+  .navbar-brand {
+    color: #ffffff;
+    font-size: 24px;
+  }
+  
+   
+  
+  .navbar-toggler-icon {
+    background-color: #ffffff;
+  }
+  
+   
+  
+  .navbar-nav .nav-link {
+    color: #ffffff;
+  }
+  
+   
+  
+  .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+/* Page content styles */
+.page-content {
+    padding: 20px;
+  }
+  
+   
+  
+  /* Dropdown menu styles */
+  .dropdown-menu {
+    background-color: #000000; 
+    border: none;
+    box-shadow: 0 4px 6px rgba(245, 245, 245, 0.1);
+   
+   
+  }
+  
+   
+  
+  .dropdown-item {
+    color: #ffffff;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+  }
+  
+   
+  
+  .dropdown-item:hover {
+    background-color: #ffffff;
+  }
+  
+  .navbar-nav {
+    margin-right: right ;
+    display: flex;
+  }
