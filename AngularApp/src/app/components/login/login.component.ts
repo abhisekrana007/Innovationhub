@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { lastValueFrom, throwError } from 'rxjs';
 import { DecodeJWTService } from 'src/app/services/decode-jwt.service';
 import { LoginService } from 'src/app/services/login.service';
+import { RoutingService } from 'src/app/services/routing.service';
 import { User } from 'src/models/user';
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginComponent {
   expert: any = {};
   token : any = {};
 
-  constructor(private fb : FormBuilder,private _loginservice: LoginService,private _decodejwtservice: DecodeJWTService) {
+  constructor(private fb : FormBuilder,private _loginservice: LoginService,private _decodejwtservice: DecodeJWTService,private _routingservice : RoutingService) {
     this.loginInnovatorForm= fb.group({
       Email : new FormControl("", [Validators.required,Validators.email]),
       Password: new FormControl("",[Validators.required,Validators.minLength(3)])
@@ -44,15 +45,17 @@ export class LoginComponent {
           this.handleError(err);
         }) 
         try {
-          this.token = await lastValueFrom(this._loginservice.authenticateInnovator(user));          
+          this.token = await lastValueFrom(this._loginservice.authenticateInnovator(user));    
+          this._loginservice.setBearerToken(this.token.token);      
+          this._routingservice.toInnovatorMain();
         } catch (err) {
-          throwError;
+          this.handleError(err);
         }             
       
-      this._loginservice.setBearerToken(this.token.token);
+      
       // var userid = this._decodejwtservice.getUserId();
       // console.log(userid);
-      //this._routerservice.routeToDashboard();
+      
                  
     }      
   }
@@ -73,13 +76,13 @@ export class LoginComponent {
         }) 
         try {
           this.token = await lastValueFrom(this._loginservice.authenticateExpert(user));
+          this._loginservice.setBearerToken(this.token.token);      
+          this._routingservice.toExpertMain();
         } catch (err) {
-          throwError;
+          this.handleError(err);
         }             
       
-      this._loginservice.setBearerToken(this.token.token);
-      // console.log("userid is :" + this._decodejwtservice.getUserId);
-      //this._routerservice.routeToDashboard();
+      
                  
     }      
   }
