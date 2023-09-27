@@ -8,10 +8,11 @@ import { InnovatorprojecthomeComponent } from './components/innovatorprojecthome
 import { ProposalhomeComponent } from './components/proposalhome/proposalhome.component';
 import { InnovatorprojectComponent } from './components/innovatorproject/innovatorproject.component';
 import { ExpertproposalComponent } from './components/expertproposal/expertproposal.component';
+import { authenticateGuard } from './guards/authenticate.guard';
 
 
 const routes: Routes = [
-  {path:'login', component:LoginComponent},
+  {path:'login', component:LoginComponent,canActivate:[authenticateGuard]},
   {path:'registration', component:RegistrationComponent},
   {path:'', component:DashboardComponent},
   {path:'innovator/home', component:InnovatorprojecthomeComponent},
