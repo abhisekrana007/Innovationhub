@@ -12,7 +12,8 @@
 /* Navbar styles */
 .navbar {
     background-color: #181515;
-    margin-top: -20px;
+    /* margin-top: -20px; */
+    margin-bottom: 20px;
   }
   
   
