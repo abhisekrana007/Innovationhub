@@ -73,8 +73,11 @@
         <li class="nav-item">
           <a class="nav-link" href="#contact">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#my project">My Project</a>
+        <li class="nav-item" *ngIf="role === 'Innovator'">
+          <a class="nav-link" href="">My Projects</a>
+        </li>
+        <li class="nav-item" *ngIf="role === 'Expert'">
+          <a class="nav-link" href="#">My Proposals</a>
         </li>
       </ul>
     </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { RoutingService } from 'src/app/services/routing.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  @Input() role: any;
 
   constructor(private _routingservice : RoutingService) {
   }
