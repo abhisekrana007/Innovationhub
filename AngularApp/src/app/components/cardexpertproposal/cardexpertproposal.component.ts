@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProjectserviceService } from 'src/app/services/projectservice.service';
 import { ProposalserviceService } from 'src/app/services/proposalservice.service';
+import { Project } from 'src/models/project';
 import { Proposal } from 'src/models/proposal';
 
 @Component({
@@ -10,17 +12,17 @@ import { Proposal } from 'src/models/proposal';
 })
 export class CardexpertproposalComponent {
 
-  proposals:Proposal[]=[]
-  //proposal:Proposal=new Project()
+  proposals:Proposal[]=[];
+  project:Project=new Project();
 
-  UpdateForm :  FormGroup
-  proposalComment:string=""
+  UpdateForm :  FormGroup;
+  proposalComment:string="";
   //projectID:string=""
 
   submitted : boolean = false;
 
 
-  constructor(private fb : FormBuilder,private _proposalService: ProposalserviceService) {
+  constructor(private fb : FormBuilder,private _proposalService: ProposalserviceService,private _projectService:ProjectserviceService) {
     this.UpdateForm= fb.group({
       proposalComment: new FormControl("comment", [Validators.required])
       //projectID: new FormControl(this.id, [Validators.required])
@@ -45,16 +47,17 @@ export class CardexpertproposalComponent {
 
   //---------------------------------------------------------------------------------- 
   //CALLING A PROJECT FOR PROJECTDETAIS BY PROJECTID WHICH I WILL GET BY CLICK EVENT
-  //onClick(pid:string)
-  //{
-         //this.getAllProposals(pid)
-  //}
-  //getProposalsByProjectId() {
-    //this._proposalService.getPropojectByProjectid().subscribe((data:Proposal) => {
-      //this.proposal = data;
-      //console.log(this.proposal);
-    //});
-  //}
+  onClick(pid:string)
+  {
+    console.log(pid);
+         this.getProjectByProjectId(pid)
+  }
+  getProjectByProjectId(pid:string) {
+    this._projectService.getProjectByProjectid(pid).subscribe((data:Project) => {
+      this.project = data;
+      console.log(this.project);
+    });
+  }
 //------------------------------------------------------------------------------------
 
 

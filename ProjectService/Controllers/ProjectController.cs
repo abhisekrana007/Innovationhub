@@ -28,7 +28,7 @@ namespace ProjectService.Controllers
         }
 
         // GET api/ProjectController/5
-        [HttpGet("{projectId}")]
+        [HttpGet("projects/{projectId}")]
         public async Task<IActionResult> Get(string projectId)
         {
             var project = await _projectService.GetById(projectId);

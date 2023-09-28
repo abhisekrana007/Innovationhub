@@ -13,7 +13,7 @@ export class ProjectserviceService {
 
 constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
 
-  url:string="https://localhost:7117/api/project"
+  url:string="https://localhost:7117/api/Project"
   
 
  
@@ -33,9 +33,9 @@ constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
   //-----------------------------------------------------------------------------------------
   //GET PROJECT BY PROJECT ID 
   //
-  //getPropojectByProjectid(id):Observable<Project>{
-  //    return this._http.get<Project>(this.url+"/GetById"+id);   
-  //}
+  getProjectByProjectid(id:string):Observable<Project>{
+      return this._http.get<Project>(this.url+"/projects/"+id);   
+  }
 //------------------------------------------------------------------------------------------
  
 
