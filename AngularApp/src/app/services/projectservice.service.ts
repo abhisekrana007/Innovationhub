@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Project } from 'src/models/project';
+import { DecodeJWTService } from './decode-jwt.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,10 @@ export class ProjectserviceService {
 
   
 
-constructor(private _http:  HttpClient) { }
+constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
 
   url:string="https://localhost:7117/api/project"
+  
 
  
 
@@ -23,7 +25,18 @@ constructor(private _http:  HttpClient) { }
     return this._http.get<Project[]>(this.url);
 
   }
-
+  
+  getInnovatorProjects(): Observable<Project[]> {
+    console.log(this._jwt.getUserId());
+    return this._http.get<Project[]>(this.url+"/GetByInnovatorId/"+this._jwt.getUserId());
+  }
+  //-----------------------------------------------------------------------------------------
+  //GET PROJECT BY PROJECT ID 
+  //
+  //getPropojectByProjectid(id):Observable<Project>{
+  //    return this._http.get<Project>(this.url+"/GetById"+id);   
+  //}
+//------------------------------------------------------------------------------------------
  
 
  
@@ -53,5 +66,8 @@ constructor(private _http:  HttpClient) { }
   )
 
 }
+
+
+
 
 }

@@ -1,15 +1,15 @@
 export class Project{
 
-    ProjectID?:string
+    projectID?:string
     projectTitle:string
     ProjectImage:string
     ProjectDoc:string
     description:string
-    RequiredSkills:string
-    InnovatorID:string
+    requiredSkills:string
+    innovatorID:string
     creationDate:Date
     status:string
-    ExpertId:string
+    expertId:string
 
 
  
@@ -18,16 +18,16 @@ export class Project{
 
  
 
-        this.ProjectID=""   
+        this.projectID=""   
         this.projectTitle=""
         this. ProjectImage=""
         this.ProjectDoc=""
         this.description=""
-        this.RequiredSkills=""
-        this.InnovatorID=""
+        this.requiredSkills=""
+        this.innovatorID=""
         this.creationDate=new Date()
         this.status=""
-        this.ExpertId=""
+        this.expertId=""
 
  
 

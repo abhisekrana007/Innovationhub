@@ -2,13 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Proposal } from 'src/models/proposal';
+import { DecodeJWTService } from './decode-jwt.service';
+import { Project } from 'src/models/project';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProposalserviceService {
 
-  constructor(private _http:  HttpClient) { }
+  constructor(private _http:  HttpClient,private _jwt:DecodeJWTService ) { }
   url:string="https://localhost:7117/api/proposal";
 
   AddProposal(proposal : Proposal) : Observable<Proposal>
@@ -32,6 +34,29 @@ export class ProposalserviceService {
 getAllProposals(): Observable<Proposal[]> {
   return this._http.get<Proposal[]>(this.url);
 }
+getExpertProposals(): Observable<Proposal[]> {
+  console.log(this._jwt.getUserId());
+  return this._http.get<Proposal[]>(this.url+"/experts/"+this._jwt.getUserId());
+}
+getProposalsByProjectId(project: Project): Observable<Proposal[]>{
+  return this._http.get<Proposal[]>(this.url+"/project/"+project.projectID);
+}
 
+
+//---------------------------------------------------------------------------------
+//UPDATE PROPOSAL API CALL
+//updatePropsal(propsal:Proposal,string proposalid):: Observable<Proposal>{
+
+
+   // return this.http.put(url+"/UpdateProposal"+proposalid, newData);
+
+//}
+//------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------
+//Delete Proposal
+//deleteProposal(string: proposalid):Observable<Proposal>{
+ // return this.http.delete(url+"/DeleteProposal"+proposalid);
+//}
  
 }

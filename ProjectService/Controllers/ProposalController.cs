@@ -10,7 +10,7 @@ namespace ProjectService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+   // [Authorize]
     public class ProposalController : ControllerBase
     {
         private readonly IProposalService _proposalservice;
@@ -20,7 +20,7 @@ namespace ProjectService.Controllers
             _proposalservice = proposalService;
         }
 
-        [HttpGet("{projectId}")]
+        [HttpGet("project/{projectId}")]
         public ActionResult GetByProjectId(string projectId)
         {
             try
@@ -47,6 +47,24 @@ namespace ProjectService.Controllers
             try
             {
                 var result = _proposalservice.GetAllProposal();
+                return Ok(result);
+            }
+            catch (ProposalNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("experts/{expertid}")]
+
+        public ActionResult GetProposalsBYExpertid(string expertid)
+        {
+            try
+            {
+                var result = _proposalservice.GetAllProposalByExpertId(expertid);
                 return Ok(result);
             }
             catch (ProposalNotFoundException ex)

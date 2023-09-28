@@ -67,11 +67,17 @@ implements HttpInterceptor {
             return `Not Found: ${error.message}`;
   
         }
-  
+        
         case 403: {
   
             return `Access Denied: ${error.message}`;
   
+        }
+
+        case 401: {
+
+            return `Access Denied: ${error.message}`;
+            
         }
   
         case 500: {

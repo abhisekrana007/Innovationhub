@@ -1,0 +1,8 @@
+<h2>Proposals for {{ project.projectTitle }}</h2>
+<ul>
+  <li *ngFor="let proposal of proposals">
+    <span>{{ proposal.proposalComment}}</span>
+    <button mat-button color="primary" (click)="acceptProposal(proposal.proposalId)">Accept</button>
+  </li>
+</ul>
+<button mat-button (click)="closeDialog()">Close</button>
