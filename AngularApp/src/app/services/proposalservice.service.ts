@@ -39,7 +39,7 @@ getExpertProposals(): Observable<Proposal[]> {
   return this._http.get<Proposal[]>(this.url+"/experts/"+this._jwt.getUserId());
 }
 getProposalsByProjectId(project: Project): Observable<Proposal[]>{
-  return this._http.get<Proposal[]>(this.url+project.projectID);
+  return this._http.get<Proposal[]>(this.url+"/project/"+project.projectID);
 }
 
 

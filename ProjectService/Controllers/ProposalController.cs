@@ -20,7 +20,7 @@ namespace ProjectService.Controllers
             _proposalservice = proposalService;
         }
 
-        [HttpGet("proposal/{projectId}")]
+        [HttpGet("project/{projectId}")]
         public ActionResult GetByProjectId(string projectId)
         {
             try
