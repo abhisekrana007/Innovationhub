@@ -16,7 +16,7 @@ namespace ProjectService.Repository
 
         List<Project> GetByExpertID(string id);
 
-        bool StatusUpdate(string id);
+        bool StatusUpdate(string id, string expertid);
 
     }
 }

@@ -85,7 +85,7 @@ namespace ProjectService.Repository
             if (proposalid != null)
             {
                 var obj = _proposals.Find(x => x.ProposalId == proposalid).FirstOrDefault();
-                obj.Status = "running";
+                obj.Status = "Running";
 
                 // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
                 var filter = Builders<Proposal>.Filter.Eq(x => x.ProposalId, proposalid);
@@ -94,7 +94,7 @@ namespace ProjectService.Repository
                 //var result = _proposals.Find(x => x.ProposalId != proposal.ProposalId).ToList();
                 //var filters = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
                 //_proposals.ReplaceOne(filters, proposal);
-                var obj1 = _projectserv.StatusUpdate(obj.ProjectId);
+                var obj1 = _projectserv.StatusUpdate(obj.ProjectId,obj.ExpertId);
                 if (obj1)
                 {
                     return true;

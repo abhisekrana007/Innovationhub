@@ -32,9 +32,8 @@ export class ProposalDialogComponent {
     });
   }
 
-  acceptProposal(proposalId: any,projectId:any) {
-    this._proposalservice.updatePropsalStatus(proposalId).subscribe();
-    this._projectservice.updateProjectStatus(projectId).subscribe();
+  acceptProposal(proposal: Proposal) {
+    this._proposalservice.updatePropsalStatus(proposal.proposalId).subscribe();    
 
     // Implement logic to accept a proposal
     // You can send an API request to update the proposal status, for example
