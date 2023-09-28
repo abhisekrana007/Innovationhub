@@ -9,7 +9,7 @@ export const authenticateGuard: CanActivateFn = (route, state) => {
     return true;
   else
   {
-    route1.toRegister();
+    route1.toLogin();
     return false;
   }
 };

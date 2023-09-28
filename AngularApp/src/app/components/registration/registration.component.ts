@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,7 @@ export class RegistrationComponent {
   innovatorForm: FormGroup;
   expertForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private registrationService: RegistrationService) {
+  constructor(private fb: FormBuilder, private registrationService: RegistrationService,private _routingservice : RoutingService) {
     this.innovatorForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -47,6 +48,7 @@ export class RegistrationComponent {
     this.registrationService.registerInnovator(this.innovatorForm.value).subscribe(
       (response) => {
         console.log('Innovator registered:', response);
+        this._routingservice.toLogin();
         // Clear form fields or perform other actions after successful registration
       },
       (error) => {
@@ -62,6 +64,7 @@ export class RegistrationComponent {
     this.registrationService.registerExpert(this.expertForm.value).subscribe(
       (response) => {
         console.log('Expert registered:', response);
+        this._routingservice.toLogin();
         // Clear form fields or perform other actions after successful registration
       },
       (error) => {

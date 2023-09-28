@@ -89,7 +89,7 @@ export class LoginComponent {
 
   handleError(err: any)
   {
-    alert(err.message);
+    alert("Invalid Email or/and Password");
   };
 
 }

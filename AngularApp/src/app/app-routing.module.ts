@@ -12,13 +12,13 @@ import { authenticateGuard } from './guards/authenticate.guard';
 
 
 const routes: Routes = [
-  {path:'login', component:LoginComponent,canActivate:[authenticateGuard]},
+  {path:'login', component:LoginComponent},
   {path:'registration', component:RegistrationComponent},
   {path:'', component:DashboardComponent},
-  {path:'innovator/home', component:InnovatorprojecthomeComponent},
-  {path:'expert/home', component:ProposalhomeComponent},
-  {path:'expert/myproposals', component:ExpertproposalComponent},
-  {path:'innovator/myprojects', component:InnovatorprojectComponent},
+  {path:'innovator/home', component:InnovatorprojecthomeComponent,canActivate:[authenticateGuard]},
+  {path:'expert/home', component:ProposalhomeComponent,canActivate:[authenticateGuard]},
+  {path:'expert/myproposals', component:ExpertproposalComponent,canActivate:[authenticateGuard]},
+  {path:'innovator/myprojects', component:InnovatorprojectComponent,canActivate:[authenticateGuard]},
   
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
