@@ -4,7 +4,6 @@ import { lastValueFrom, throwError } from 'rxjs';
 import { DecodeJWTService } from 'src/app/services/decode-jwt.service';
 import { LoginService } from 'src/app/services/login.service';
 import { RoutingService } from 'src/app/services/routing.service';
-import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-login',
@@ -89,7 +88,7 @@ export class LoginComponent {
 
   handleError(err: any)
   {
-    alert(err.message);
+    alert("Invalid Email or/and Password");
   };
 
 }

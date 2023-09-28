@@ -24,7 +24,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ErrorCatchingInterceptor } from './interceptor/error-catching.interceptor';
- import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationService } from './services/registration.service';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -46,6 +46,9 @@ import { ModalexpertproposalComponent } from './components/modalexpertproposal/m
 import { CardinovhomeComponent } from './components/cardinovhome/cardinovhome.component';
 import { CardexpertproposalComponent } from './components/cardexpertproposal/cardexpertproposal.component';
 import { DecodeJWTService } from './services/decode-jwt.service';
+import { InnovatorMyProjectsComponent } from './components/innovator-my-projects/innovator-my-projects.component';
+import { ProposalDialogComponent } from './components/proposal-dialog/proposal-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -71,14 +74,17 @@ import { DecodeJWTService } from './services/decode-jwt.service';
     ModalinovhomeComponent,
     ModalexpertproposalComponent,
     CardinovhomeComponent,
-    CardexpertproposalComponent
+    CardexpertproposalComponent,
+    InnovatorMyProjectsComponent,    
+    ProposalDialogComponent
 
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,MatExpansionModule,
     MatToolbarModule,FormsModule,HttpClientModule,MatSlideToggleModule,
     MatButtonModule,MatIconModule,MatDividerModule,MatCardModule,MatFormFieldModule,
-    ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule,NgbModule
+    ReactiveFormsModule,AppRoutingModule,MatTabsModule,MatInputModule,MatMenuModule,
+    NgbModule,MatDialogModule
     
   ],
   providers: [LoginService,RegistrationService,DecodeJWTService,
