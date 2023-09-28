@@ -71,13 +71,13 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
+          <a class="nav-link">Contact</a>
         </li>
         <li class="nav-item" *ngIf="role === 'Innovator'">
-          <a class="nav-link" href="">My Projects</a>
+          <a class="nav-link" routerLink="/innovator/myprojects">My Projects</a>
         </li>
         <li class="nav-item" *ngIf="role === 'Expert'">
-          <a class="nav-link" href="#">My Proposals</a>
+          <a class="nav-link" routerLink="/expert/myproposals">My Proposals</a>
         </li>
       </ul>
     </div>
