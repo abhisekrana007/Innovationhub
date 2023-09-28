@@ -37,7 +37,10 @@ constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
       return this._http.get<Project>(this.url+"/projects/"+id);   
   }
 //------------------------------------------------------------------------------------------
- 
+updateProjectStatus(projectid :string) : Observable<Project>{
+  return this._http.put<Project>(this.url+"/update/"+projectid,"Running");
+
+}
 
  
 
