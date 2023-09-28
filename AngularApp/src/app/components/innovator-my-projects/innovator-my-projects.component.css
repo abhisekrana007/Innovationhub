@@ -1,0 +1,21 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Add this CSS to your component's CSS or global styles */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adjust the gap between cards */
+  }
+  
+  .project-card {
+    width: 300px; /* Adjust the card width as needed */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.03); /* Add a slight zoom effect on hover */
+  }
+  

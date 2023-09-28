@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Proposal } from 'src/models/proposal';
 import { DecodeJWTService } from './decode-jwt.service';
+import { Project } from 'src/models/project';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,9 @@ getAllProposals(): Observable<Proposal[]> {
 getExpertProposals(): Observable<Proposal[]> {
   console.log(this._jwt.getUserId());
   return this._http.get<Proposal[]>(this.url+"/experts/"+this._jwt.getUserId());
+}
+getProposalsByProjectId(project: Project): Observable<Proposal[]>{
+  return this._http.get<Proposal[]>(this.url+project.projectID);
 }
 
 
