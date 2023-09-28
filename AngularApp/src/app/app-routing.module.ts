@@ -9,6 +9,7 @@ import { ProposalhomeComponent } from './components/proposalhome/proposalhome.co
 import { InnovatorprojectComponent } from './components/innovatorproject/innovatorproject.component';
 import { ExpertproposalComponent } from './components/expertproposal/expertproposal.component';
 import { authenticateGuard } from './guards/authenticate.guard';
+import { InnovatorMyProjectsComponent } from './components/innovator-my-projects/innovator-my-projects.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path:'innovator/home', component:InnovatorprojecthomeComponent,canActivate:[authenticateGuard]},
   {path:'expert/home', component:ProposalhomeComponent,canActivate:[authenticateGuard]},
   {path:'expert/myproposals', component:ExpertproposalComponent,canActivate:[authenticateGuard]},
-  {path:'innovator/myprojects', component:InnovatorprojectComponent,canActivate:[authenticateGuard]},
+  {path:'innovator/myprojects', component:InnovatorMyProjectsComponent,canActivate:[authenticateGuard]},
   
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
