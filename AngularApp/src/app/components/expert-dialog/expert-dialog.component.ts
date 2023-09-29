@@ -11,7 +11,7 @@ import { Project } from 'src/models/project';
 })
 export class ExpertDialogComponent {
   project: Project;
-  expert : any;
+  expert : Expert | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<ExpertDialogComponent>,
@@ -27,6 +27,7 @@ export class ExpertDialogComponent {
   getProposalsByProjectId(project : Project) {
     this._expertservice.getExpertByExpertId(project).subscribe((data: Expert) => {
       this.expert = data;
+      
     });
   }
 

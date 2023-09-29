@@ -20,8 +20,8 @@ export class Expert {
    this.lastName= ""
    this.dateOfBirth= new Date()
    this.skills= ""
-   this.rating= 0
-   this.budget= 0
+   this.rating= 5
+   this.budget= 500
   }
     
 }
