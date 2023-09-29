@@ -102,26 +102,27 @@ namespace ProjectService.Controllers
             return Ok(obj);
         }
 
-        //[HttpPut("update/{proposalid}")]
+        [HttpPut("update/{projectid}")]
 
-        //public ActionResult StatusUpdate(string proposalid)
-        //{
+        public ActionResult StatusUpdate(string projectid, string expertid,string status)
+        {
 
-        //    try
-        //    {
-        //        var result = _projectService.StatusUpdate(proposalid);
-        //        return Created("Status Updated", result);
-        //    }
-        //    catch (ProposalNotFoundException ex)
-        //    {
-        //        return NotFound(ex.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
+            try
+            {
+                var result = _projectService.StatusUpdate(projectid,expertid,status);
 
-        //}
+                return Created("Status Updated", result);
+            }
+            catch (ProposalNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
 
 
     }

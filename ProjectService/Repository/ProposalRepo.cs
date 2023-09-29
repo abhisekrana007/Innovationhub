@@ -80,25 +80,33 @@ namespace ProjectService.Repository
             return true;
         }
 
-        public bool StatusUpdate(string proposalid)
+        public bool StatusUpdate(string proposalid,string status)
         {
             if (proposalid != null)
             {
                 var obj = _proposals.Find(x => x.ProposalId == proposalid).FirstOrDefault();
-                obj.Status = "running";
+                obj.Status = status;
 
                 // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
                 var filter = Builders<Proposal>.Filter.Eq(x => x.ProposalId, proposalid);
-                _proposals.ReplaceOne(filter, obj);
+                var obj2 = _proposals.ReplaceOne(filter, obj);
                 
                 //var result = _proposals.Find(x => x.ProposalId != proposal.ProposalId).ToList();
                 //var filters = Builders<Proposal>.Filter.Eq(x => x.Status, proposal.Status);
                 //_proposals.ReplaceOne(filters, proposal);
-                var obj1 = _projectserv.StatusUpdate(obj.ProjectId);
-                if (obj1)
+                if(status == "Running")
                 {
-                    return true;
+                    var obj1 = _projectserv.StatusUpdate(obj.ProjectId, obj.ExpertId, status);
+                    if (obj1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
+                return true; 
                 
             }
             return false;

@@ -11,7 +11,7 @@ import { Project } from 'src/models/project';
 export class ProposalserviceService {
 
   constructor(private _http:  HttpClient,private _jwt:DecodeJWTService ) { }
-  url:string="https://localhost:7117/api/proposal";
+  url:string="https://localhost:7117/api/Proposal";
 
   AddProposal(proposal : Proposal) : Observable<Proposal>
   {
@@ -45,18 +45,8 @@ getProposalsByProjectId(project: Project): Observable<Proposal[]>{
 
 //---------------------------------------------------------------------------------
 //UPDATE PROPOSAL API CALL
-updateProposal(proposal:Proposal,proposalid:string):Observable<any>{
-   
-  console.log("USER INS SRECIVCE " + JSON.stringify(proposal));
-
-    return this._http.put<any>(this.url+"/"+proposalid,JSON.stringify(proposal),
-    {
-      headers: new HttpHeaders({
-      'Content-Type':'application/json',
-      'Accept' :'application/json'
-    })
-    });
-
+updatePropsalStatus(proposalid :any) : Observable<Proposal>{
+  return this._http.put<Proposal>(this.url+"/update/"+proposalid+"?status=Running","Running");
 }
 //------------------------------------------------------------------------------------
 

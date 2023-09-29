@@ -4,6 +4,7 @@ import { ProposalserviceService } from 'src/app/services/proposalservice.service
 import { Project } from 'src/models/project';
 import { Proposal } from 'src/models/proposal';
 import {MatCardModule} from '@angular/material/card';
+import { ProjectserviceService } from 'src/app/services/projectservice.service';
 
 @Component({
   selector: 'app-proposal-dialog',
@@ -16,7 +17,7 @@ export class ProposalDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ProposalDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,private _proposalservice : ProposalserviceService
+    @Inject(MAT_DIALOG_DATA) public data: any,private _proposalservice : ProposalserviceService,private _projectservice : ProjectserviceService
   ) {
     this.project = data.project;
   }
@@ -31,7 +32,9 @@ export class ProposalDialogComponent {
     });
   }
 
-  acceptProposal(proposalId: any) {
+  acceptProposal(proposal: Proposal) {
+    this._proposalservice.updatePropsalStatus(proposal.proposalId).subscribe();    
+
     // Implement logic to accept a proposal
     // You can send an API request to update the proposal status, for example
   }

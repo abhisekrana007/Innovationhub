@@ -44,6 +44,11 @@ body, html {
   color: #ffffff;
 }
 
+/* Increase the text size for "User" and "Contact" links */
+.navbar-nav .nav-link#userDropdown,
+.navbar-nav .nav-link[href="#contact"] {
+  font-size: 15px; /* Adjust the font size as needed */
+}
  
 
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
@@ -74,6 +79,7 @@ body, html {
   color: #ffffff;
   padding: 10px 20px;
   transition: background-color 0.3s;
+  font-size: 12px;
 }
 
  
@@ -83,8 +89,9 @@ body, html {
 }
 
 .navbar-nav {
-  margin-right: right ;
+  margin-right: right;
   display: flex;
+  
 }
  
 

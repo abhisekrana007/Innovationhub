@@ -65,10 +65,10 @@ namespace ProjectService.services
             return result;
         }
 
-        public bool StatusUpdate(string proposalid)
+        public bool StatusUpdate(string proposalid,string status)
         {
 
-            var result = _repo.StatusUpdate(proposalid);
+            var result = _repo.StatusUpdate(proposalid,status);
             if (!result)
             {
                 throw new ProposalNotFoundException("No accepted propsal came from innvoator side");
