@@ -18,8 +18,8 @@ const routes: Routes = [
   {path:'registration', component:RegistrationComponent},
   {path:'', component:DashboardComponent},
   {path:'innovator/home', component:InnovatorprojecthomeComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
-  {path:'expert/home', component:ProposalhomeComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
-  {path:'expert/myproposals', component:ExpertproposalComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
+  {path:'expert/home', component:ProposalhomeComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Expert'] },},
+  {path:'expert/myproposals', component:ExpertproposalComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Expert'] },},
   {path:'innovator/myprojects', component:InnovatorMyProjectsComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
   
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
