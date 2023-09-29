@@ -10,16 +10,17 @@ import { InnovatorprojectComponent } from './components/innovatorproject/innovat
 import { ExpertproposalComponent } from './components/expertproposal/expertproposal.component';
 import { authenticateGuard } from './guards/authenticate.guard';
 import { InnovatorMyProjectsComponent } from './components/innovator-my-projects/innovator-my-projects.component';
+import { authenticateExpertGuard } from './guards/authenticate-expert.guard';
 
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'registration', component:RegistrationComponent},
   {path:'', component:DashboardComponent},
-  {path:'innovator/home', component:InnovatorprojecthomeComponent,canActivate:[authenticateGuard]},
-  {path:'expert/home', component:ProposalhomeComponent,canActivate:[authenticateGuard]},
-  {path:'expert/myproposals', component:ExpertproposalComponent,canActivate:[authenticateGuard]},
-  {path:'innovator/myprojects', component:InnovatorMyProjectsComponent,canActivate:[authenticateGuard]},
+  {path:'innovator/home', component:InnovatorprojecthomeComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
+  {path:'expert/home', component:ProposalhomeComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
+  {path:'expert/myproposals', component:ExpertproposalComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
+  {path:'innovator/myprojects', component:InnovatorMyProjectsComponent,canActivate:[authenticateGuard],data: { allowedRoles: ['Innovator'] },},
   
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
