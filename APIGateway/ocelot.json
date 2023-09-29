@@ -122,7 +122,155 @@
                     "Port": 7285
                 }
             ]
+        },
+        {
+            "UpstreamPathTemplate": "/Project",
+            "UpstreamHttpMethod": [ "Get,Post" ],
+            "DownstreamPathTemplate": "/api/project",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Project/projects/{projectId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/projects/{projectId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Project/GetByInnovatorId/{innovatorId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/GetByInnovatorId/{innovatorId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Project/{projectId}",
+            "UpstreamHttpMethod": [ "Put", "Delete" ],
+            "DownstreamPathTemplate": "/api/Project/{projectId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/project/{proposalId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/GetAcceptedProposal/{proposalId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/project/expert/{expertId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Project/GetByExpertId/{expertId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Project/update/{projectid}",
+            "UpstreamHttpMethod": [ "Put" ],
+            "DownstreamPathTemplate": "/api/Project/update/{projectid}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Proposal/project/{projectid}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "api/Proposal/project/{projectId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Proposal",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
+            "DownstreamPathTemplate": "/api/Proposal",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Proposal/experts/{expertid}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/Proposal/experts/{expertid}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Proposal/{proposalId}",
+            "UpstreamHttpMethod": [ "Put", "Delete" ],
+            "DownstreamPathTemplate": "/api/Proposal/{proposalId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/Proposal/update/{proposalid}",
+            "UpstreamHttpMethod": [ "Put" ],
+            "DownstreamPathTemplate": "/api/Proposal/update/{proposalid}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7117
+                }
+            ]
         }
+
+
     ]
+
+
 
 }
