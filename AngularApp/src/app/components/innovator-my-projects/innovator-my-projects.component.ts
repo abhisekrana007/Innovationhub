@@ -4,6 +4,7 @@ import { Project } from 'src/models/project';
 import { ProposalDialogComponent } from '../proposal-dialog/proposal-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProposalserviceService } from 'src/app/services/proposalservice.service';
+import { ExpertDialogComponent } from '../expert-dialog/expert-dialog.component';
 
 @Component({
   selector: 'app-innovator-my-projects',
@@ -27,6 +28,12 @@ export class InnovatorMyProjectsComponent {
 
   openProposalDialog(project: any) {
     this.dialog.open(ProposalDialogComponent, {
+      data: { project }
+    });
+  }
+
+  openExpertDialog(project: any) {
+    this.dialog.open(ExpertDialogComponent, {
       data: { project }
     });
   }
