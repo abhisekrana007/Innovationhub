@@ -1,5 +1,5 @@
 <div *ngFor="let proposal of proposals" class="card shadow-lg mt-5 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <div class="card-body" (click)="onClick(proposal.projectId)">
+    <div class="card-body" (click)="onClick(proposal.projectId,proposal.proposalId)">
       <!-- <h5 class="card-title">Project Name</h5> -->
 
       <p class="card-text">{{proposal.proposalComment}}</p>
@@ -34,7 +34,7 @@
   <button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#myModal">
                 Edit
   </button>
-  <button type="button" class="btn btn-danger btn-lg">Delete</button>
+  <button type="button" class="btn btn-danger btn-lg" (click)="proposalDeleted()">Delete</button>
   
   
   
@@ -57,17 +57,16 @@
   </div>
   <div class="modal-body">
   <!-- Form content goes here -->
-  <!-- <form [formGroup]="UpdateForm" (ngSubmit)="propsalUpdated(UpdateForm,proposal.proposalID)"> -->
-  <!-- Form fields and controls -->
-  <form>
-  <div class="mb-3">
-  <label for="ProjectTitle" class="form-label">Project Comment</label>
-  <input type="text" class="form-control" id="ProjectTitle" >
-  </div>
-  <div class="mb-3">
+   <form [formGroup]="UpdateForm" (ngSubmit)="propsalUpdated(UpdateForm)"> 
+  
+  
+    <label for=" proposalComment" class="form-label">Proposal Description</label>
+    <input type="text" class="form-control" id="proposalComment"
+        formControlName="proposalComment">
+  <!-- <div class="mb-3">
   <label for="ProjectDocument" class="form-label">Project Document</label>
   <input type="text" class="form-control" id="ProjectDocument">
-  </div>
+  </div> -->
   
   
   

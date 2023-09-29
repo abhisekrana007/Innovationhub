@@ -11,11 +11,10 @@ export class InnovatorprojecthomeComponent {
 
 
   ProjectForm :  FormGroup;
-  projectTitle:string=""
-  //ProjectDoc:string=""
-  description:string=""
-  requiredSkills:string=""
-  innovatorID:string=""
+  projectTitle!:string;
+  description!:string;
+  requiredSkills!:string;
+  innovatorID!:string;
 
  
 
@@ -30,7 +29,7 @@ this.ProjectForm= fb.group({
   // ProjectDoc: new FormControl("", [Validators.required]),
    description:new FormControl("", [Validators.required]),
    requiredSkills:new FormControl("",[Validators.required]),
-   innovatorID: new FormControl('', [Validators.required])
+   innovatorID: new FormControl('')
 })     
 }
 
