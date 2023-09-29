@@ -97,8 +97,9 @@ proposalSubmitted(regForm : any)
  
 
     }
-    console.log(this.ProposalForm.value);
 
+    console.log(this.ProposalForm.value);
+    window.location.reload();  
  
 
   }
