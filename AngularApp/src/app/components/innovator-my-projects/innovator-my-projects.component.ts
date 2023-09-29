@@ -47,6 +47,7 @@ export class InnovatorMyProjectsComponent {
 
   updateStatusCompleted(project: Project) {    
     this._projectService.updateStatusCompleted(project).subscribe(); 
+    window.location.reload();
   }
 
   acceptProposal(proposalId: any) {
