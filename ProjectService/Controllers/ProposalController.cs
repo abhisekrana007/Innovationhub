@@ -137,12 +137,12 @@ namespace ProjectService.Controllers
 
         [HttpPut("update/{proposalid}")]
 
-        public ActionResult StatusUpdate(string proposalid)
+        public ActionResult StatusUpdate(string proposalid,string status)
         {
 
             try
             {
-                var result = _proposalservice.StatusUpdate(proposalid);
+                var result = _proposalservice.StatusUpdate(proposalid,status);
                 return Created("Status Updated", result);
             }
             catch (ProposalNotFoundException ex)

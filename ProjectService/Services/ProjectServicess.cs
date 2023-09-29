@@ -70,10 +70,10 @@ namespace ProjectService.Services
             return result;
         }
 
-        public bool StatusUpdate(string id, string expertid)
+        public bool StatusUpdate(string id, string expertid,string status)
         {
 
-            var result = _repo.StatusUpdate(id, expertid);
+            var result = _repo.StatusUpdate(id,expertid,status);
             if (!result)
             {
                 return false;

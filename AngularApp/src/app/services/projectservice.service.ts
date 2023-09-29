@@ -37,12 +37,15 @@ constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
       return this._http.get<Project>(this.url+"/projects/"+id);   
   }
 //------------------------------------------------------------------------------------------
-updateProjectStatus(projectid :any,expertId : any) : Observable<Project>{
-  return this._http.put<Project>(this.url+"/update/"+projectid,expertId);
+// updateProjectStatus(projectid :any,expertId : any) : Observable<Project>{
+//   return this._http.put<Project>(this.url+"/update/"+projectid,expertId);
 
-}
+// }
 
- 
+  updateStatusCompleted(project :Project) : Observable<Project>{
+    
+    return this._http.put<Project>(this.url+"/update/"+project.projectID+"?expertid="+project.expertId+"&status=Completed","Completed");
+  }
 
   AddProject(project : Project) : Observable<Project>
 

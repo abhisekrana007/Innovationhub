@@ -7,6 +7,7 @@ namespace ProjectService.Repository
     public class ProjectRepo:IProjectRepo
     {
         private readonly IMongoCollection<Project> _projectCollection;
+        private readonly IMongoCollection<Proposal> _proposalCollection;
         private readonly IOptions<DatabaseSettings> _dbSettings;
 
         public ProjectRepo(IOptions<DatabaseSettings> dbSettings)
@@ -16,7 +17,8 @@ namespace ProjectService.Repository
             var database = client.GetDatabase(dbSettings.Value.DatabaseName);
             _projectCollection = database.GetCollection<Project>
                 (dbSettings.Value.ProjectsCollectionName);
-
+            _proposalCollection = database.GetCollection<Proposal>
+                (dbSettings.Value.ProposalsCollectionName);
         }
 
         public async Task<IEnumerable<Project>> GetAllAsyc() =>
@@ -74,13 +76,18 @@ namespace ProjectService.Repository
 
         }
 
-        public bool StatusUpdate(string id, string expertid)
+        public bool StatusUpdate(string id, string expertid, string status)
         {
             if (id != null)
             {
                 var obj = _projectCollection.Find(x => x.ProjectID == id).FirstOrDefault();
-                obj.Status = "Running";
+                obj.Status = status;
                 obj.ExpertId = expertid;
+                var objProposal = _proposalCollection.Find(x => x.ProjectId == id && x.ExpertId == expertid).FirstOrDefault();
+                if(status == "Completed")
+                {
+                    objProposal.Status = "Completed";
+                }
                 // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
                 var filter = Builders<Project>.Filter.Eq(x => x.ProjectID,id);
                 _projectCollection.ReplaceOne(filter, obj);

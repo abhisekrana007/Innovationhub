@@ -13,7 +13,7 @@ namespace ProjectService.Services
         Proposal GetAcceptedProposal(List<Proposal> proposals, string proposalId);
         List<Project> GetByExpertID(string id);
 
-        bool StatusUpdate(string id,string expertid);
+        bool StatusUpdate(string id,string expertid,string status);
 
     }
 }

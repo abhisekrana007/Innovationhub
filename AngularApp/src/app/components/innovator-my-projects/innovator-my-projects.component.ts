@@ -3,6 +3,7 @@ import { ProjectserviceService } from 'src/app/services/projectservice.service';
 import { Project } from 'src/models/project';
 import { ProposalDialogComponent } from '../proposal-dialog/proposal-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ProposalserviceService } from 'src/app/services/proposalservice.service';
 
 @Component({
   selector: 'app-innovator-my-projects',
@@ -12,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class InnovatorMyProjectsComponent {
   projects:Project[]=[]
 
-  constructor(public dialog: MatDialog, private _projectService: ProjectserviceService) {}
+  constructor(public dialog: MatDialog, private _projectService: ProjectserviceService,private _proposalservice : ProposalserviceService) {}
 
   ngOnInit() {
     this.getProjectsByInnovatorId();
@@ -36,20 +37,16 @@ export class InnovatorMyProjectsComponent {
   proposals: any[] = [];
   proposalAccepted = false;
 
-  editProject(projectId: any) {
-    // Implement the edit functionality
-  }
-
-  deleteProject(projectId: any) {
-    // Implement the delete functionality
-  }
-
-  viewProposals(project: any) {
+  viewProposals(project: Project) {
     this.selectedProject = project;
     // Fetch proposals by project ID using a service
     // Assign the proposals to this.proposals
     // Set proposalAccepted based on whether a proposal has already been accepted
     this.showProposalPopup = true;
+  }
+
+  updateStatusCompleted(project: Project) {    
+    this._projectService.updateStatusCompleted(project).subscribe(); 
   }
 
   acceptProposal(proposalId: any) {
