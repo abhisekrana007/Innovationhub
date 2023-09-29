@@ -45,18 +45,25 @@ getProposalsByProjectId(project: Project): Observable<Proposal[]>{
 
 //---------------------------------------------------------------------------------
 //UPDATE PROPOSAL API CALL
-//updatePropsal(propsal:Proposal,string proposalid):: Observable<Proposal>{
+updateProposal(proposal:Proposal,proposalid:string):Observable<any>{
+   
+  console.log("USER INS SRECIVCE " + JSON.stringify(proposal));
 
+    return this._http.put<any>(this.url+"/"+proposalid,JSON.stringify(proposal),
+    {
+      headers: new HttpHeaders({
+      'Content-Type':'application/json',
+      'Accept' :'application/json'
+    })
+    });
 
-   // return this.http.put(url+"/UpdateProposal"+proposalid, newData);
-
-//}
+}
 //------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------
 //Delete Proposal
-//deleteProposal(string: proposalid):Observable<Proposal>{
- // return this.http.delete(url+"/DeleteProposal"+proposalid);
-//}
+deleteProposal(proposalid:any):Observable<Proposal>{
+  return this._http.delete<Proposal>(this.url+"/"+proposalid);
+}
  
 }

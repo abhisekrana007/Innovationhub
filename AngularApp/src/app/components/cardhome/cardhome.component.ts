@@ -102,6 +102,8 @@ proposalSubmitted(regForm : any)
  
 
   }
+
+  
   get proposalcomment():FormControl{
     return this.ProposalForm.get("proposalComment") as FormControl;
   }  

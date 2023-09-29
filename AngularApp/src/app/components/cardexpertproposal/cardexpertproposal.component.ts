@@ -24,7 +24,7 @@ export class CardexpertproposalComponent {
 
   constructor(private fb : FormBuilder,private _proposalService: ProposalserviceService,private _projectService:ProjectserviceService) {
     this.UpdateForm= fb.group({
-      proposalComment: new FormControl("comment", [Validators.required])
+      proposalComment: new FormControl("", [Validators.required])
       //projectID: new FormControl(this.id, [Validators.required])
        // ProjectId: new FormControl("", [Validators.required]),
        // ExpertId:new FormControl("",[Validators.required])
@@ -45,11 +45,14 @@ export class CardexpertproposalComponent {
     });
   }
 
+  propid: any ="";
   //---------------------------------------------------------------------------------- 
   //CALLING A PROJECT FOR PROJECTDETAIS BY PROJECTID WHICH I WILL GET BY CLICK EVENT
-  onClick(pid:string)
+  onClick(pid:string,proid:any)
   {
     console.log(pid);
+    console.log(proid);
+    this.propid=proid;
          this.getProjectByProjectId(pid)
   }
   getProjectByProjectId(pid:string) {
@@ -65,41 +68,43 @@ export class CardexpertproposalComponent {
   //-----------------------------------------------------------------------------------
   //updating proposal 
   
-  //propsalUpdated(regForm : any,pid:string)
- // {
-   // alert(regForm.value)
-    //this.submitted = true;
-    //if(this.ProposalForm.invalid) return;
-    //else{
-      //var user=regForm.value;
+  propsalUpdated(regForm : any)
+  {
+   alert("are you sure you want to edit your proposal")
+    this.submitted = true;
+    if(this.UpdateForm.invalid) return;
+    else{
+      var user=regForm.value;
+       //user.projectID=this.projectID;
+       //user.expertId=this._jwt.getUserId();
+      console.log("VAlid" + JSON.stringify(user))
+      this._proposalService.updateProposal(user,this.propid).subscribe(res=>
+        {
+        console.log(res)
+        this.getExpertProposals();
+        })
 
-      //console.log("VAlid" + JSON.stringify(user))
-   //this._proposalService.updatePropsal(user,pid).subscribe(response => {
-      // Handle the response here
-      //console.log('PUT request successful', response);
-    //}, error => {
-      // Handle any errors here
-     // console.error('Error making PUT request', error);
-    //});
+ 
 
-   //          
-  //}
+    }
+    console.log(this.UpdateForm.value);
+
+ 
+
+  }
+
 //---------------------------------------------------------------------------------------------
 
 //Deleting Proposal by proposal id
 
-//proposalDeleted(pid:string){
+proposalDeleted(){
+
+  alert("are you sure you want to delete the proposal");
  
-//this._proposalService.deleteProposal(pid).subscribe(response => {
-      // Handle the response here
-     // console.log('DELETE request successful', response);
-    //}, error => {
-      // Handle any errors here
-      //console.error('Error making DELETE request', error);
-    //});
+this._proposalService.deleteProposal(this.propid).subscribe();
    
 
-//}
+}
   
   
    
