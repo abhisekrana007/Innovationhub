@@ -6,7 +6,7 @@
         {
             "UpstreamPathTemplate": "/login/innovator",
             "UpstreamHttpMethod": [ "Post" ],
-            "DownstreamPathTemplate": "api/v1/Authentication/innovator/login",
+            "DownstreamPathTemplate": "/api/v1/Authentication/innovator/login",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -78,7 +78,7 @@
         {
             "UpstreamPathTemplate": "/innovator",
             "UpstreamHttpMethod": [ "Get", "Post" ],
-            "DownstreamPathTemplate": "/api/v1/innovator",
+            "DownstreamPathTemplate": "/api/v1/Innovator",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
