@@ -32,7 +32,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { InnovatorprofileComponent } from './components/innovatorprofile/innovatorprofile.component';
 import { ExpertprofileComponent } from './components/expertprofile/expertprofile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { CardComponent } from './components/card/card.component';
 import { InnovatorprojectComponent } from './components/innovatorproject/innovatorproject.component';
@@ -62,7 +61,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     InnovatorprofileComponent,
     ExpertprofileComponent,
     NavbarComponent,
-    FooterComponent,
+  
     ModalComponent,
     CardComponent,
     InnovatorprojectComponent,
