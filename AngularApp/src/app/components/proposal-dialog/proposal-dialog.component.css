@@ -5,6 +5,7 @@
   background-color: #f4f4f4;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 30rem;
 }
 
 /* Style the proposals list */
@@ -21,20 +22,19 @@
   border: 1px solid #ddd;
   border-radius: 3px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex; /* Use flexbox to align items horizontally */
-  justify-content: space-between; /* Space between items */
 }
 
 /* Style the proposal description */
 .proposal-description {
-  flex-grow: 1; /* Grow to take available space */
   font-size: 16px;
   color: #333;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 3px;
   background-color: #f9f9f9;
-  margin-right: 10px; /* Add margin to separate from the button */
+  width: calc(100% - 80px); /* Decrease the width and leave space for the button (adjust the value as needed) */
+  display: inline-block; /* Ensure inline-block display to fit the button */
+  vertical-align: top; /* Align the top of the description with the button */
 }
 
 /* Style the "Accept" button */
@@ -46,10 +46,15 @@
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: inline-block;
+  vertical-align: middle; /* Align the middle of the button with the description */
+  margin-left: 10px; /* Add margin between the description and button */
+  height: 2.5rem;
 }
 
 .accept-button:hover {
   background-color: #0056b3;
+  font-weight: 500;
 }
 
 /* Style the "Close" button */
@@ -62,8 +67,4 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 10px;
-}
-
-.close-button:hover {
-  background-color: #999;
 }

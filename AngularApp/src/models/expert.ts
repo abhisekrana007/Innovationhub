@@ -1,13 +1,27 @@
 export class Expert {
-    constructor(
-      public username: string,
-      public password: string,
-      public email: string,
-      public firstName: string,
-      public lastName: string,
-      public dateOfBirth: string,
-      public skills: string,
-      public rating: number,
-      public budget: number
-    ) {}
+
+   expertId? : string
+   username: string
+   password: string
+   email: string
+   firstName: string
+   lastName: string
+   dateOfBirth: Date
+   skills: string
+   rating: number
+   budget: number
+
+  constructor(){
+   this.expertId = ""
+   this.username= ""
+   this.password= ""
+   this.email= ""
+   this.firstName= ""
+   this.lastName= ""
+   this.dateOfBirth= new Date()
+   this.skills= ""
+   this.rating= 0
+   this.budget= 0
   }
+    
+}

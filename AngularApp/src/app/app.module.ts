@@ -48,6 +48,8 @@ import { DecodeJWTService } from './services/decode-jwt.service';
 import { InnovatorMyProjectsComponent } from './components/innovator-my-projects/innovator-my-projects.component';
 import { ProposalDialogComponent } from './components/proposal-dialog/proposal-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ExpertDialogComponent } from './components/expert-dialog/expert-dialog.component';
+
 
 
 
@@ -75,7 +77,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     CardinovhomeComponent,
     CardexpertproposalComponent,
     InnovatorMyProjectsComponent,    
-    ProposalDialogComponent
+    ProposalDialogComponent, ExpertDialogComponent
 
   ],
   imports: [
