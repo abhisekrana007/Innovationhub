@@ -74,12 +74,13 @@ namespace ProjectService.Repository
 
         }
 
-        public bool StatusUpdate(string id)
+        public bool StatusUpdate(string id, string expertid)
         {
             if (id != null)
             {
                 var obj = _projectCollection.Find(x => x.ProjectID == id).FirstOrDefault();
-                obj.Status = "running";
+                obj.Status = "Running";
+                obj.ExpertId = expertid;
                 // var obj = _proposals.Find(x => x.ProposalId == proposal.ProposalId);
                 var filter = Builders<Project>.Filter.Eq(x => x.ProjectID,id);
                 _projectCollection.ReplaceOne(filter, obj);

@@ -28,7 +28,7 @@ namespace ProjectService.Controllers
         }
 
         // GET api/ProjectController/5
-        [HttpGet("{projectId}")]
+        [HttpGet("projects/{projectId}")]
         public async Task<IActionResult> Get(string projectId)
         {
             var project = await _projectService.GetById(projectId);
@@ -102,26 +102,26 @@ namespace ProjectService.Controllers
             return Ok(obj);
         }
 
-        //[HttpPut("update/{proposalid}")]
+        [HttpPut("update/{projectid}")]
 
-        //public ActionResult StatusUpdate(string proposalid)
-        //{
+        public ActionResult StatusUpdate(string projectid, string expertid)
+        {
 
-        //    try
-        //    {
-        //        var result = _projectService.StatusUpdate(proposalid);
-        //        return Created("Status Updated", result);
-        //    }
-        //    catch (ProposalNotFoundException ex)
-        //    {
-        //        return NotFound(ex.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
+            try
+            {
+                var result = _projectService.StatusUpdate(projectid, expertid);
+                return Created("Status Updated", result);
+            }
+            catch (ProposalNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-        //}
+        }
 
 
     }

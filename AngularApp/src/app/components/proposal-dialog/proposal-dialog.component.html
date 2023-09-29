@@ -1,8 +1,27 @@
-<h2>Proposals for {{ project.projectTitle }}</h2>
+<!-- <h2>Proposals for {{ project.projectTitle }}</h2>
 <ul>
   <li *ngFor="let proposal of proposals">
     <span>{{ proposal.proposalComment}}</span>
     <button mat-button color="primary" (click)="acceptProposal(proposal.proposalId)">Accept</button>
   </li>
 </ul>
-<button mat-button (click)="closeDialog()">Close</button>
+<button mat-button (click)="closeDialog()">Close</button> -->
+<section class="proposal-section">
+  <h2>Proposals for {{ project.projectTitle }}</h2>
+  <ul class="proposal-list">
+    <li *ngFor="let proposal of proposals" class="proposal-item">
+      <div class="proposal-content">
+        <span class="proposal-comment">{{ proposal.proposalComment }}</span>
+        <button
+          mat-button
+          color="primary"
+          (click)="acceptProposal(proposal)"
+          class="accept-button"
+        >
+          Accept
+        </button>
+      </div>
+    </li>
+  </ul>
+  <button mat-button (click)="closeDialog()" class="close-button">Close</button>
+</section>
