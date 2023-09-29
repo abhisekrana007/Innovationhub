@@ -3,11 +3,11 @@
     <div class="card-body" (click)="onClick(proposal.projectId,proposal.proposalId)">
       <!-- <h5 class="card-title">Project Name</h5> -->
 
-      <p class="card-text">{{proposal.proposalComment}}</p>
+      <p class="card-text" style="font-family: Georgia; font-weight: 600; font-size: 13px; color: #5c5b5b;">{{proposal.proposalComment}}</p>
       <div class="d-flex flex-row justify-content-between">
-          <h6>{{proposal.submissionDate}}</h6>
+          <h5>{{proposal.submissionDate}}</h5>
 
-          <h6 class="card-subtitle mb-2 text-success">{{proposal.status}}</h6>
+          <h6 class="card-subtitle mb-2 text-success" style="font-family: Georgia; font-weight: 600; font-size: 12px; color: #139224;">{{proposal.status}}</h6>
         </div>
     </div>
   </div>
