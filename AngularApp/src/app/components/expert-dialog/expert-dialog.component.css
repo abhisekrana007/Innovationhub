@@ -9,13 +9,13 @@
   }
   
   /* Style the proposals list */
-  .expert-list {
+  .expert-info-list {
     list-style-type: none;
     padding: 0;
   }
   
   /* Style each proposal item */
-  .expert-item {
+  .expert-info-item {
     margin-bottom: 10px;
     padding: 10px;
     background-color: #fff;
@@ -32,7 +32,7 @@
     border: 1px solid #ddd;
     border-radius: 3px;
     background-color: #f9f9f9;
-    width: calc(100% - 80px); /* Decrease the width and leave space for the button (adjust the value as needed) */
+    width: auto; /* Decrease the width and leave space for the button (adjust the value as needed) */
     display: inline-block; /* Ensure inline-block display to fit the button */
     vertical-align: top; /* Align the top of the description with the button */
   }

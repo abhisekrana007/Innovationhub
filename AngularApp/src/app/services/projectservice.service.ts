@@ -48,24 +48,21 @@ constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
   }
 
   AddProject(project : Project) : Observable<Project>
-
   {
 
     console.log("USER INS SRECIVCE " + JSON.stringify(project));
 
  
 
-  return this._http.post<Project>(this.url, JSON.stringify(project),
+    return this._http.post<Project>(this.url, JSON.stringify(project),{
 
-  {
+      headers: new HttpHeaders({
 
-    headers: new HttpHeaders({
+      'Content-Type':'application/json',
 
-    'Content-Type':'application/json',
+      'Accept' :'application/json'
 
-    'Accept' :'application/json'
-
-  })
+    })
 
   }
 
