@@ -48,6 +48,15 @@ getProposalsByProjectId(project: Project): Observable<Proposal[]>{
 updatePropsalStatus(proposalid :any) : Observable<Proposal>{
   return this._http.put<Proposal>(this.url+"/update/"+proposalid+"?status=Running","Running");
 }
+updatesProposal(proposal:Proposal,proposalid:any):Observable<Proposal>{
+  return this._http.put<Proposal>(this.url+"/"+proposalid,JSON.stringify(proposal),
+  {
+    headers: new HttpHeaders({
+    'Content-Type':'application/json',
+    'Accept' :'application/json'
+  })
+  });
+}
 //------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------

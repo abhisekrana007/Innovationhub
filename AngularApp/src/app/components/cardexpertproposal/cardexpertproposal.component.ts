@@ -78,10 +78,10 @@ export class CardexpertproposalComponent {
        //user.projectID=this.projectID;
        //user.expertId=this._jwt.getUserId();
       console.log("VAlid" + JSON.stringify(user))
-      this._proposalService.updateProposal(user,this.propid).subscribe(res=>
+      this._proposalService.updatesProposal(user,this.propid).subscribe(res=>
         {
         console.log(res)
-        this.getExpertProposals();
+        //this.getExpertProposals();
         })
 
  
