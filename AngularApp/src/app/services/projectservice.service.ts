@@ -13,7 +13,7 @@ export class ProjectserviceService {
 
 constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
 
-  url:string="https://localhost:7117/api/Project"
+  url:string="https://localhost:7272/project"
   
 
  

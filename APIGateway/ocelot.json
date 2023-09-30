@@ -124,8 +124,8 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Project",
-            "UpstreamHttpMethod": [ "Get,Post" ],
+            "UpstreamPathTemplate": "/project",
+            "UpstreamHttpMethod": [ "Get", "Post" ],
             "DownstreamPathTemplate": "/api/project",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
@@ -136,9 +136,9 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Project/projects/{projectId}",
-            "UpstreamHttpMethod": [ "Get" ],
-            "DownstreamPathTemplate": "/api/Project/projects/{projectId}",
+            "UpstreamPathTemplate": "/project/{projectId}",
+            "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+            "DownstreamPathTemplate": "/api/Project/{projectId}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -148,7 +148,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Project/GetByInnovatorId/{innovatorId}",
+            "UpstreamPathTemplate": "/project/GetByInnovatorId/{innovatorId}",
             "UpstreamHttpMethod": [ "Get" ],
             "DownstreamPathTemplate": "/api/Project/GetByInnovatorId/{innovatorId}",
             "DownstreamScheme": "https",
@@ -160,19 +160,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Project/{projectId}",
-            "UpstreamHttpMethod": [ "Put", "Delete" ],
-            "DownstreamPathTemplate": "/api/Project/{projectId}",
-            "DownstreamScheme": "https",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 7117
-                }
-            ]
-        },
-        {
-            "UpstreamPathTemplate": "/project/{proposalId}",
+            "UpstreamPathTemplate": "/project/GetAcceptedProposal/{proposalId}",
             "UpstreamHttpMethod": [ "Get" ],
             "DownstreamPathTemplate": "/api/Project/GetAcceptedProposal/{proposalId}",
             "DownstreamScheme": "https",
@@ -184,7 +172,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/project/expert/{expertId}",
+            "UpstreamPathTemplate": "/project/GetByExpertId/{expertId}",
             "UpstreamHttpMethod": [ "Get" ],
             "DownstreamPathTemplate": "/api/Project/GetByExpertId/{expertId}",
             "DownstreamScheme": "https",
@@ -196,7 +184,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Project/update/{projectid}",
+            "UpstreamPathTemplate": "/project/update/{projectid}",
             "UpstreamHttpMethod": [ "Put" ],
             "DownstreamPathTemplate": "/api/Project/update/{projectid}",
             "DownstreamScheme": "https",
@@ -208,9 +196,9 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Proposal/project/{projectid}",
+            "UpstreamPathTemplate": "/proposal/project/{projectId}",
             "UpstreamHttpMethod": [ "Get" ],
-            "DownstreamPathTemplate": "api/Proposal/project/{projectId}",
+            "DownstreamPathTemplate": "/api/Proposal/project/{projectId}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -220,7 +208,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Proposal",
+            "UpstreamPathTemplate": "/proposal",
             "UpstreamHttpMethod": [ "Get", "Post" ],
             "DownstreamPathTemplate": "/api/Proposal",
             "DownstreamScheme": "https",
@@ -232,7 +220,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Proposal/experts/{expertid}",
+            "UpstreamPathTemplate": "/proposal/experts/{expertid}",
             "UpstreamHttpMethod": [ "Get" ],
             "DownstreamPathTemplate": "/api/Proposal/experts/{expertid}",
             "DownstreamScheme": "https",
@@ -244,7 +232,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Proposal/{proposalId}",
+            "UpstreamPathTemplate": "/proposal/{proposalId}",
             "UpstreamHttpMethod": [ "Put", "Delete" ],
             "DownstreamPathTemplate": "/api/Proposal/{proposalId}",
             "DownstreamScheme": "https",
@@ -256,7 +244,7 @@
             ]
         },
         {
-            "UpstreamPathTemplate": "/Proposal/update/{proposalid}",
+            "UpstreamPathTemplate": "/proposal/update/{proposalid}",
             "UpstreamHttpMethod": [ "Put" ],
             "DownstreamPathTemplate": "/api/Proposal/update/{proposalid}",
             "DownstreamScheme": "https",
@@ -267,10 +255,5 @@
                 }
             ]
         }
-
-
     ]
-
-
-
 }
