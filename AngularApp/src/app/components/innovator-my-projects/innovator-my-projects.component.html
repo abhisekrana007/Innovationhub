@@ -7,7 +7,7 @@
       <mat-card-content>
         <p>Description : {{ project.description }}</p>
         <p>Status : {{ project.status }}</p>
-        <p *ngIf="project.status =='Running' || project.status == 'Completed'">Expert : {{ project.expertId }}</p>
+        <!-- <p *ngIf="project.status =='Running' || project.status == 'Completed'">Expert : {{ project.expertId }}</p> -->
       </mat-card-content>
       <mat-card-actions>
         <button *ngIf="project.status !='Running' && project.status != 'Completed'" mat-button color="primary" (click)="openProposalDialog(project)">View Proposals</button>
