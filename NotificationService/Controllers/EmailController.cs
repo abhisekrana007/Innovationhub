@@ -12,10 +12,12 @@ namespace NotificationService.Controllers
     [Route("[controller]")]
     public class EmailController : ControllerBase
     {
-        IEmailService _emailService = null;
-        public EmailController(IEmailService emailService)
+        private readonly IEmailService _emailService;
+        private readonly Consumer _consumer;
+        public EmailController(IEmailService emailService,Consumer consumer)
         {
             _emailService = emailService;
+            _consumer = consumer;
         }
 
         [HttpPost]
@@ -30,6 +32,14 @@ namespace NotificationService.Controllers
         public bool SendUserWelcomeEmail([FromForm]UserData userData)
         {
             return _emailService.SendUserWelcomeEmail(userData);
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            // Start the RabbitMQ consumer when making a GET request
+            _consumer.ReceiveMessage();
+            return Ok("New Project Is Recongnized in the platform");
         }
     }
 }

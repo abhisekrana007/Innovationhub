@@ -61,6 +61,10 @@ onClick1(id:any){
   this.getProjectById(id);
 }
 
+clicktoclose(){
+  window.location.reload();
+}
+
 project1: any ="";
 getProjectById(id : string)
 {

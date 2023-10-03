@@ -16,7 +16,10 @@ export class CardexpertproposalComponent {
   project:Project=new Project();
 
   UpdateForm :  FormGroup;
-  proposalComment:string="";
+  proposalComment!:string;
+  proposalId!:string;
+  expertId!:string;
+  projectId!:string;
   //projectID:string=""
 
   submitted : boolean = false;
@@ -24,7 +27,10 @@ export class CardexpertproposalComponent {
 
   constructor(private fb : FormBuilder,private _proposalService: ProposalserviceService,private _projectService:ProjectserviceService) {
     this.UpdateForm= fb.group({
-      proposalComment: new FormControl("", [Validators.required])
+      proposalComment: new FormControl("", [Validators.required]),
+      proposalId: new FormControl(''),
+      expertId:new FormControl(''),
+      projectId:new FormControl('')
       //projectID: new FormControl(this.id, [Validators.required])
        // ProjectId: new FormControl("", [Validators.required]),
        // ExpertId:new FormControl("",[Validators.required])
@@ -46,13 +52,18 @@ export class CardexpertproposalComponent {
   }
 
   propid: any ="";
+  projid:any="";
+  expid:any="";
   //---------------------------------------------------------------------------------- 
   //CALLING A PROJECT FOR PROJECTDETAIS BY PROJECTID WHICH I WILL GET BY CLICK EVENT
-  onClick(pid:string,proid:any)
+  onClick(pid:string,proid:any,exid:any)
   {
     console.log(pid);
     console.log(proid);
     this.propid=proid;
+    this.projid=pid;
+    this.expid=exid;
+
          this.getProjectByProjectId(pid)
   }
   getProjectByProjectId(pid:string) {
@@ -75,7 +86,10 @@ export class CardexpertproposalComponent {
     if(this.UpdateForm.invalid) return;
     else{
       var user=regForm.value;
-       //user.projectID=this.projectID;
+      user.proposalId=this.propid;
+      user.projectId=this.projid;
+      user.expertId=this.expid; 
+      //user.projectID=this.projectID;
        //user.expertId=this._jwt.getUserId();
       console.log("VAlid" + JSON.stringify(user))
       this._proposalService.updatesProposal(user,this.propid).subscribe(res=>
