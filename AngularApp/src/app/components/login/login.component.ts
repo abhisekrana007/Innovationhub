@@ -48,7 +48,7 @@ export class LoginComponent {
           this._loginservice.setBearerToken(this.token.token);      
           this._routingservice.toInnovatorMain();
         } catch (err) {
-          this.handleError(err);
+          throwError;
         }             
       
       
@@ -78,7 +78,7 @@ export class LoginComponent {
           this._loginservice.setBearerToken(this.token.token);      
           this._routingservice.toExpertMain();
         } catch (err) {
-          this.handleError(err);
+          throwError;
         }             
       
       

@@ -7,7 +7,7 @@ import { Innovator } from 'src/models/innovator';
   providedIn: 'root',
 })
 export class InnovatorprofileService {
-  private apiUrl = 'your_backend_api_url'; // Replace with your actual API URL
+  private apiUrl = 'https://localhost:7272/innovator'; // Replace with your actual API URL
 
 
 

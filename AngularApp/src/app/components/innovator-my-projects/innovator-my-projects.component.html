@@ -7,12 +7,12 @@
       <mat-card-content>
         <p>Description : {{ project.description }}</p>
         <p>Status : {{ project.status }}</p>
-        <p *ngIf="project.status =='Running' || project.status == 'Completed'">Expert : {{ project.expertId }}</p>
+        <!-- <p *ngIf="project.status =='Running' || project.status == 'Completed'">Expert : {{ project.expertId }}</p> -->
       </mat-card-content>
       <mat-card-actions>
         <button *ngIf="project.status !='Running' && project.status != 'Completed'" mat-button color="primary" (click)="openProposalDialog(project)">View Proposals</button>
         <button *ngIf="project.status =='Running'" mat-button color="primary" (click)="updateStatusCompleted(project)">Mark As Complete</button>
-        <!-- <button *ngIf="project.status =='Running' || project.status == 'Completed'" mat-button color="primary" (click)="openExpertDialog(project)">Expert Info</button> -->
+        <button *ngIf="project.status =='Running' || project.status == 'Completed'" mat-button color="primary" (click)="openExpertDialog(project)">Expert Info</button>
       </mat-card-actions>
     </mat-card>
   </div>

@@ -85,6 +85,11 @@
   }
 
   .logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: auto;
     color:#007bff
   }
   .logo:hover{
