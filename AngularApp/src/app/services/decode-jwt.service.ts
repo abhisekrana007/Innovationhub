@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class DecodeJWTService {
   decodedToken: { [key: string]: string } = {};
 
   decodeToken() {
+    this.jwtToken = localStorage.getItem("bearerToken");
     if (this.jwtToken) {
       this.decodedToken = jwt_decode(this.jwtToken);
     }

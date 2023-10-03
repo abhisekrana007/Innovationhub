@@ -10,7 +10,18 @@ export const authenticateGuard: CanActivateFn = (route, state) => {
   var check = auth.getRole();
 
   if (check!=null && allowedRoles.includes(check)) {
-    return true;
+    console.log(check);
+    if (check === "Innovator" && state.url.startsWith('/expert')){
+      route1.toLogin();
+      return false;
+    }
+    else if(check === "Expert" && state.url.startsWith('/innovator')){
+      route1.toLogin();
+      return false;
+    }
+    else{
+      return true;
+    }  
   } else {
     route1.toLogin();
     return false;
