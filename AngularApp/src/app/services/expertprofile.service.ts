@@ -8,8 +8,8 @@ import { Project } from 'src/models/project';
   providedIn: 'root',
 })
 export class ExpertprofileService  {
-  private url = 'https://localhost:7272/expert'; // Replace with your actual API URL
-
+  // private url = 'https://innovatorshub.azure-api.net/myapi/api/v1/Expert'; // Replace with your actual API URL
+  private url = 'https://localhost:7272/expert';
  
 
   constructor(private http: HttpClient) {}

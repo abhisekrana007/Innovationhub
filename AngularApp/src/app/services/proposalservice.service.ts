@@ -11,7 +11,8 @@ import { Project } from 'src/models/project';
 export class ProposalserviceService {
 
   constructor(private _http:  HttpClient,private _jwt:DecodeJWTService ) { }
-  url:string="https://localhost:7272/proposal";
+  // url:string="https://innovatorshub.azure-api.net/myproject/api/Proposal";
+  url:string="https://localhost:7272/proposal"
 
   AddProposal(proposal : Proposal) : Observable<Proposal>
   {

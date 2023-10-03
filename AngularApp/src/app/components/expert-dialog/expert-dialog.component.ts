@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ExpertprofileService } from 'src/app/services/expertprofile.service';
 import { Expert } from 'src/models/expert';
 import { Project } from 'src/models/project';
+import { ProposalDialogComponent } from '../proposal-dialog/proposal-dialog.component';
 
 @Component({
   selector: 'app-expert-dialog',
@@ -12,8 +13,10 @@ import { Project } from 'src/models/project';
 export class ExpertDialogComponent {
   project: Project;
   expert : Expert | undefined;
+  show : boolean = false;
 
   constructor(
+    public dialogRef1: MatDialogRef<ProposalDialogComponent>,
     public dialogRef: MatDialogRef<ExpertDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private _expertservice : ExpertprofileService
   ) {
@@ -21,10 +24,13 @@ export class ExpertDialogComponent {
   }
 
   ngOnInit() {
-    this.getProposalsByProjectId(this.project);
+    this.getExpertByProjectId(this.project);
+    if(this.project.projectTitle){
+      this.show = true;
+    }
   }
 
-  getProposalsByProjectId(project : Project) {
+  getExpertByProjectId(project : Project) {
     this._expertservice.getExpertByExpertId(project).subscribe((data: Expert) => {
       this.expert = data;
       

@@ -1,172 +1,53 @@
 <app-navbar [role]="'Innovator'"></app-navbar>
+
 <div class="container-fluid">
-<h2 class="mt-2 border-bottom border-secondary border-2 pb-3 d-flex justify-content-between align-items-center">
-
- 
-
-        Projects
-<button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-
- 
-
-            Add Project
-</button>
-</h2>
-
- 
-
- 
-
- 
-
- 
-
- 
+    <h2 class="mt-2 border-bottom border-secondary border-2 pb-3 d-flex justify-content-between align-items-center">
+    Projects
+    <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add Project
+    </button>
+    </h2>
 
     <!-- Modal -->
 
- 
-
- 
-
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-
- 
-
- 
-
         <div class="modal-dialog">
-
- 
-
- 
-
             <div class="modal-content">
-
- 
-
- 
-
                 <div class="modal-header">
-
- 
-
- 
-
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Project</h1>
-
- 
-
- 
-
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
- 
-
- 
-
                 </div>
-
- 
-
- 
-
                 <div class="modal-body">
-
- 
-
- 
-
-<form [formGroup]="ProjectForm" (ngSubmit)="projectSubmitted(ProjectForm)">
-<div class="mb-3">
-<label for="projectTitle" class="form-label">Project Title</label>
-<input type="text" class="form-control" id="projectTitle" formControlName="projectTitle"  >
-</div>
-<!-- <div class="mb-3">
-<label for="ProjectDoc" class="form-label">Project Document</label>
-<input type="text" class="form-control" id="ProjectDocument" formControlName="ProjectDoc">
-</div> -->
-<div class="mb-3">
-<label for="description" class="form-label">Project Description</label>
-<input type="text" class="form-control" id="ProjectDescription" formControlName="description">
-</div>
-<div class="mb-3">
-<label for="requiredSkills" class="form-label">Required Skills</label>
-<input type="text" class="form-control" id="requiredSkills" formControlName="requiredSkills">
-</div>
-
- 
-
-<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-</form>
-
- 
-
- 
-
+                    <form [formGroup]="ProjectForm" (ngSubmit)="projectSubmitted(ProjectForm)">
+                        <div class="mb-3">
+                            <label for="projectTitle" class="form-label">Project Title</label>
+                            <input type="text" class="form-control" id="projectTitle" formControlName="projectTitle"  >
+                        </div>
+                        <!-- <div class="mb-3">
+                        <label for="ProjectDoc" class="form-label">Project Document</label>
+                        <input type="text" class="form-control" id="ProjectDocument" formControlName="ProjectDoc">
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Project Description</label>
+                            <input type="text" class="form-control" id="ProjectDescription" formControlName="description">
+                        </div>
+                        <div class="mb-3">
+                            <label for="requiredSkills" class="form-label">Required Skills</label>
+                            <input type="text" class="form-control" id="requiredSkills" formControlName="requiredSkills">
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                    </form>
                 </div>
-
- 
-
- 
-
                 <div class="modal-footer">
-
- 
-
- 
-
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-
- 
-
- 
-
                     <!-- <button type="button" class="btn btn-primary">Understood</button> -->
-
- 
-
- 
-
                 </div>
-
- 
-
- 
-
             </div>
-
- 
-
- 
-
         </div>
-
- 
-
- 
-
     </div>
-
- 
-
- 
-
- 
-
     <div class="container d-flex justify-content-between flex-wrap ">
-<app-cardinovhome></app-cardinovhome>
-
-
- 
-
- 
-
- 
-
- 
-
+        <app-cardinovhome></app-cardinovhome>
     </div>
 </div>
 <!-- <app-footer></app-footer> -->

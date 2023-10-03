@@ -3,7 +3,9 @@
     <ul class="expert-info-list">
       <li class="expert-info-item">
         <div class="expert-content">
-          <div class="expert-description"> Email : {{ expert?.email }}</div>          
+          <div *ngIf="show==true" class="expert-description"> Email : {{ expert?.email }}</div> 
+          <div class="expert-description"> Skills : {{ expert?.skills }}</div> 
+          <div class="expert-description"> Budget (Rupess/hour) : {{ expert?.budget }}</div>          
         </div>
       </li>
     </ul>

@@ -13,7 +13,9 @@ export class ProjectserviceService {
 
 constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
 
+  // url:string="https://innovatorshub.azure-api.net/myproject/api/Project"
   url:string="https://localhost:7272/project"
+  // url:string = "https://projectservice.azurewebsites.net/api/project";
   
 
  

@@ -3,7 +3,10 @@
   <ul class="proposal-list">
     <li *ngFor="let proposal of proposals" class="proposal-item">
       <div class="proposal-content">
+        
         <div class="proposal-description">{{ proposal.proposalComment }}</div>
+        <button mat-button color="primary" (click)="openExpertDialog(proposal)">Expert Info</button>
+        
         <button
           
           color="primary"

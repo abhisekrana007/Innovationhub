@@ -47,6 +47,7 @@ projectSubmitted(regForm : any)
         {
         console.log(res)
         })
+        window.location.reload();
 
  
 

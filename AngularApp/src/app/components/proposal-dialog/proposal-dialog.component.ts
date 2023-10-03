@@ -1,10 +1,11 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProposalserviceService } from 'src/app/services/proposalservice.service';
 import { Project } from 'src/models/project';
 import { Proposal } from 'src/models/proposal';
 import {MatCardModule} from '@angular/material/card';
 import { ProjectserviceService } from 'src/app/services/projectservice.service';
+import { ExpertDialogComponent } from '../expert-dialog/expert-dialog.component';
 
 @Component({
   selector: 'app-proposal-dialog',
@@ -15,7 +16,7 @@ export class ProposalDialogComponent {
   project: Project;
   proposals : Proposal[]=[];
 
-  constructor(
+  constructor(public dialog: MatDialog,
     public dialogRef: MatDialogRef<ProposalDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private _proposalservice : ProposalserviceService,private _projectservice : ProjectserviceService
   ) {
@@ -38,6 +39,12 @@ export class ProposalDialogComponent {
     window.location.reload();
     // Implement logic to accept a proposal
     // You can send an API request to update the proposal status, for example
+  }
+
+  openExpertDialog(project: any) {
+    this.dialog.open(ExpertDialogComponent, {
+      data: { project }
+    });
   }
 
   closeDialog() {

@@ -10,7 +10,7 @@ import { Project } from 'src/models/project';
 export class CardinovhomeComponent {
 
   projects:Project[]=[]
-
+  project1 : Project = new Project();;
  
 
   constructor(private _projectService: ProjectserviceService) {}
@@ -24,6 +24,11 @@ export class CardinovhomeComponent {
       this.projects = data;
       console.log(this.projects);
     });
+  }
+
+  onClick(project:Project)
+  {
+    this.project1=project;         
   }
 
 }
