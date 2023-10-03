@@ -8,7 +8,7 @@ export class RegistrationService {
   
 
 
-    private apiUrl = 'https://localhost:7272/';   
+    private apiUrl = 'https://localhost:7272/registration';   
         constructor(private http: HttpClient) { }
   
     registerInnovator(innovatorData: any) {
