@@ -28,6 +28,7 @@ body, html {
  
 
 .navbar-brand {
+  margin-top: 7px;
   color: #ffffff;
   font-size: 24px;
 }
@@ -42,6 +43,10 @@ body, html {
 
 .navbar-nav .nav-link {
   color: #ffffff;
+}
+
+.navbar-nav li{
+  margin-right: 20px;
 }
 
 /* Increase the text size for "User" and "Contact" links */
@@ -129,11 +134,11 @@ body, html {
 }
 
 footer p {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 footer h4 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .list-inline-item {
