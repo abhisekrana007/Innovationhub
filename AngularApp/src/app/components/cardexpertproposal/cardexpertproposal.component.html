@@ -1,6 +1,6 @@
 <div class="container d-flex justify-content-between flex-wrap ">
 <div *ngFor="let proposal of proposals" class="card shadow-lg mt-5 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <div class="card-body" (click)="onClick(proposal.projectId,proposal.proposalId)">
+    <div class="card-body" (click)="onClick(proposal.projectId,proposal.proposalId,proposal.expertId)">
       <!-- <h5 class="card-title">Project Name</h5> -->
 
       <p class="card-text" style="font-family: Georgia; font-weight: 600; font-size: 13px; color: #5c5b5b;">{{proposal.proposalComment}}</p>

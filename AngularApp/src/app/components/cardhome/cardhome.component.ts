@@ -49,16 +49,20 @@ ngOnInit() {
 tempId :any;
 onClick(id:any){
   console.log(id);
-  alert(id);
+  
    
 }
 
 onClick1(id:any){
   console.log(id);
-  alert(id);
+  alert("you are giving proposal for this project");
   this.projectID = id;
   // this.projectID = id; 
   this.getProjectById(id);
+}
+
+clicktoclose(){
+  window.location.reload();
 }
 
 project1: any ="";
@@ -81,7 +85,7 @@ getProjects() {
 
 proposalSubmitted(regForm : any)
   {
-   alert(regForm.value)
+   alert("we are adding your proposal to this project")
     this.submitted = true;
     if(this.ProposalForm.invalid) return;
     else{
