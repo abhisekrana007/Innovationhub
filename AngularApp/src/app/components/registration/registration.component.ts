@@ -12,6 +12,7 @@ import { RoutingService } from 'src/app/services/routing.service';
 export class RegistrationComponent {
   innovatorForm: FormGroup;
   expertForm: FormGroup;
+  rating: number = 0;
 
   constructor(private fb: FormBuilder, private registrationService: RegistrationService,private _routingservice : RoutingService) {
     this.innovatorForm = this.fb.group({
@@ -31,7 +32,7 @@ export class RegistrationComponent {
       lastName: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       skills: ['', Validators.required],
-      rating: ['', Validators.required],
+      // rating: ['', Validators.required],
       budget: ['', Validators.required],
     });
   }
