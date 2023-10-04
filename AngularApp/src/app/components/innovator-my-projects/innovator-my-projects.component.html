@@ -1,17 +1,21 @@
 <app-navbar [role]="'Innovator'"></app-navbar>
+<div class="container-fluid">
+  <h2 class="mt-2 border-bottom border-secondary border-2 pb-3 d-flex justify-content-between align-items-center">My Projects</h2>
+</div>
+<br/>
 <div class="card-container">
     <mat-card *ngFor="let project of projects" class="project-card">
       <mat-card-header>
         <mat-card-title>{{ project.projectTitle }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <p>Description : {{ project.description }}</p>
-        <p>Status : {{ project.status }}</p>
+        <p>{{ project.description }}</p>
+        <p><span class="status-text">{{ project.status }}</span></p>
         <!-- <p *ngIf="project.status =='Running' || project.status == 'Completed'">Expert : {{ project.expertId }}</p> -->
       </mat-card-content>
       <mat-card-actions>
         <button *ngIf="project.status !='Running' && project.status != 'Completed'" mat-button color="primary" (click)="openProposalDialog(project)">View Proposals</button>
-        <button *ngIf="project.status =='Running'" mat-button color="primary" (click)="updateStatusCompleted(project)">Mark As Complete</button>
+        <button *ngIf="project.status =='Running'" mat-button color="warn" (click)="updateStatusCompleted(project) ">Mark As Complete</button>
         <button *ngIf="project.status =='Running' || project.status == 'Completed'" mat-button color="primary" (click)="openExpertDialog(project)">Expert Info</button>
       </mat-card-actions>
     </mat-card>
