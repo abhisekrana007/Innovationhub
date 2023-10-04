@@ -174,18 +174,27 @@
         </div>
       </div>
       
-      <div class="form-group" id="elements">
+      <!-- <div class="form-group" id="elements">
         <div>
           <input class="input-container" type="text" placeholder="Rating" formControlName="rating" required>
         </div>
         <div class="validation-text" *ngIf="expertForm.controls['rating'].touched">
           <mat-error *ngIf="expertForm.controls['rating'].hasError('required')">Rating is required</mat-error>
         </div>
-      </div>
+      </div> -->
       
-      <div class="form-group" id="elements">
+      <!-- <div class="form-group" id="elements">
         <div>
           <input class="input-container" type="text" placeholder="Budget" formControlName="budget" required>
+        </div>
+        <div class="validation-text" *ngIf="expertForm.controls['budget'].touched">
+          <mat-error *ngIf="expertForm.controls['budget'].hasError('required')">Budget is required</mat-error>
+        </div>
+      </div>
+       -->
+       <div class="form-group" id="elements">
+        <div>
+          <input class="input-container" type="text" placeholder="Budget (in rupees per hour)" formControlName="budget" required>
         </div>
         <div class="validation-text" *ngIf="expertForm.controls['budget'].touched">
           <mat-error *ngIf="expertForm.controls['budget'].hasError('required')">Budget is required</mat-error>
