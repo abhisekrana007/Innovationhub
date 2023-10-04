@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using System.Security.Authentication;
+using MongoDB.Driver;
 using UserService.Model;
 using UserService.MongoDBSettings;
 
@@ -10,9 +11,15 @@ namespace UserService.Repository
 
         public ExpertFeedbackRepository(IUserDatabaseSettings settings)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
-            _collection = database.GetCollection<ExpertFeedback>(settings.ExpertFeedbacksCollectionName);
+            string connectionString =
+   @"mongodb://innovationaccount:nOw32mZu5c1N1AR8564qtpLTtKnRKAEmTB2Vf1iS2z1183HWZuz6T0mjUvaXZwBipXzXi2HdxWZaACDblyAUkw==@innovationaccount.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@innovationaccount@";
+            MongoClientSettings settings1 = MongoClientSettings.FromUrl(
+              new MongoUrl(connectionString)
+            );
+            settings1.SslSettings =
+              new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            var mongoClient = new MongoClient(settings1);
+            var database = mongoClient.GetDatabase(settings.DatabaseName); _collection = database.GetCollection<ExpertFeedback>(settings.ExpertFeedbacksCollectionName);
         }
 
         public async Task<IEnumerable<ExpertFeedback>> GetAllAsync()

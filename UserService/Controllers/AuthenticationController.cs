@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
+using System.Security.Authentication;
 
 namespace UserService.Controllers
 {
@@ -22,9 +23,17 @@ namespace UserService.Controllers
         private readonly IMongoCollection<Expert> _expertsCollection;
         public AuthenticationController(IUserDatabaseSettings settings, IConfiguration config)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
+            string connectionString =
+   @"mongodb://innovationaccount:nOw32mZu5c1N1AR8564qtpLTtKnRKAEmTB2Vf1iS2z1183HWZuz6T0mjUvaXZwBipXzXi2HdxWZaACDblyAUkw==@innovationaccount.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@innovationaccount@";
+            MongoClientSettings settings1 = MongoClientSettings.FromUrl(
+              new MongoUrl(connectionString)
+            );
+            settings1.SslSettings =
+              new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            var mongoClient = new MongoClient(settings1);
+            var database = mongoClient.GetDatabase(settings.DatabaseName);
             _innovatorsCollection = database.GetCollection<Innovator>(settings.InnovatorsCollectionName);
+           
             _expertsCollection = database.GetCollection<Expert>(settings.ExpertsCollectionName);
             _config = config;
         }
