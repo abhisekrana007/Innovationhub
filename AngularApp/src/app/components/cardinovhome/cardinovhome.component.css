@@ -2,3 +2,7 @@
     width: 18rem;
     cursor: pointer;
 }
+
+#card-container{
+    margin-right:100px;
+}
