@@ -10,7 +10,7 @@ namespace ProjectService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize]
+    //[Authorize]
     public class ProposalController : ControllerBase
     {
         private readonly IProposalService _proposalservice;

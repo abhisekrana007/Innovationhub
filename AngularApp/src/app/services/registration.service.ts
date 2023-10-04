@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegistrationService {
 
-    // private apiUrl = 'https://innovatorshub.azure-api.net/myapi/api/v1';
-    private apiUrl = 'https://localhost:7272';
+    private apiUrl = 'https://authservice-team1.azurewebsites.net/api/v1';
+    // private apiUrl = 'https://localhost:7272';
         constructor(private http: HttpClient) { }
   
     registerInnovator(innovatorData: any) {

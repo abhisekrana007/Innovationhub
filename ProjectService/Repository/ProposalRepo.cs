@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using ProjectService.services;
 using Microsoft.Extensions.Options;
 using ProjectService.Services;
+using System.Security.Authentication;
 
 namespace ProjectService.Repository
 {
@@ -23,9 +24,29 @@ namespace ProjectService.Repository
             //var databaseName = mongoClient.GetDatabase(mongoUrl.DatabaseName);
             //_proposals = databaseName.GetCollection<Proposal>("Proposal");
 
+            string connectionString =
+ @"mongodb://innovationaccount:nOw32mZu5c1N1AR8564qtpLTtKnRKAEmTB2Vf1iS2z1183HWZuz6T0mjUvaXZwBipXzXi2HdxWZaACDblyAUkw==@innovationaccount.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@innovationaccount@";
+            MongoClientSettings settings1 = MongoClientSettings.FromUrl(
+              new MongoUrl(connectionString)
+            );
+            settings1.SslSettings =
+              new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            var mongoClient = new MongoClient(settings1);
             _dbSettings = dbSettings;
-            var client = new MongoClient(dbSettings.Value.ConnectionString);
-            var database = client.GetDatabase(dbSettings.Value.DatabaseName);
+            //var client = new MongoClient(dbSettings.Value.ConnectionString);
+            var database = mongoClient.GetDatabase(dbSettings.Value.DatabaseName);
+            //_dbSettings = dbSettings;
+            //var client = new MongoClient(dbSettings.Value.ConnectionString);
+            //var database = client.GetDatabase(dbSettings.Value.DatabaseName);
+            //string connectionString =
+   //@"mongodb://innovationaccount:nOw32mZu5c1N1AR8564qtpLTtKnRKAEmTB2Vf1iS2z1183HWZuz6T0mjUvaXZwBipXzXi2HdxWZaACDblyAUkw==@innovationaccount.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@innovationaccount@";
+   //         MongoClientSettings settings1 = MongoClientSettings.FromUrl(
+   //           new MongoUrl(connectionString)
+            
+            //settings1.SslSettings =
+            //  new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            //var mongoClient = new MongoClient(settings1);
+            //var database = mongoClient.GetDatabase(_dbSettings);
             _proposals = database.GetCollection<Proposal>
                 (dbSettings.Value.ProposalsCollectionName);
             _projectserv = projectService;

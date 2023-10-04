@@ -8,9 +8,9 @@ import { User } from 'src/models/user';
 })
 export class LoginService {
   // private innovatorUrl = 'https://innovatorshub.azure-api.net/myapi/api/v1/authentication/Innovator/login';
-  private innovatorUrl = 'https://localhost:7272/login/innovator';
+  private innovatorUrl = 'https://authservice-team1.azurewebsites.net/api/v1/authentication/innovator/login';
   // private expertUrl = 'https://innovatorshub.azure-api.net/myapi/api/v1/authentication/Expert/login';
-  private expertUrl = 'https://localhost:7272/login/expert';
+  private expertUrl = 'https://authservice-team1.azurewebsites.net/api/v1/authentication/expert/login';
   
   constructor(private _http: HttpClient) { }
   
