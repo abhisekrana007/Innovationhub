@@ -23,7 +23,7 @@ namespace ProjectService.Models
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime CreationDate { get; set; }=DateTime.Now;
 
-        public string? Status { get; set; } = "can apply";
+        public string? Status { get; set; } = "Can Apply";
 
         public string? ExpertId { get; set; }
     }

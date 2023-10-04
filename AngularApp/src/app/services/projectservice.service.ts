@@ -36,7 +36,7 @@ constructor(private _http:  HttpClient,private _jwt:DecodeJWTService) { }
   //GET PROJECT BY PROJECT ID 
   //
   getProjectByProjectid(id:string):Observable<Project>{
-      return this._http.get<Project>(this.url+"/projects/"+id);   
+      return this._http.get<Project>(this.url+"/"+id);   
   }
 //------------------------------------------------------------------------------------------
 // updateProjectStatus(projectid :any,expertId : any) : Observable<Project>{
