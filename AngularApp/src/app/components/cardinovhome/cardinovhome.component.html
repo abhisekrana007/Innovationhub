@@ -11,20 +11,21 @@
     </div>
 </div>
 
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">>{{project1.projectTitle}}</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{project1.projectTitle}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>                
             <div class="modal-body">
-                <p class="card-text">{{project1.description}}</p>
-                <p class="card-text">{{project1.requiredSkills}}</p>          
+                <p class="card-text">Description : {{project1.description}}</p>
+                <p class="card-text">Required Skills : {{project1.requiredSkills}}</p>          
             </div>
             <div class="modal-footer d-flex flex-row justify-content-between">
                 <!-- <h6>{{project.creationDate}}</h6>   -->
-                <h6 class="card-subtitle mb-2 text-success">{{project1.status}}</h6>
+                <p class="card-subtitle mb-2 text-success">{{project1.status}}</p>
             </div>
         </div>
     </div>
