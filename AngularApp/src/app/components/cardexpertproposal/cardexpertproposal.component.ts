@@ -102,7 +102,10 @@ export class CardexpertproposalComponent {
 
     }
     console.log(this.UpdateForm.value);
-    window.location.reload(); 
+    setTimeout(function(){
+      location.reload();
+    }, 2000);
+    // window.location.reload(); 
 
  
 
@@ -117,7 +120,10 @@ proposalDeleted(){
   alert("are you sure you want to delete the proposal");
  
 this._proposalService.deleteProposal(this.propid).subscribe();
-window.location.reload(); 
+setTimeout(function(){
+          location.reload();
+        }, 2000);
+// window.location.reload(); 
    
 
 }

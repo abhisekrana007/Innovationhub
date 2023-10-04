@@ -103,7 +103,10 @@ proposalSubmitted(regForm : any)
     }
 
     console.log(this.ProposalForm.value);
-    window.location.reload();  
+    setTimeout(function(){
+      location.reload();
+    }, 2000);
+    // window.location.reload();  
  
 
   }
