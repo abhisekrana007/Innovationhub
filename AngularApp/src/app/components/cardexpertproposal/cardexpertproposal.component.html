@@ -1,10 +1,10 @@
-<div class="container d-flex justify-content-between flex-wrap ">
+<div class="container d-flex justify-content-around flex-wrap ">
 <div *ngFor="let proposal of proposals" class="card shadow-lg mt-5 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <div class="card-body" (click)="onClick(proposal.projectId,proposal.proposalId,proposal.expertId)">
       <!-- <h5 class="card-title">Project Name</h5> -->
 
       <p class="card-text" style="font-family: Georgia; font-weight: 600; font-size: 13px; color: #5c5b5b;">{{proposal.proposalComment}}</p>
-      <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row justify-content-around">
           <h5>{{proposal.submissionDate}}</h5>
 
           <h6 class="card-subtitle mb-2 text-success" style="font-family: Georgia; font-weight: 600; font-size: 12px; color: #139224;">{{proposal.status}}</h6>
@@ -28,7 +28,7 @@
     <p class="card-text">{{project.description}}</p>
     <p class="card-text">{{project.requiredSkills}}</p>
   </div>
-  <div class="modal-footer d-flex flex-row justify-content-between">
+  <div class="modal-footer d-flex flex-row justify-content-around">
   <!-- <h6>11 May, 2023</h6> -->
   <!-- Button to trigger another modal -->
   
