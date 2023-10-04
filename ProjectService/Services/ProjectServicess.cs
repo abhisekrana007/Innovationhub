@@ -8,11 +8,12 @@ namespace ProjectService.Services
     public class ProjectServicess:IProjectServices
     {
         private readonly IProjectRepo _repo;
-        private readonly MessageProducer _producer;
-        public ProjectServicess(IProjectRepo repo, MessageProducer producer)
+        //private readonly MessageProducer _producer;
+        //, MessageProducer producer
+        public ProjectServicess(IProjectRepo repo)
         {
             _repo = repo;
-            _producer = producer;
+            //_producer = producer;
         }
 
         // public async Task<Expert> GetExpertByIdAsync(string expertId)
@@ -32,7 +33,7 @@ namespace ProjectService.Services
         public async Task CreateAsync(Project project)
         {
              await _repo.CreateAsync(project);
-            _producer.SendMessage();
+            //_producer.SendMessage();
 
         }
 

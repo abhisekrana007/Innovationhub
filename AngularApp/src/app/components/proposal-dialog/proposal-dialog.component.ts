@@ -36,7 +36,10 @@ export class ProposalDialogComponent {
   acceptProposal(proposal: Proposal) {
     this._proposalservice.updatePropsalStatus(proposal.proposalId).subscribe();    
     this.closeDialog();
-    window.location.reload();
+    setTimeout(function(){
+      location.reload();
+    }, 2000);
+    // window.location.reload();
     // Implement logic to accept a proposal
     // You can send an API request to update the proposal status, for example
   }

@@ -20,7 +20,7 @@ builder.Services.AddScoped<IProjectRepo, ProjectRepo>();
 
 builder.Services.AddScoped<IProposalRepo, ProposalRepo>();
 builder.Services.AddScoped<IProposalService, ProposalService>();
-builder.Services.AddScoped<MessageProducer>();
+//builder.Services.AddScoped<MessageProducer>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         .AddJwtBearer(options =>
                         {

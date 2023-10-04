@@ -47,6 +47,7 @@ getProposalsByProjectId(project: Project): Observable<Proposal[]>{
 //---------------------------------------------------------------------------------
 //UPDATE PROPOSAL API CALL
 updatePropsalStatus(proposalid :any) : Observable<Proposal>{
+  console.log(this.url+"/update/"+proposalid+"?status=Running");
   return this._http.put<Proposal>(this.url+"/update/"+proposalid+"?status=Running","Running");
 }
 updatesProposal(proposal:Proposal,proposalid:any):Observable<Proposal>{

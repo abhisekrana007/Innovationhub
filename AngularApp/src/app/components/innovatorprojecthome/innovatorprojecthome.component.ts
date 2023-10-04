@@ -47,7 +47,10 @@ projectSubmitted(regForm : any)
         {
         console.log(res)
         })
-        window.location.reload();
+        setTimeout(function(){
+          location.reload();
+        }, 2000);
+        // window.location.reload();
 
  
 
